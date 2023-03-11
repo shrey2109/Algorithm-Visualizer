@@ -1,0 +1,116 @@
+.navDiv{
+    margin: 5px 15px 25px 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 5px 2px 5px rgb(110, 110, 110);
+  }
+  
+  .btn {
+      /* background-color: #4CAF50; */
+      /* background-color: #8d8d8d; */
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 18px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+  
+    .btn {
+      /* background-color: rgb(67, 104, 255);  */
+      /* background-color: white;  */
+      background-color: #f6efeb; 
+      color: black; 
+      margin-top: 13px;
+      margin-left: 25px;
+      /* color: rgb(86, 86, 86);  */
+      /* border: 1px solid #4CAF50; */
+    }
+    
+    .btn:hover {
+      background-color: #c8f4cd;
+      /* box-shadow: 3px 1px 7px rgb(86, 86, 86); */
+      box-shadow: 7px 10px 20px -7px rgb(86, 86, 86);
+    }
+
+    .navDiv.selected {
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        background-color: #ccc;
+    }
+  
+    .btn:focus{
+        /* box-shadow: rgb(152, 198, 237) 3px 3px 6px 0px inset, rgba(232, 154, 154, 0.5) -3px -3px 6px 1px inset; */
+        /* box-shadow: rgb(111, 184, 248) 3px 3px 7px 0px inset, rgba(255, 121, 121, 0.5) -5px -5px 6px 1px inset; */
+        background-color: rgb(253, 217, 186);
+        border-radius: 5px;
+        /* border: 2px rgb(255, 0, 0); */
+        border: 2px solid orange;
+    }
+  
+  
+  
+   .itmClass:hover{
+      height: 36px;
+      color: #8c00ff;
+      box-shadow: 1px 1px 4px rgb(86, 86, 86);
+      border-radius: 15px;
+   }
+    
+   .menuClass{
+    box-shadow: 2px 2px 5px -1px rgb(86, 86, 86);
+  }
+  .menuClass:hover{
+    box-shadow: 0px 0px 0px 0px rgb(86, 86, 86);
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+  
+    /* input[type=number].numAmt {
+      width: 10%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 3px solid #ccc;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      outline: none;
+      font-size: 15px;
+    } */
+    
+    input[type=text].numVal {
+      width: 80%;
+      height: 50px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      outline: none;
+      font-size: 15px;
+    }
+    
+    input[type=text]:focus {
+      border: 2px solid #555;
+      background-color: rgb(230, 230, 230);
+      /* box-shadow: 3px 3px 7px -1px rgb(86, 86, 86);   */
+      /* box-shadow: 10px 10px 14px -2px rgb(86, 86, 86); */
+    }
+  
+    input[type=text]:hover {
+      /* border: 2px solid #555; */
+      /* background-color: rgb(233, 233, 233); */
+      
+      box-shadow: 3px 3px 7px -1px rgb(86, 86, 86);  
+  
+      /* box-shadow: 10px 10px 14px -2px rgb(86, 86, 86); */
+  
+      /* box-shadow: 0 5px 10px -3px rgba(14,13,26,.12),0 3px 16px 2px rgba(7,48,114,.12),0 8px 12px 1px rgba(34,0,51,.04); */
+    }
+  
