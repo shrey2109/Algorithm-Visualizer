@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import "./StackNavbar.css";
 
+import { useNavigate } from "react-router-dom";
+
 
 function Navbar() {
     const myState = useSelector((state) => state.updateProps);
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const [arr, setArr] = useState([]);
 
@@ -19,18 +23,18 @@ function Navbar() {
         console.log(arr);
 
         dispatch({
-          type: "UPDATE_ARRAY",
-          arrVal: num,
+          type: "UPDATE_ARRAY_STACK",
+          arrValStack: num,
         });
 
         dispatch({
-          type: "UPDATE_PUSH",
-          pushbtn: true,
+          type: "UPDATE_PUSH_STACK",
+          pushstack: true,
         });
 
         dispatch({
-          type: "UPDATE_POP",
-          popbtn: false,
+          type: "UPDATE_POP_STACK",
+          popstack: false,
         });
       }
         
@@ -40,18 +44,18 @@ function Navbar() {
           console.log(arr.length);
 
           dispatch({
-            type: "UPDATE_ARRAY",
-            arrVal: arr,
+            type: "UPDATE_ARRAY_STACK",
+            arrValStack: arr,
           });
           
           dispatch({
-            type: "UPDATE_PUSH",
-            pushbtn: false,
+            type: "UPDATE_PUSH_STACK",
+            pushstack: false,
           });
 
           dispatch({
-            type: "UPDATE_POP",
-            popbtn: true,
+            type: "UPDATE_POP_STACK",
+            popstack: true,
           });
 
     }
@@ -61,19 +65,23 @@ function Navbar() {
       setArr([]);
 
       dispatch({
-        type: "UPDATE_ARRAY",
-        arrVal: [],
+        type: "UPDATE_ARRAY_STACK",
+        arrValStack: [],
       });
 
       dispatch({
-        type: "UPDATE_PUSH",
-        pushbtn: false,
+        type: "UPDATE_PUSH_STACK",
+        pushstack: false,
       });
 
       dispatch({
-        type: "UPDATE_POP",
-        popbtn: false,
+        type: "UPDATE_POP_STACK",
+        popstack: false,
       });
+    }
+
+    const handleClick = () => {
+      navigate("/howstack");
     }
 
     return (
@@ -82,6 +90,9 @@ function Navbar() {
           <button id='play' className="play" onClick={() => handlePush(true)} > PUSH </button>
           <button id='play' className="play" onClick={() => handlePop(true)} > POP </button>
           <button id='play' className="play" onClick={() => handlePopAll(true)} > POP ALL </button>
+          
+          <button id='play' className="play" onClick={() => handleClick()} > LEARN MORE ABOUT STACK </button>
+          
     
           <div>
             <input

@@ -1,11 +1,20 @@
 const initialState = {
     stackOperation: "",
     sortingColor: "",
+    sortingAlgorithm:'',
     sortingSpeed: 1000,
-    play: false,
+    // play: false,
+    sortplay: false,
+    graphplay: false,
     push:false,
     pop:false,
+    // pushstack:true,
+    // popstack:true,
+    // pushqueue:true,
+    // popqueue:true,
     arrVal: [],
+    arrValStack: [],
+    arrValQueue: [],
 
     graphAlgorithm:"",
     startPoint : false,
@@ -17,6 +26,14 @@ const initialState = {
     // play: false,
     map: [],
     path: [],
+
+    searchingAlgorithm:"",
+    searchingColor:"",
+    searchingSpeed:1000,
+    arrValSearch:[],
+    searchplay:false,
+    searchVal:0,
+    
   };
   
   const updateProps = (state = initialState, action) => {
@@ -42,19 +59,49 @@ const initialState = {
       }
   
       case 'PLAY_PAUSE': {
-        return {...state,play:action.play};
+        // return {...state,play:action.play};
+        return {...state,sortplay:action.sortplay};
      }
   
-     case 'UPDATE_PUSH': {
-      return {...state,pushbtn:action.pushbtn};
+    //  case 'UPDATE_PUSH': {
+    //   return {...state,pushbtn:action.pushbtn};
+    // }
+  
+    // case 'UPDATE_POP': {
+    //   return {...state,popbtn:action.popbtn};
+    // }
+
+     case 'UPDATE_PUSH_STACK': {
+      return {...state,pushstack:action.pushstack};
     }
   
-    case 'UPDATE_POP': {
-      return {...state,popbtn:action.popbtn};
+    case 'UPDATE_POP_STACK': {
+      return {...state,popstack:action.popstack};
+    }
+
+     case 'UPDATE_PUSH_QUEUE': {
+      return {...state,pushqueue:action.pushqueue};
+    }
+  
+    case 'UPDATE_POP_QUEUE': {
+      return {...state,popqueue:action.popqueue};
+    }
+
+    case "UPDATE_ARRAY_STACK": {
+      return { ...state, arrValStack: action.arrValStack };
+    }
+
+    case "UPDATE_ARRAY_QUEUE": {
+      return { ...state, arrValQueue: action.arrValQueue };
     }
 
 
 //------------------------------------
+
+    case 'PLAY_PAUSE_GRAPH': {
+      // return {...state,play:action.play};
+      return {...state,graphplay:action.graphplay};
+    }
 
     case "UPDATE_MAP":{
       return {...state, map: action.map};
@@ -83,7 +130,40 @@ const initialState = {
       case 'RESET': {
          return {...state,reset:action.reset};
       }
+
+
+
+
+
+
+      case "UPDATE_SEARCHINGCOLOR": {
+        return { ...state, searchingColor: action.searchingColor };
+      }
+
+      case "UPDATE_SEARCHINGALGORITHM": {
+        return { ...state, searchingAlgorithm: action.searchingAlgorithm };
+      }
   
+
+      case "UPDATE_SEARCHINGSPEED": {
+        return { ...state, searchingSpeed: action.searchingSpeed };
+      }
+
+      case "UPDATE_SEARCH_ARRAY": {
+        return { ...state, arrValSearch: action.arrValSearch };
+      }
+
+
+      case 'PLAY': {
+        // return {...state,play:action.play};
+        return {...state,searchplay:action.searchplay};
+     }
+
+
+     case "UPDATE_NUM": {
+      return { ...state, searchVal: action.searchVal };
+    }
+
 
 
 

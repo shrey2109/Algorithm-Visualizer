@@ -6,7 +6,8 @@
     box-shadow: 5px 2px 5px rgb(110, 110, 110);
   }
   
-  .btn {
+  .play {
+      background-color: #4CAF50;
       border: none;
       color: white;
       padding: 12px 25px;
@@ -19,28 +20,18 @@
       cursor: pointer;
     }
   
-    .btn {
+    .play {
       background-color: #f6efeb; 
       color: black; 
       margin-top: 13px;
       margin-left: 25px;
     }
     
-    .btn:hover {
+    .play:hover {
       background-color: #c8f4cd;
       box-shadow: 7px 10px 20px -7px rgb(86, 86, 86);
     }
-
-    .navDiv.selected {
-        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-        background-color: #ccc;
-    }
   
-    .btn:focus{
-        background-color: rgb(253, 217, 186);
-        border-radius: 5px;
-        border: 2px solid orange;
-    }
   
   
   
@@ -60,7 +51,7 @@
     border-left: 1px solid black;
     border-right: 1px solid black;
   }
-    
+  
     input[type=text].numVal {
       width: 80%;
       height: 50px;
@@ -76,7 +67,7 @@
     
     input[type=text]:focus {
       border: 2px solid #555;
-      background-color: rgb(230, 230, 230);
+      background-color: rgba(230, 230, 230, 0.493);
     }
   
     input[type=text]:hover {

@@ -7,6 +7,7 @@ const HomeScreen = () => {
 
   const sortApp = () => {
     console.log("SORTING BUTTON CLICKED");
+    navigate('/sort')
   };
   const graphApp = () => {
     console.log("GRAPH BUTTON CLICKED");
@@ -14,6 +15,7 @@ const HomeScreen = () => {
   };
   const searchApp = () => {
     console.log("SEARCHING BUTTON CLICKED");
+    navigate("/search");
   };
   const stackApp = () => {
     console.log("STACK BUTTON CLICKED");

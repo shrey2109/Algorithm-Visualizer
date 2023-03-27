@@ -41,24 +41,24 @@ function Visuals() {
   }`
   
   
+  console.log("stack push : "+myState.pushstack)
 
-  if(myState.pushbtn === true){
+  if(myState.pushstack === true){
     document.getElementById('pushCode').style.boxShadow = "0px 0px 20px rgb(160, 160, 160)";
     document.getElementById('pushCode').style.filter = "blur(0px)";
   }
-  else if(myState.pushbtn === false){
-    document.getElementById('pushCode').style.boxShadow = "0px 0px 0px rgb(160, 160, 160)";
-    document.getElementById('pushCode').style.filter = "blur(2px)";
-    
-  }
-  if(myState.popbtn === true){
-    document.getElementById('popCode').style.boxShadow = "0px 0px 20px rgb(160, 160, 160)";
-    document.getElementById('popCode').style.filter = "blur(0px)";
-  }
-  else if(myState.popbtn === false){
-    document.getElementById('popCode').style.boxShadow = "0px 0px 0px rgb(160, 160, 160)";
-    document.getElementById('popCode').style.filter = "blur(2px)";
-  }
+  else if(myState.pushstack === false){
+      document.getElementById('pushCode').style.boxShadow = "0px 0px 0px rgb(160, 160, 160)";
+      document.getElementById('pushCode').style.filter = "blur(2px)"; 
+    }
+    if(myState.popstack === true){
+      document.getElementById('popCode').style.boxShadow = "0px 0px 20px rgb(160, 160, 160)";
+      document.getElementById('popCode').style.filter = "blur(0px)";
+    }
+    else if(myState.popstack === false){
+        document.getElementById('popCode').style.boxShadow = "0px 0px 0px rgb(160, 160, 160)";
+        document.getElementById('popCode').style.filter = "blur(2px)";
+      }
 
   return (
     <>
@@ -68,7 +68,7 @@ function Visuals() {
 
           <div className='stackContainer'>
             {
-              myState.arrVal.map((item) => {
+              myState.arrValStack.map((item) => {
                 return (
                   <div className='stack'>
                     {item}
@@ -79,7 +79,7 @@ function Visuals() {
           </div>
           <div className='codeVisual'>
 
-            <div className='code' id='code'>
+            <div className='stackcode' id='code'>
               <div className='pushCode' id='pushCode'>
               <SyntaxHighlighter language="cpp" style={paraisoLight}>
                   {PushCode}
@@ -89,7 +89,7 @@ function Visuals() {
 
 
 
-            <div className='code'>
+            <div className='stackcode'>
               <div className='popCode' id='popCode'>
               <SyntaxHighlighter language="cpp" style={paraisoLight}>
                   {PopCode}

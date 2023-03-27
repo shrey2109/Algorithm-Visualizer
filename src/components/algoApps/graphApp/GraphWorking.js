@@ -43,10 +43,10 @@ grid.map((row, index) => {
         }
         
         let result;
-        if(start!=null && end!=null && myState.play && myState.graphAlgorithm==='bfs'){
+        if(start!=null && end!=null && myState.graphplay && myState.graphAlgorithm==='bfs'){
           result = BFS(start, end);
         }
-        else if(start!=null && end!=null && myState.play && myState.graphAlgorithm==='dfs'){
+        else if(start!=null && end!=null && myState.graphplay && myState.graphAlgorithm==='dfs'){
           result = DFS(start, end);
         }
 
@@ -164,11 +164,11 @@ grid.map((row, index) => {
     
     
 
+    console.log("graph play : " + myState.graphplay)
   return (
-      
       <>
-        {myState.play && myState.graphAlgorithm==='bfs' && <BFSCode/>}
-        {myState.play && myState.graphAlgorithm==='dfs' && <DFSCode/>}
+        {myState.graphplay && myState.graphAlgorithm==='bfs' && <BFSCode/>}
+        {myState.graphplay && myState.graphAlgorithm==='dfs' && <DFSCode/>}
     </>
 
   )

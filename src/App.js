@@ -1,11 +1,12 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import './App.css';
 import HomeScreen from './components/algoApps/HomeScreen'
-// import SortScreen from './components/algoApps/sortApp/SortScreen'
+import SortScreen from './components/algoApps/sortApp/SortScreen'
 import GraphScreen from './components/algoApps/graphApp/GraphScreen'
-// import SearchScreen from './components/algoApps/seachApp/SearchScreen'
+import SearchScreen from "./components/algoApps/searchApp/SearchScreen";
 import StackScreen from './components/algoApps/stackApp/StackScreen'
 import QueueScreen from './components/algoApps/queueApp/QueueScreen'
+import HowStack from "./components/algoApps/stackApp/HowStack";
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
       <Router>
       <Routes>
         <Route path="/" element={<HomeScreen/>}/>
-        {/* <Route path="/sort" element={<SortScreen/>}/> */}
+        <Route path="/sort" element={<SortScreen/>}/>
         <Route path="/graph" element={<GraphScreen/>}/>
-        {/* <Route path="/search" element={<SearchScreen/>}/> */}
+        <Route path="/search" element={<SearchScreen/>}/>
         <Route path="/stack" element={<StackScreen/>}/> 
+        <Route path="/howstack" element={<HowStack/>}/> 
         <Route path="/queue" element={<QueueScreen/>}/> 
       </Routes>
     </Router>

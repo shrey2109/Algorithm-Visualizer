@@ -1,0 +1,5 @@
+.sortAppContainer{
+    background: rgb(149, 161, 255);
+    background-image: linear-gradient(to bottom right,rgb(149, 161, 255), rgb(250, 139, 183));
+    height: auto;
+  }

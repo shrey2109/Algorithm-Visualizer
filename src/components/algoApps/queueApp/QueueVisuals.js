@@ -42,20 +42,20 @@ function QueueVisuals() {
   
   
 
-  if(myState.pushbtn === true){
+  if(myState.pushqueue === true){
     document.getElementById('pushCode').style.boxShadow = "0px 0px 20px rgb(160, 160, 160)";
     document.getElementById('pushCode').style.filter = "blur(0px)";
   }
-  else if(myState.pushbtn === false){
+  else if(myState.pushqueue === false){
     document.getElementById('pushCode').style.boxShadow = "0px 0px 0px rgb(160, 160, 160)";
     document.getElementById('pushCode').style.filter = "blur(2px)";
     
   }
-  if(myState.popbtn === true){
+  if(myState.popqueue === true){
     document.getElementById('popCode').style.boxShadow = "0px 0px 20px rgb(160, 160, 160)";
     document.getElementById('popCode').style.filter = "blur(0px)";
   }
-  else if(myState.popbtn === false){
+  else if(myState.popqueue === false){
     document.getElementById('popCode').style.boxShadow = "0px 0px 0px rgb(160, 160, 160)";
     document.getElementById('popCode').style.filter = "blur(2px)";
   }
@@ -68,7 +68,7 @@ function QueueVisuals() {
 
           <div className='stackContainer'>
             {
-              myState.arrVal.map((item) => {
+              myState.arrValQueue.map((item) => {
                 return (
                   <div className='stack'>
                     {item}
@@ -79,7 +79,7 @@ function QueueVisuals() {
           </div>
           <div className='codeVisual'>
 
-            <div className='code' id='code'>
+            <div className='queuecode' id='code'>
               <div className='pushCode' id='pushCode'>
               <SyntaxHighlighter language="cpp" style={paraisoLight}>
                   {PushCode}
@@ -89,7 +89,7 @@ function QueueVisuals() {
 
 
 
-            <div className='code'>
+            <div className='queuecode'>
               <div className='popCode' id='popCode'>
               <SyntaxHighlighter language="cpp" style={paraisoLight}>
                   {PopCode}

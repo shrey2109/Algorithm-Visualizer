@@ -23,18 +23,18 @@ function  QueueNavbar() {
         console.log(arr);
 
         dispatch({
-          type: "UPDATE_ARRAY",
-          arrVal: num,
+          type: "UPDATE_ARRAY_QUEUE",
+          arrValQueue: num,
         });
 
         dispatch({
-          type: "UPDATE_PUSH",
-          pushbtn: true,
+          type: "UPDATE_PUSH_QUEUE",
+          pushqueue: true,
         });
 
         dispatch({
-          type: "UPDATE_POP",
-          popbtn: false,
+          type: "UPDATE_POP_QUEUE",
+          popqueue: false,
         });
       }
         
@@ -47,18 +47,18 @@ function  QueueNavbar() {
           console.log(arr.length);
 
           dispatch({
-            type: "UPDATE_ARRAY",
-            arrVal: arr,
+            type: "UPDATE_ARRAY_QUEUE",
+            arrValQueue: arr,
           });
           
           dispatch({
-            type: "UPDATE_PUSH",
-            pushbtn: false,
+            type: "UPDATE_PUSH_QUEUE",
+            pushqueue: false,
           });
 
           dispatch({
-            type: "UPDATE_POP",
-            popbtn: true,
+            type: "UPDATE_POP_QUEUE",
+            popqueue: true,
           });
 
     }
@@ -68,18 +68,18 @@ function  QueueNavbar() {
       setArr([]);
 
       dispatch({
-        type: "UPDATE_ARRAY",
-        arrVal: [],
+        type: "UPDATE_ARRAY_QUEUE",
+        arrValQueue: [],
       });
 
       dispatch({
-        type: "UPDATE_PUSH",
-        pushbtn: false,
+        type: "UPDATE_PUSH_QUEUE",
+        pushqueue: false,
       });
 
       dispatch({
-        type: "UPDATE_POP",
-        popbtn: false,
+        type: "UPDATE_POP_QUEUE",
+        popqueue: false,
       });
     }
 
@@ -96,7 +96,7 @@ function  QueueNavbar() {
               id='textfield'
               type="text"
               placeholder="Enter The Numbers"
-            //   onChange={(e) => handleArray(e.target.value)}
+            //   onChange={(e) => handleARRAY_QUEUE(e.target.value)}
             //   value={arr}
               className="numVal"
             />

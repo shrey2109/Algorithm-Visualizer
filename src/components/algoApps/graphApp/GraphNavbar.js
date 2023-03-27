@@ -124,8 +124,8 @@ const handleReset = (reset) => {
        return;
     }
     dispatch({
-       type: 'PLAY_PAUSE',
-       play: true
+       type: 'PLAY_PAUSE_GRAPH',
+       graphplay: true
     })
  }
 

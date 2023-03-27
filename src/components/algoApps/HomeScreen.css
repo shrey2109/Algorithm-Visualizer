@@ -24,9 +24,10 @@
     display: grid;
     grid-template-columns: 4fr 4fr 4fr;
     grid-template-rows: 400px;
-}
-
-.card {
+    box-sizing: border-box;
+  }
+  
+  .card {
     width: 60%;
     height: 150px;
     border-radius: 10px;
@@ -37,6 +38,7 @@
     background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     margin: auto;
+    /* box-sizing: border-box; */
   }
   
   .card:hover {
