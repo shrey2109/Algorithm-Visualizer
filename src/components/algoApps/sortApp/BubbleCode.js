@@ -148,7 +148,8 @@ public class BubbleSort {
 
 
 
-
+        <br/>
+        <br/>
         <h1> Time And Space Complexity for Bubble Sort </h1>
 
 		<Box sx={{ width: '100%', typography: 'body1' }}>

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SearchVisuals.css';
 import LinearSearch from "./LinearSearch";
 import BinarySearch from "./BinarySearch";
-import SearchCode from './SearchCode'
 
 const SearchVisuals = () => {
   const myState = useSelector(state => state.updateProps);
@@ -39,17 +38,13 @@ const SearchVisuals = () => {
 
 
       <div className="code">
+      {/* <div> */}
                  {/* <BinarySearch/> */}
                  {/* <LinearSearch/> */}
 
                 {myState.searchingAlgorithm==='linear' && <LinearSearch />}
                 {myState.searchingAlgorithm==='binary' && <BinarySearch />}
 
-
-                <div className='searchcodeContainer'>
-                  <SearchCode/>
-               </div>
-    
        
       </div>
     </div>

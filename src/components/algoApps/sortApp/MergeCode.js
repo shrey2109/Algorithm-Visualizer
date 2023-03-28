@@ -211,7 +211,8 @@ public class MergeSort {
 
 
 
-
+        <br/>
+        <br/>
         <h1> Time And Space Complexity for Merge Sort </h1>
 
 		<Box sx={{ width: '100%', typography: 'body1' }}>

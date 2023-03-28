@@ -10,41 +10,37 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 
-const SelectionCode = () => {
+const LinearCode = () => {
 
 const CppCode = `
-#include<bits/stdc++.h>
-
+#include <iostream>
 using namespace std;
-void selection_sort(int arr[], int n) {
-  // selection sort
-  for (int i = 0; i < n - 1; i++) {
-    int mini = i;
-    for (int j = i + 1; j < n; j++) {
-      if (arr[j] < arr[mini]) {
-        mini = j;
-      }
+
+int LinearSearch(int arr[], int n, int element){
+    
+    for(int i=0;i<n;i++){
+        
+        if(arr[i] == element){
+            
+            // Return index, if the given element 
+            // matches with any element of array.
+            return i;
+        }
     }
-    int temp = arr[mini];
-    arr[mini] = arr[i];
-    arr[i] = temp;
-  }
-
-  cout << "After selection sort: ";
-  for (int i = 0; i < n; i++) {
-    cout << arr[i] << " ";
-  }
-
+    
+    // If the given number not found.
+    return -1;
+    
 }
 int main() {
-  int arr[] = {13,46,24,52,20,9};
-  int n = sizeof(arr) / sizeof(arr[0]);
-   cout << "Before selection sort: ";
-   for (int i = 0; i < n; i++) {
-    cout << arr[i] << " ";
-  }
-  selection_sort(arr, n);
-  return 0;
+	
+	// Let size of array be 5 and element 
+	// to be searched for be 7.
+	int n = 5, element = 7;
+	int arr[n] = {1,3,5,7,8};
+	cout<<LinearSearch(arr,n,element);
+	
+	return 0;
 }
   `;
 
@@ -54,42 +50,35 @@ int main() {
 
 
   const JavaCode = `
-import java.util.*;
-
-public class SelectionSort {
-    static void selection_sort(int arr[], int n) {
-        for (int i = 0; i < n - 1; i++) {
-            int mini = i;
-            for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[mini]) {
-                    mini = j;
-                }
-            }
-            //swap
-            int temp = arr[mini];
-            arr[mini] = arr[i];
-            arr[i] = temp;
+  class LineaerSearch {
+    
+    static int LinearSearch(int[] arr, int n, int element){
+        
+        for(int i=0;i<n;i++){
+        
+        if(arr[i] == element){
+            
+            // Return index, if the given element 
+            // matches with any element of array.
+            return i;
         }
-
-        System.out.println("After selection sort:");
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
     }
+    
+    // If the given number not found.
+    return -1;
+            
 
-    public static void main(String args[]) {
+    }
+    public static void main(String[] args) {
 
-        int arr[] = {13, 46, 24, 52, 20, 9};
-        int n = arr.length;
-        System.out.println("Before selection sort:");
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
-        selection_sort(arr, n);
+        // Let size of array be 5 and element 
+        // to be searched for be 7.
+        int n = 5, element = 7;
+	    int[] arr = {1,3,5,7,8};
+       System.out.println(LinearSearch(arr,n,element));
     }
 }
+
   `;
 
 
@@ -111,12 +100,13 @@ public class SelectionSort {
 
     return(
         <>
-            <h1> Code for Selection Sort </h1>
+            <h1> Code for Linear Search </h1>
 
         
 
         <Box sx={{ width: '100%', typography: 'body1' }}>
         <TabContext value={value}>
+        {/* <TabContext> */}
             <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
             {/* <TabList> */}
@@ -150,7 +140,8 @@ public class SelectionSort {
 
         <br/>
         <br/>
-        <h1> Time And Space Complexity for Selection Sort </h1>
+        <h1> Time and Space Complexity Linear Search </h1>
+
 
 		<Box sx={{ width: '100%', typography: 'body1' }}>
 			<TabContext value={compvalue}>
@@ -165,7 +156,7 @@ public class SelectionSort {
 
 				<TabPanel value="1"> 
 					<code>
-						<div style={{marginLeft:'0px'}}> {`O(N2)`} </div>
+						<div style={{marginLeft:'0px'}}> {`O(N)`} </div>
 					</code>
 				</TabPanel>
 				<TabPanel value="2"> 
@@ -180,8 +171,9 @@ public class SelectionSort {
 		</Box>
 
 
+
     </>
     )
 }
 
-export default SelectionCode;
+export default LinearCode;

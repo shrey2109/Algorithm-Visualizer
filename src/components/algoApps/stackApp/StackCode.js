@@ -204,7 +204,7 @@ class Main {
 
     return(
         <>
-            <h1> Code for Bubble Sort </h1>
+            <h1> Code for Stack Data Structure </h1>
 
         
 
@@ -242,6 +242,10 @@ class Main {
 
 
 
+
+		<br/>
+        <br/>
+        <h1> Time and Space Complexity for Stack </h1>
 
 
 		<Box sx={{ width: '100%', typography: 'body1' }}>

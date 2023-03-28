@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import LinearCode from './LinearCode';
 // import LinearComplexity from './LinearComplexity';
-
+import LinearCode from './LinearCode';
 
 import './SearchVisuals.css';
 
@@ -112,7 +112,9 @@ const LinearSearch = () =>{
    
 
       {isfound && <h1> NUBER IS FOUND </h1>}
-      {isnotfound && <h1>NUMBER IS NOT FOUNG</h1>}
+      {isnotfound && <h1>NUMBER IS NOT FOUND</h1>}
+
+      {isPreviewShown && <LinearCode/>}
    </>
    );
 }

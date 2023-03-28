@@ -194,7 +194,8 @@ public class tUf {
 
 
 
-
+        <br/>
+        <br/>
         <h1> Time And Space Complexity for Quick Sort </h1>
 
 		<Box sx={{ width: '100%', typography: 'body1' }}>

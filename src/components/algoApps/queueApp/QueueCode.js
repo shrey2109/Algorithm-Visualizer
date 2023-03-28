@@ -324,6 +324,10 @@ public class StaticQueueinjava {
 
 
 
+		<br/>
+        <br/>
+        <h1> Time and Space Complexity for Queue </h1>
+
 
 		<Box sx={{ width: '100%', typography: 'body1' }}>
 			<TabContext value={compvalue}>

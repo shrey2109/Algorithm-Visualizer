@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import BinaryCode from "./BinaryCode";
 // import BinaryComplexity from "./BinaryComplexity";
+
+import BinaryCode from './BinaryCode';
 import "./SearchVisuals.css";
 
 const BinarySearch = () => {
@@ -99,7 +101,9 @@ const BinarySearch = () => {
   return (
       <>
       {isfound && <h1> NUBER IS FOUND </h1>}
-      {isnotfound && <h1>NUMBER IS NOT FOUNG</h1>}
+      {isnotfound && <h1>NUMBER IS NOT FOUND</h1>}
+
+      {isPreviewShown && <BinaryCode/>}
     </>
   );
 };
