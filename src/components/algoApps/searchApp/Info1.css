@@ -1,0 +1,11 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+.node{
+  font-family: 'Varela Round', sans-serif;
+ /* // background: rgb(141, 128, 254); */
+  background: linear-gradient(to bottom right,rgba(28, 230, 248, 0.638), rgb(15, 255, 15));
+    height: auto;
+}

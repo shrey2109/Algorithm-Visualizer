@@ -5,13 +5,13 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-
+import { useNavigate } from "react-router-dom";
 
 const GraphNavbar = () => {
 
   const myState = useSelector((state) => state.updateProps);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
 
   const generateMap = () => {
     let grid = [];
@@ -141,7 +141,12 @@ useEffect(() => {
   console.log("GENERATING MAP!")
   generateMap();
 },[])
-
+const handleClick1 = () => {
+  navigate("/bfsinfo");
+}
+const handleClick2 = () => {
+  navigate("/dfsinfo");
+}
 
     return (
         <div className="navDiv">
@@ -170,6 +175,9 @@ useEffect(() => {
           <button id='wall' className="btn" onClick={() => handleWall(true)}> WALL </button>
           
           <button id='play' className="btn" onClick={() => handlePlay(true)}> PLAY </button>
+
+         { myState.graphAlgorithm==='bfs' && <button id='play' className="play" onClick={() => handleClick1()} > LEARN MORE ABOUT BFS </button>}
+         { myState.graphAlgorithm==='dfs' && <button id='play' className="play" onClick={() => handleClick2()} > LEARN MORE ABOUT DFS </button>}
 
         </div>
       );
