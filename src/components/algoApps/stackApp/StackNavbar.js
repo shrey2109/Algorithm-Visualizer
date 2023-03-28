@@ -81,7 +81,7 @@ function Navbar() {
     }
 
     const handleClick = () => {
-      navigate("/howstack");
+      navigate("/stackinfo");
     }
 
     return (

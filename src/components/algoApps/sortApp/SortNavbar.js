@@ -6,11 +6,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { green, red } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 
 const SortNavbar = () => {
   const myState = useSelector((state) => state.updateProps);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const [arr, setArr] = useState([]);
 
   const handleSort = (sortAlgo) => {
@@ -85,6 +86,21 @@ const SortNavbar = () => {
     })
  }
 
+ const handleClick1 = () => {
+  navigate("/bubbleinfo");
+}
+const handleClick2 = () => {
+  navigate("/insertioninfo");
+}
+const handleClick3 = () => {
+  navigate("/mergeinfo");
+}
+const handleClick4 = () => {
+  navigate("/selectioninfo");
+}
+const handleClick5 = () => {
+  navigate("/quickinfo");
+}
 
 
   return (
@@ -147,7 +163,6 @@ const SortNavbar = () => {
       </FormControl>
 
       <button id='play' className="play" onClick={() => handlePlayPause(true)} > PLAY </button>
-
       <div>
         {/* MAX NUMBERS CAN BE ENTERED ARE 42 */}
         <h2> Enter The Values of Numbers Between 1-99 : </h2>
@@ -160,6 +175,11 @@ const SortNavbar = () => {
           className="numVal"
         />
       </div>
+      {myState.sortingAlgorithm==='bubble' && <button id='play' className="play" onClick={() => handleClick1()} > LEARN MORE ABOUT BUBBLE SORT </button>}
+      {myState.sortingAlgorithm==='insertion' && <button id='play' className="play" onClick={() => handleClick2()} > LEARN MORE ABOUT INSERTION SORT </button>}
+      {myState.sortingAlgorithm==='merge' &&<button id='play' className="play" onClick={() => handleClick3()} > LEARN MORE ABOUT MERGE SORT </button>}
+      {myState.sortingAlgorithm==='selection' && <button id='play' className="play" onClick={() => handleClick4()} > LEARN MORE ABOUT SELECTION SORT </button>}
+      {myState.sortingAlgorithm==='quick' && <button id='play' className="play" onClick={() => handleClick5()} > LEARN MORE ABOUT QUICK SORT </button>}
     </div>
   );
 };

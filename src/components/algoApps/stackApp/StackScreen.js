@@ -14,6 +14,7 @@ function StackScreen() {
         <StackNavbar/>
         <StackVisuals/>
       </div>
+      
     </>
   )
 }

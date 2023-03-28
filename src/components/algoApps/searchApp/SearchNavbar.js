@@ -5,12 +5,12 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-
+import { useNavigate } from "react-router-dom";
 
 const SearchNavbar = () => {
   const myState = useSelector((state) => state.updateProps);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const [arr, setArr] = useState([]);
   const [num,setNum] = useState();
 
@@ -110,7 +110,12 @@ const SearchNavbar = () => {
 //     }
 //  },[myState.play]);
 
-
+const handleClick1 = () => {
+  navigate("/linearinfo");
+}
+const handleClick2 = () => {
+  navigate("/binaryinfo");
+}
 
   return (
     <div className="navDiv">
@@ -194,6 +199,8 @@ const SearchNavbar = () => {
           className="nu"
         />
       </div>
+      {myState.searchingAlgorithm==='linear' && <button id='play' className="play" onClick={() => handleClick1()} > LEARN MORE ABOUT LINEAR SEARCH </button>}
+      {myState.searchingAlgorithm==='binary' && <button id='play' className="play" onClick={() => handleClick2()} > LEARN MORE ABOUT BINARY SEARCH</button>}
     </div>
   );
 };

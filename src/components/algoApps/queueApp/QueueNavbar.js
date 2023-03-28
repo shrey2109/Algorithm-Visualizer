@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import "./QueueNavbar.css";
+import { useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -12,7 +13,7 @@ function  QueueNavbar() {
     const dispatch = useDispatch();
 
     const [arr, setArr] = useState([]);
-
+    const navigate = useNavigate();
 
 
     const handlePush = () => {
@@ -82,7 +83,9 @@ function  QueueNavbar() {
         popqueue: false,
       });
     }
-
+    const handleClick = () => {
+      navigate("/queueinfo");
+    }
     return (
         <div className="navDiv">
 
@@ -90,7 +93,7 @@ function  QueueNavbar() {
           <button id='play' className="play" onClick={() => handlePush(true)} > PUSH </button>
           <button id='play' className="play" onClick={() => handlePop(true)} > POP </button>
           <button id='play' className="play" onClick={() => handlePopAll(true)} > POP ALL </button>
-    
+          <button id='play' className="play" onClick={() => handleClick()} > LEARN MORE ABOUT QUEUE </button>
           <div>
             <input
               id='textfield'

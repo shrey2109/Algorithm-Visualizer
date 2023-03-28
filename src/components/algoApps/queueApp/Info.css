@@ -1,0 +1,11 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+.queueinfo{
+  font-family: 'Varela Round', sans-serif;
+  background: #ecff8f;
+  background-image: linear-gradient(to bottom right,#ecff8f, #ff6483);
+    height: auto;
+}
