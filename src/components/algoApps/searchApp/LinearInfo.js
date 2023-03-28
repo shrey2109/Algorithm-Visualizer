@@ -62,10 +62,10 @@ function LinearInfo() {
   
     return (
       <>
-      <div className='linearinfo'>
+      <div className='linearinfo' style={{display:'grid' , justifyContent:'space-around'}}>
             
   
-              <div className='node' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
+             
               
    
                 
@@ -73,16 +73,11 @@ function LinearInfo() {
                     {Phase1}
                 </SyntaxHighlighter>
                
-              
-              </div>
-              
-                <div className='node' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                {/* {/* <SyntaxHighlighter style={kimbieLight}> */}
+          
+                
                 <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/Linear-Search.png' alt='not Found'/>
-                {/* </SyntaxHighlighter> */} 
-                </div>
-              
-            <div className='node' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
+                
+            
                 
                
                 <SyntaxHighlighter  style={kimbieLight }>
@@ -90,16 +85,9 @@ function LinearInfo() {
                 </SyntaxHighlighter>
                
                 
-              </div>
+         
   
-              {/* <div className='code' id='code' style={{display:'grid' ,color:'blue', justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-              
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase3}
-                </SyntaxHighlighter>
-                </div>
-              </div> */}
+            
             </div>
         
   

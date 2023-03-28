@@ -45,53 +45,36 @@ function QueueInfo() {
    Rear: the index where the last element is stored in an array representing the queue.`
     return (
       <>
-      <div className='queueinfo'>
-            <div className='hii' id='codeVisual' >
-  
-              <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
+      <div className='queueinfo' style={{display:'grid' , justifyContent:'space-around'}}>
+           
    
                 
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase1}
                 </SyntaxHighlighter>
                
-                </div>
-              </div>
-              <div className='code'>
-                <div className='Code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                {/* {/* <SyntaxHighlighter style={kimbieLight}> */}
-                <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221213113312/Queue-Data-Structures.png' alt='not Found'/>
-                {/* </SyntaxHighlighter> */} 
-                </div>
-              </div>
-            <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
+                
+             
               
+                <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221213113312/Queue-Data-Structures.png' alt='not Found'/>
+              
+            
+                
                
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase2}
                 </SyntaxHighlighter>
                
-                </div>
-              </div>
-              <div className='code'>
-                <div className='Code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                {/* {/* <SyntaxHighlighter style={kimbieLight}> */}
+               
+             
+              
                 <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221213111946/fifo-property-in-Queue.png' alt='not Found'/>
-                {/* </SyntaxHighlighter> */} 
-                </div>
-              </div>
-  
-              <div className='code' id='code' style={{display:'grid' ,color:'blue', justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
+                
               
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase3}
                 </SyntaxHighlighter>
-                </div>
-              </div>
-            </div>
+      
             </div>
   
         

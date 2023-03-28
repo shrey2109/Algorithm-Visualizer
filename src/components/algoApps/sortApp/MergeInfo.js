@@ -142,46 +142,24 @@ function MergeInfo() {
     Use linked list. `
     return (
       <>
-      <div className='mergeinfo'>
-            <div className='hii' id='codeVisual' >
-  
-              <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-   
+      <div className='mergeinfo' style={{display:'grid' , justifyContent:'space-around'}}>
+         
                 
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase1}
                 </SyntaxHighlighter>
                
-                </div>
-              </div>
-              <div className='code'>
-                <div className='Code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                {/* {/* <SyntaxHighlighter style={kimbieLight}> */}
                 <img src='https://media.geeksforgeeks.org/wp-content/uploads/20220722205737/MergeSortTutorial.png' alt='not Found'/>
-                {/* </SyntaxHighlighter> */} 
-                </div>
-              </div>
-            <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-              
-               
+             
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase2}
                 </SyntaxHighlighter>
                
-                </div>
-              </div>
-  
-              <div className='code' id='code' style={{display:'grid' ,color:'blue', justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-              
+                
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase3}
                 </SyntaxHighlighter>
-                </div>
-              </div>
-            </div>
+              
             </div>
   
         

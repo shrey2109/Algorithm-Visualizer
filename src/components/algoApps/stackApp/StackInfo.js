@@ -52,46 +52,20 @@ function StackInfo() {
   
     return (
       <>
-      <div className='stackinfo'>
-            <div className='hii' id='codeVisual' >
-  
-              <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-   
+      <div className='stackinfo' style={{display:'grid' , justifyContent:'space-around'}}>
+           
                 
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase1}
                 </SyntaxHighlighter>
                
-                </div>
-              </div>
-              <div className='code'>
-                <div className='Code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                {/* {/* <SyntaxHighlighter style={kimbieLight}> */}
+                
                 <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221219100314/stack.drawio2.png' alt='not Found'/>
-                {/* </SyntaxHighlighter> */} 
-                </div>
-              </div>
-            <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-              
-               
+                
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase2}
                 </SyntaxHighlighter>
                
-                </div>
-              </div>
-  
-              {/* <div className='code' id='code' style={{display:'grid' ,color:'blue', justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-              
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase3}
-                </SyntaxHighlighter>
-                </div>
-              </div> */}
-            </div>
             </div>
   
         

@@ -93,46 +93,22 @@ function InsertionInfo() {
   
     return (
       <>
-      <div className='insertioninfo'>
-            <div className='hii' id='codeVisual' >
-  
-              <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
+      <div className='insertioninfo' style={{display:'grid' , justifyContent:'space-around'}}>
+            
    
                 
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase1}
                 </SyntaxHighlighter>
                
-                </div>
-              </div>
-              <div className='code'>
-                <div className='Code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                {/* {/* <SyntaxHighlighter style={kimbieLight}> */}
+               
                 <img src='https://media.geeksforgeeks.org/wp-content/uploads/insertionsort.png' alt='not Found'/>
-                {/* </SyntaxHighlighter> */} 
-                </div>
-              </div>
-            <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-              
                
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase2}
                 </SyntaxHighlighter>
                
-                </div>
-              </div>
-  
-              {/* <div className='code' id='code' style={{display:'grid' ,color:'blue', justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-              
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase3}
-                </SyntaxHighlighter>
-                </div>
-              </div> */}
-            </div>
+                
             </div>
   
   

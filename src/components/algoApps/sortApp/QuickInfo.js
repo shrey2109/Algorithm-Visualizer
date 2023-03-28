@@ -96,47 +96,24 @@ function QuickInfo() {
   
     return (
       <>
-      <div className='quickinfo'>
-            <div className='hii' id='codeVisual' >
-  
-              <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-   
+      <div className='quickinfo' style={{display:'grid' , justifyContent:'space-around'}}>
+            
                 
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase1}
                 </SyntaxHighlighter>
                
-                </div>
-              </div>
-              <div className='code'>
-                <div className='Code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                {/* {/* <SyntaxHighlighter style={kimbieLight}> */}
+                
                 <img src='https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/01/QuickSort2.png' alt='not Found'/>
-                {/* </SyntaxHighlighter> */} 
-                </div>
-              </div>
-            <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-              
+               
                
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase2}
                 </SyntaxHighlighter>
                
-                </div>
-              </div>
-  
-              {/* <div className='code' id='code' style={{display:'grid' ,color:'blue', justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-              
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase3}
-                </SyntaxHighlighter>
-                </div>
-              </div> */}
+               
             </div>
-            </div>
+          
   
         
   
