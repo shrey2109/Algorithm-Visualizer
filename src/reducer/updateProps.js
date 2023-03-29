@@ -33,6 +33,8 @@ const initialState = {
     arrValSearch:[],
     searchplay:false,
     searchVal:0,
+    isfound:false,
+    isnotfound:false
     
   };
   
@@ -152,6 +154,13 @@ const initialState = {
       case "UPDATE_SEARCH_ARRAY": {
         return { ...state, arrValSearch: action.arrValSearch };
       }
+      case 'Found': {
+        return {...state,isfound:action.isfound};
+     }
+      
+       case 'NotFound': {
+        return {...state,isnotfound:action.isnotfound};
+   }
 
 
       case 'PLAY': {

@@ -17,14 +17,24 @@ const MergeSort = () => {
             return;
 
         let mid = Math.floor((l + r) / 2);
-
+      
         mergeSort(arrVal, ids, timer - 1, l, mid);
+       
         mergeSort(arrVal, ids, timer - 1, mid + 1, r);
 
         setTimeout(() => {
+            document.getElementById('midPart').style.backgroundColor = 'rgb(128, 223, 254)';
+            document.getElementById('left').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+            document.getElementById('right').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+            document.getElementById('merge').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
             let color = [];
+           
             for (let i = 0; i < 3; i++)
                 color.push(Math.floor(Math.random() * 200));
+                document.getElementById('midPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+                document.getElementById('left').style.backgroundColor = 'rgb(128, 223, 254)';
+                document.getElementById('right').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+                document.getElementById('merge').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
 
             for (let i = l; i <= r; i++)
                 document.getElementById(ids[i]).childNodes[1].style.backgroundColor = `rgb(${color[0]},${color[1]},${color[2]})`;
@@ -41,13 +51,22 @@ const MergeSort = () => {
                         document.getElementById(new_ids[i]).style.transform = `translateX(${i * 35}px)`;
                         document.getElementById(new_ids[j]).style.transform = `translateX(${j * 35}px)`;
                     }
+                    document.getElementById('midPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+                    document.getElementById('left').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+                    document.getElementById('right').style.backgroundColor = 'rgb(128, 223, 254)';
+                    document.getElementById('merge').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
                 }
             }
         }, timer * 2000);
+        document.getElementById('midPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+        document.getElementById('left').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+        document.getElementById('right').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+        document.getElementById('merge').style.backgroundColor = 'rgb(128, 223, 254)';
     }
 
     const solve = () => {
         setPreviewShown(true);
+       
         mergeSort(arrVal, ids, Math.ceil(Math.log(arrVal.length + 1)), 0, arrVal.length - 1);
 
         setTimeout(() => {
@@ -66,17 +85,24 @@ const MergeSort = () => {
      },[myState.sortplay]);
 
     return( <>
-       <div id='codePart'>
-      <div id='ifPart'>
-         <p> if (arr[j] &gt; arr[j + 1]) </p>
+      <div id='codePart1'>
+      <div id='midPart'style={{marginLeft:'30px'}}>
+         <p> int mid = (low + high) / 2 ;</p>
       </div>
-      <div id='swapPart' style={{marginLeft:'30px'}}>
-         <p> swap(arr[j], arr[j + 1]); </p>
+      <div id='left' style={{marginLeft:'30px'}}>
+         <p> mergeSort(arr, low, mid);</p>
       </div>
-   </div>
-      {/* {isPreviewShown && <MergeCode code={CppCode} language="cpp"/>} */}
+      <div id='right' style={{marginLeft:'30px'}}>
+         <p> mergeSort(arr, mid + 1, high); </p>
+      </div>
+      <div id='merge' style={{marginLeft:'30px'}}>
+         <p>  merge(arr, low, mid, high);  </p>
+      </div>
+     </div>
+    
+    
       {isPreviewShown && <MergeCode/>}
-      {/* {isPreviewShown && <MergeComplexity/>} */}
+    
     </>);
 }
 

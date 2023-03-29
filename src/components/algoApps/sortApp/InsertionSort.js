@@ -36,8 +36,10 @@ const InsertionSort = () =>{
       console.log("INTO SOLVE");
 
     
+
       for(let i = 0; i < arrVal.length-1; i++){
          let ind = i+1;
+        
 
          while(ind>0 && arrVal[ind]<arrVal[ind-1]){
 
@@ -52,23 +54,36 @@ const InsertionSort = () =>{
             ids[j-1] = temp;
 
             let new_ids = [...ids];
+           
             
             setTimeout(() => {
-               
+              
                document.getElementById(new_ids[j]).style.transform = `translateX(${j*35}px)`;
                document.getElementById(new_ids[j]).childNodes[1].style.backgroundColor = 'black';
                document.getElementById(new_ids[j-1]).childNodes[1].style.backgroundColor = 'black';
-               
+               document.getElementById('forPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+               document.getElementById('whilePart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+               document.getElementById('swapPart').style.backgroundColor = 'rgb(128, 223, 254)';
                setTimeout(() => {
+                 
+            
                   document.getElementById(new_ids[j]).childNodes[1].style.backgroundColor = myState.sortingColor;
                   document.getElementById(new_ids[j-1]).childNodes[1].style.backgroundColor = myState.sortingColor;
+                  document.getElementById('forPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+               document.getElementById('whilePart').style.backgroundColor = 'rgb(128, 223, 254)';
+               document.getElementById('swapPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+                 
                // },myState.sortingSpeed-10);
                },myState.sortingSpeed-10);
                
-               document.getElementById(new_ids[j-1]).style.transform = `translateX(${(j-1)*35}px)`;  
+               document.getElementById(new_ids[j-1]).style.transform = `translateX(${(j-1)*35}px)`; 
+                
             // },timer*myState.sortingSpeed);
             },timer*2*myState.sortingSpeed);
-
+            document.getElementById('forPart').style.backgroundColor = 'rgb(128, 223, 254)';
+            document.getElementById('whilePart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+            document.getElementById('swapPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+      
             timer++;
             ind--;
          
@@ -100,19 +115,23 @@ useEffect(() => {
    return (
    <>
    
-<h1> HELLo from insertion sort</h1>
-   {/* CSS code in Visuals.css */}
+
    <div id='codePart'>
-      <div id='ifPart'>
-         <p> if (arr[j] &gt; arr[j + 1]) </p>
+      <div id='forPart'>
+         <p> for (int i = 0; i &lt;= n - 1; i++) </p>
       </div>
-      <div id='swapPart' style={{marginLeft:'30px'}}>
+
+      <div id='whilePart' style={{marginLeft:'30px'}}>
+         <p> while (j &gt; 0 && arr[j - 1] &gt; arr[j]) </p>
+      </div>
+
+      <div id='swapPart' style={{marginLeft:'60px'}}>
          <p> swap(arr[j], arr[j + 1]); </p>
       </div>
    </div>
-      {/* {isPreviewShown && <InsertionCode code={CppCode} language="cpp"/>} */}
+    
       {isPreviewShown && <InsertionCode/>}
-      {/* {isPreviewShown && <InsertionComplexity/>} */}
+     
    </>
    );
 }
