@@ -36,10 +36,18 @@ const QuickSort = () =>{
       swap(ids,r,j+1);
 
       setTimeout(() => {
-
+         document.getElementById('Partition').style.backgroundColor = 'rgb(128, 223, 254)';
+         document.getElementById('left').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+         document.getElementById('right').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
          document.getElementById(ids[j+1]).childNodes[1].style.backgroundColor = 'black';
          setTimeout(() => {
+            document.getElementById('Partition').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+            document.getElementById('left').style.backgroundColor = 'rgb(128, 223, 254)';
+            document.getElementById('right').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
             document.getElementById(ids[j+1]).childNodes[1].style.backgroundColor = myState.sortingColor;
+            document.getElementById('Partition').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+            document.getElementById('left').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+            document.getElementById('right').style.backgroundColor = 'rgb(128, 223, 254)';
          },myState.sortingSpeed*6-10)
 
          document.getElementById(ids[r]).style.transform = `translateX(${r*35}px)`;
@@ -83,7 +91,17 @@ const QuickSort = () =>{
    },[myState.sortplay]);
 
    return <>
-    {/* <h1>HELLO FROM Quick sort</h1> */}
+   <div id='codePart1'> 
+      <div id='Partition'style={{marginLeft:'30px'}}>
+         <p> int pIndex = partition(arr, low, high);</p>
+      </div>
+      <div id='left' style={{marginLeft:'30px'}}>
+         <p>  qs(arr, low, pIndex - 1);</p>
+      </div>
+      <div id='right' style={{marginLeft:'30px'}}>
+         <p>  qs(arr, pIndex + 1, high); </p>
+      </div>
+     </div>
     {isPreviewShown && <QuickCode/>}
    </>;
 }

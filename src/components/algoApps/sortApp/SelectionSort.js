@@ -16,15 +16,45 @@ const SelectionSort = () => {
     let n = arrVal.length;
     setPreviewShown(true);
     for (let i = 0; i < n; i++) {
+      document.getElementById('for1').style.backgroundColor = 'rgb(128, 223, 254)';
+      document.getElementById('mini1').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+      document.getElementById('for2').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+      document.getElementById('if').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+      document.getElementById('mini2').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+      document.getElementById('swapPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
       setTimeout(() => {
+        document.getElementById('for1').style.backgroundColor = 'rgb(128, 223, 254)';
+        document.getElementById('mini1').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+        document.getElementById('for2').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+        document.getElementById('if').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+        document.getElementById('mini2').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+        document.getElementById('swapPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
         let ind = i;
         document.getElementById(ids[i]).childNodes[1].style.backgroundColor ="black";
         for (let j = i; j < n; j++) {
+          document.getElementById('for1').style.backgroundColor = 'rgb(128, 223, 254)';
+          document.getElementById('mini1').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+          document.getElementById('for2').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+          document.getElementById('if').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+          document.getElementById('mini2').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+          document.getElementById('swapPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
           setTimeout(() => {
             document.getElementById(ids[j]).childNodes[1].style.backgroundColor = "black";
           }, 2*myState.sortingSpeed);
+          document.getElementById('for1').style.backgroundColor = 'rgb(128, 223, 254)';
+          document.getElementById('mini1').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+          document.getElementById('for2').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+          document.getElementById('if').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+          document.getElementById('mini2').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+          document.getElementById('swapPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
           if (arrVal[ind] > arrVal[j]) ind = j;
           setTimeout(() => {
+            document.getElementById('for1').style.backgroundColor = 'rgb(128, 223, 254)';
+            document.getElementById('mini1').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+            document.getElementById('for2').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+            document.getElementById('if').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+            document.getElementById('mini2').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
+            document.getElementById('swapPart').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
             document.getElementById(ids[j]).childNodes[1].style.backgroundColor = myState.sortingColor;
           }, 2*myState.sortingSpeed);
         }
@@ -68,16 +98,27 @@ const SelectionSort = () => {
 
   return (
     <>
-      <div id="codePart">
-        <div id="ifPart">
-          <p> if (arr[j] &gt; arr[j + 1]) </p>
-        </div>
-        <div id="swapPart" style={{ marginLeft: "30px" }}>
-          <p> swap(arr[j], arr[j + 1]); </p>
-        </div>
+        <div id='codePart1'> 
+      <div id='for1'>
+         <p> for (int i = 0; i &lt; n - 1; i++)</p>
       </div>
-      {/* {isPreviewShown && <SelectionCode />}
-      {isPreviewShown && <SelectionComplexity />} */}
+      <div id='mini1' style={{marginLeft:'30px'}}>
+         <p> int mini = i;</p>
+      </div>
+      <div id='for2' style={{marginLeft:'30px'}}>
+         <p>  for (int j = i + 1; j &lt; n; j++)</p>
+      </div>
+      <div id='if' style={{marginLeft:'60px'}}>
+         <p>  if (arr[j] &lt; arr[mini]) </p>
+      </div>
+      <div id='mini2' style={{marginLeft:'90px'}}>
+         <p>   mini = j;</p>
+      </div>
+      <div id='swapPart' style={{marginLeft:'30px'}}>
+         <p> swap(arr[i], arr[mini]); </p>
+      </div>
+     </div>
+     
       {isPreviewShown && <SelectionCode/>}
     </>
   );

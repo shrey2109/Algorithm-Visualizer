@@ -119,6 +119,30 @@
     }
   
 
+    /* #codePart{
+      height: 110px;
+      width: 400px;
+      background-color :rgb(255, 255, 255, 0.5);
+      padding: 15px;
+      font-family: monospace;
+      font-size: 17px;
+      border-radius: 10px;
+      box-shadow: 5px 2px 5px rgb(110, 110, 110);
+    } */
+    
+
+    #codePart1{
+      height: 250px;
+      width: 450px;
+      background-color :rgb(255, 255, 255, 0.5);
+      padding: 15px;
+      font-family: monospace;
+      font-size: 17px;
+      border-radius: 10px;
+      box-shadow: 5px 2px 5px rgb(110, 110, 110);
+    }
+
+  
 
     .searchcodeContainer{
         background-color: #ceceaf;

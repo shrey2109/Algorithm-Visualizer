@@ -33,8 +33,8 @@ const SearchVisuals = () => {
       </div>
       
 </div>
-      {/* {myState.isfound===true && <h1 style={{color:'orange'}}> Number Found </h1> }
-      {myState.isnotfound===true && <h1 style={{color:'orange'}}> Number not Found </h1>} */}
+      {myState.isfound===true &&  <h1 style={{color:'orange'}}> Number Found </h1>}
+      {myState.isnotfound===true && <h1 style={{color:'orange'}}> Number not Found </h1>}
 
 
       <div className="code">
