@@ -95,10 +95,10 @@ function BinaryInfo() {
   
     return (
       <>
-      <div className='binaryinfo'>
+      <div className='binaryinfo' style={{display:'grid' , justifyContent:'space-around'}}>
           
   
-              <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
+         
                 
    
                 
@@ -106,33 +106,21 @@ function BinaryInfo() {
                     {Phase1}
                 </SyntaxHighlighter>
                
-                
-              </div>
-            
-                <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
-                {/* {/* <SyntaxHighlighter style={kimbieLight}> */}
+          
+         
+               
                 <img src='https://media.geeksforgeeks.org/wp-content/uploads/20220309171621/BinarySearch.png' alt='not Found'/>
-                {/* </SyntaxHighlighter> */} 
-                </div>
-            
-             <div className='code' id='code' style={{display:'grid' , justifyContent:'space-around'}}>
+              
+               
                 
                
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase2}
                 </SyntaxHighlighter>
                
-                </div>
+               
              
   
-              {/* <div className='code' id='code' style={{display:'grid' ,color:'blue', justifyContent:'space-around'}}>
-                <div className='pushCode' id='pushCode'>
-              
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase3}
-                </SyntaxHighlighter>
-                </div>
-              </div> */}
             </div>
            
   

@@ -3,9 +3,8 @@
     padding: 0%;
 }
 
-.hii{
+.bfsinfo,.dfsinfo{
   font-family: 'Varela Round', sans-serif;
-    background: rgb(150, 255, 157);
-    background-image: linear-gradient(to bottom right,rgb(149, 161, 255), rgb(250, 139, 183));
+  background-image: linear-gradient(to bottom right,rgb(234, 125, 216), rgb(228, 250, 139));
     height: auto;
 }
