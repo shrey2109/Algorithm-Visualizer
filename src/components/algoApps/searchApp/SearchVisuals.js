@@ -13,9 +13,12 @@ const SearchVisuals = () => {
 
   return (
    <div className="visuals">
-   <div className="visualizer"  style={{width:'50%',justifyContent :'left',alignItems:'center'}} >
+   {/* <div className="visualizer"  style={{justifyContent :'left',alignItems:'center'}} > */}
+   <div className="visualizer"  style={{justifyContent :'center', alignItems:'center'}} >
+   {/* <div className="visualizer"> */}
   
-      <div className="visual__items"  style={{justifyContent :'left',alignItems:'center'}}>
+      {/* <div className="visual__items"  style={{justifyContent :'left',alignItems:'center'}}> */}
+      <div className="visual__items" style={{width:`${myState.arrValSearch.length*90}px`}}>
          {
             myState.arrValSearch.map((item) => {
                

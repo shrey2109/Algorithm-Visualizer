@@ -1,9 +1,9 @@
 .visuals {
-    
+    flex: 1;
     padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     /* background-color: #d4ebfd; */
     background: rgba(255, 255, 255, 0.3);
@@ -55,6 +55,9 @@
       display: flex;
       align-items: flex-end;
       justify-content: flex-start;
+      /* position: relative;
+      top: 50%;
+      transform: translateY(-50%); */
       height: 340px;
       margin-bottom: 40px;
       border-bottom: 1px solid black;
