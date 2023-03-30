@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       {/* <h1> HELLO FOR FIRST TIME!! </h1> */}
-      <Router>
+      <Router basename='/Algorithm-Visualizer'>
       <Routes>
         <Route path="/" element={<HomeScreen/>}/>
         <Route path="/sort" element={<SortScreen/>}/>
