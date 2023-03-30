@@ -118,7 +118,7 @@ const handleClick5 = () => {
           <MenuItem className="itmClass" value="insertion">Insertion Sort</MenuItem>
           <MenuItem className="itmClass" value="selection">Selection Sort</MenuItem>
           <MenuItem className="itmClass" value="merge">Merge Sort</MenuItem>
-          <MenuItem className="itmClass" value="quick">Quick Sort</MenuItem>
+          {/* <MenuItem className="itmClass" value="quick">Quick Sort</MenuItem> */}
         </Select>
       </FormControl>
 
