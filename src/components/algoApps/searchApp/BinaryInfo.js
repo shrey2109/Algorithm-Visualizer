@@ -109,7 +109,7 @@ function BinaryInfo() {
           
          
                
-                <img src='https://media.geeksforgeeks.org/wp-content/uploads/20220309171621/BinarySearch.png' alt='not Found'/>
+                <img className='img1' src='https://media.geeksforgeeks.org/wp-content/uploads/20220309171621/BinarySearch.png' alt='not Found'/>
               
                
                 

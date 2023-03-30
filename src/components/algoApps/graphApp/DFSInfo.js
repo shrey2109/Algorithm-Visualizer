@@ -54,7 +54,7 @@ function DFSInfo() {
                 </SyntaxHighlighter>
                
                 
-                <img src='https://media.geeksforgeeks.org/wp-content/uploads/20200507074112/ezgif.com-gif-maker61.gif' alt='not Found'/>
+                <img className='img1' src='https://media.geeksforgeeks.org/wp-content/uploads/20200507074112/ezgif.com-gif-maker61.gif' alt='not Found'/>
               
                
                 <SyntaxHighlighter  style={kimbieLight }>

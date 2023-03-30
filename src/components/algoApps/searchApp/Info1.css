@@ -8,4 +8,11 @@
   background: rgb(141, 128, 254);
   background-image: linear-gradient(to bottom right,rgba(100, 238, 251, 0.638), rgb(168, 255, 124));
     height: auto;
+    justify-items: center;
+}
+.img1{
+  background: rgb(149, 161, 255);
+  background-image: linear-gradient(to bottom right,rgb(149, 161, 255), rgb(250, 139, 183));
+  height: 500px;
+  width: 500px;
 }

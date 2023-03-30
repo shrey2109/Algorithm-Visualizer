@@ -60,7 +60,7 @@ function StackInfo() {
                 </SyntaxHighlighter>
                
                 
-                <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221219100314/stack.drawio2.png' alt='not Found'/>
+                <img className='img1' src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221219100314/stack.drawio2.png' alt='not Found'/>
                 
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase2}
