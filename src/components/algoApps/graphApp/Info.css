@@ -7,4 +7,11 @@
   font-family: 'Varela Round', sans-serif;
   background-image: linear-gradient(to bottom right,rgb(234, 125, 216), rgb(228, 250, 139));
     height: auto;
+    justify-items: center;
+}
+.img1{
+  background: rgb(149, 161, 255);
+  background-image: linear-gradient(to bottom right,rgb(149, 161, 255), rgb(250, 139, 183));
+  height: 500px;
+  width: 500px;
 }

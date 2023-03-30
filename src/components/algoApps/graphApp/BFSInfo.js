@@ -102,7 +102,7 @@ function BFSInfo() {
                 </SyntaxHighlighter>
                
                 
-                <img src='https://media.geeksforgeeks.org/wp-content/uploads/bfs-5.png' alt='not Found'/>
+                <img  className='img1' src='https://media.geeksforgeeks.org/wp-content/uploads/bfs-5.png' alt='not Found'/>
                 
               
                

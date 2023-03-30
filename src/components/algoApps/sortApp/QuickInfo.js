@@ -104,7 +104,7 @@ function QuickInfo() {
                 </SyntaxHighlighter>
                
                 
-                <img src='https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/01/QuickSort2.png' alt='not Found'/>
+                <img  className='img1' src='https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/01/QuickSort2.png' alt='not Found'/>
                
                
                 <SyntaxHighlighter  style={kimbieLight }>

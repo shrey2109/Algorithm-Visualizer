@@ -111,7 +111,7 @@ function BubbleInfo() {
                 </SyntaxHighlighter>
                
               
-                <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/02/bubble-sort1.png' alt='not Found'/>
+                <img className='img1' src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/02/bubble-sort1.png' alt='not Found'/>
                
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase2}

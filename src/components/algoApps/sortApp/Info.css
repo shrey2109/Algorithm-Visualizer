@@ -3,9 +3,23 @@
     padding: 0%;
 }
 
-.bubbleinfo,.quickinfo,.insertioninfo,.mergeinfo,.selectioninfo{
+.bubbleinfo,.quickinfo,.insertioninfo,.mergeinfo{
   font-family: 'Varela Round', sans-serif;
   background: rgb(149, 161, 255);
   background-image: linear-gradient(to bottom right,rgb(149, 161, 255), rgb(250, 139, 183));
     height: auto;
+    justify-items: center;
+}
+.img1{
+  background: rgb(149, 161, 255);
+  background-image: linear-gradient(to bottom right,rgb(149, 161, 255), rgb(250, 139, 183));
+  height: 500px;
+  width: 500px;
+}
+.selectioninfo{
+  font-family: 'Varela Round', sans-serif;
+  background: rgb(149, 161, 255);
+  background-image: linear-gradient(to bottom right,rgb(149, 161, 255), rgb(250, 139, 183));
+    height: auto;
+
 }

@@ -75,7 +75,7 @@ function LinearInfo() {
                
           
                 
-                <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/Linear-Search.png' alt='not Found'/>
+                <img className='img1' src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/Linear-Search.png' alt='not Found'/>
                 
             
                 

@@ -72,11 +72,12 @@ function MergeInfo() {
     Once the size becomes 1, the merge processes come into action and start merging arrays back till the complete array is merged.`
   
     const Phase3 = 
-    `Is Merge sort In Place?
-    No, In merge sort the merging step requires extra space to store the elements.
+    `
+      Is Merge sort In Place?
+      No, In merge sort the merging step requires extra space to store the elements.
     
-    Is Merge sort Stable?
-    Yes, merge sort is stable. 
+      Is Merge sort Stable?
+      Yes, merge sort is stable. 
     
     How can we make Merge sort more efficient?
     Merge sort can be made more efficient by replacing recursive calls with Insertion sort for smaller array sizes,
@@ -149,7 +150,7 @@ function MergeInfo() {
                     {Phase1}
                 </SyntaxHighlighter>
                
-                <img src='https://media.geeksforgeeks.org/wp-content/uploads/20220722205737/MergeSortTutorial.png' alt='not Found'/>
+                <img  className='img1' src='https://media.geeksforgeeks.org/wp-content/uploads/20220722205737/MergeSortTutorial.png' alt='not Found'/>
              
                 <SyntaxHighlighter  style={kimbieLight }>
                     {Phase2}
