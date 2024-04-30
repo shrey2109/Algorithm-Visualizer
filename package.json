@@ -1,6 +1,6 @@
 {
-  "name": "algorithmvisualizer",
-  "homepage": "https://shrey2109.github.io/Algorithm-Visualizer",
+  "name": "algo-canvas",
+  "homepage": "https://shrey2109.github.io/algo-canvas",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

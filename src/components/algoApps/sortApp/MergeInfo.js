@@ -1,14 +1,11 @@
 import React from 'react';
-import './Info.css';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-function MergeInfo() {
+import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-    // const myState = useSelector((state) => state.updateProps)
-    // const dispatch = useDispatch();
-  
-    const Phase1 = 
-    `Merge sort is a sorting algorithm that works by dividing an array into smaller subarrays,
+import './Info.css';
+
+const MergeInfo = () => {
+  const Phase1 = `Merge sort is a sorting algorithm that works by dividing an array into smaller subarrays,
      sorting each subarray, and then merging the sorted subarrays back together to form the final sorted array.
 
      In simple terms, we can say that the process of merge sort is to divide the array into two halves,
@@ -31,11 +28,9 @@ function MergeInfo() {
      i.e. it is the base case to stop the recursion.
      If the array has multiple elements, split the array into halves and recursively invoke the merge sort on each of the halves.
      Finally, when both halves are sorted, the merge operation is applied.
-     Merge operation is the process of taking two smaller sorted arrays and combining them to eventually make a larger one.`
-  
-  
-    const Phase2 = 
-    `At first, check if the left index of array is less than the right index, if yes then calculate its mid point
+     Merge operation is the process of taking two smaller sorted arrays and combining them to eventually make a larger one.`;
+
+  const Phase2 = `At first, check if the left index of array is less than the right index, if yes then calculate its mid point
 
  
 
@@ -69,10 +64,9 @@ function MergeInfo() {
     
     If we take a closer look at the diagram,
     we can see that the array is recursively divided into two halves till the size becomes 1.
-    Once the size becomes 1, the merge processes come into action and start merging arrays back till the complete array is merged.`
-  
-    const Phase3 = 
-    `
+    Once the size becomes 1, the merge processes come into action and start merging arrays back till the complete array is merged.`;
+
+  const Phase3 = `
       Is Merge sort In Place?
       No, In merge sort the merging step requires extra space to store the elements.
     
@@ -140,34 +134,27 @@ function MergeInfo() {
 
 
     Solution of the drawback for additional storage:
-    Use linked list. `
-    return (
-      <>
-      <div className='mergeinfo' style={{display:'grid' , justifyContent:'space-around'}}>
-         
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase1}
-                </SyntaxHighlighter>
-               
-                <img  className='img1' src='https://media.geeksforgeeks.org/wp-content/uploads/20220722205737/MergeSortTutorial.png' alt='not Found'/>
-             
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase2}
-                </SyntaxHighlighter>
-               
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase3}
-                </SyntaxHighlighter>
-              
-            </div>
-  
-        
-  
-        
-      </>
-    )
-  }
-  
-  export default MergeInfo;
+    Use linked list. `;
+  return (
+    <>
+      <div
+        className="mergeinfo"
+        style={{ display: 'grid', justifyContent: 'space-around' }}
+      >
+        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
+
+        <img
+          className="img1"
+          src="https://media.geeksforgeeks.org/wp-content/uploads/20220722205737/MergeSortTutorial.png"
+          alt="not Found"
+        />
+
+        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
+
+        <SyntaxHighlighter style={kimbieLight}>{Phase3}</SyntaxHighlighter>
+      </div>
+    </>
+  );
+};
+
+export default MergeInfo;

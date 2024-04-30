@@ -1,14 +1,11 @@
 import React from 'react';
-import './Info.css';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-function BFSInfo() {
+import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-    // const myState = useSelector((state) => state.updateProps)
-    // const dispatch = useDispatch();
-  
-    const Phase1 = 
-    `
+import './Info.css';
+
+const BFSInfo = () => {
+  const Phase1 = `
     The breadth-first search (BFS) algorithm is used to search a tree or graph data structure for a node that meets 
      a set of criteria. 
     It starts at the tree’s root or graph and searches/visits all nodes at the current depth level before moving on to
@@ -25,11 +22,9 @@ function BFSInfo() {
     
     A boolean visited array is used to mark the visited vertices.
     For simplicity, it is assumed that all vertices are reachable from the starting vertex. 
-    BFS uses a queue data structure for traversal.`
-  
-  
-    const Phase2 = 
-    `
+    BFS uses a queue data structure for traversal.`;
+
+  const Phase2 = `
 
     When we come to vertex 0, we look for all adjacent vertices of it. 
 
@@ -90,34 +85,26 @@ function BFSInfo() {
       Since each level of the tree must be saved in order to generate the next level and the amount
         of memory is proportional to the number of nodes stored the space complexity of BFS is O(bd ).
       As a result, BFS is severely space-bound in practice so will exhaust the memory available on typical
-        computers in a matter of minutes.`
-  
-    return (
-      <>
-      <div className='bfsinfo' style={{display:'grid' , justifyContent:'space-around'}}>
-            
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase1}
-                </SyntaxHighlighter>
-               
-                
-                <img  className='img1' src='https://media.geeksforgeeks.org/wp-content/uploads/bfs-5.png' alt='not Found'/>
-                
-              
-               
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase2}
-                </SyntaxHighlighter>
-               
-              
-            </div>
-  
-        
-  
-        
-      </>
-    )
-  }
-  
-  export default BFSInfo;
+        computers in a matter of minutes.`;
+
+  return (
+    <>
+      <div
+        className="bfsinfo"
+        style={{ display: 'grid', justifyContent: 'space-around' }}
+      >
+        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
+
+        <img
+          className="img1"
+          src="https://media.geeksforgeeks.org/wp-content/uploads/bfs-5.png"
+          alt="not Found"
+        />
+
+        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
+      </div>
+    </>
+  );
+};
+
+export default BFSInfo;

@@ -1,14 +1,11 @@
 import React from 'react';
-import './Info.css';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-function QuickInfo() {
+import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-    // const myState = useSelector((state) => state.updateProps)
-    // const dispatch = useDispatch();
-  
-    const Phase1 = 
-    ` QuickSort is a Divide and Conquer algorithm. 
+import './Info.css';
+
+const QuickInfo = () => {
+  const Phase1 = ` QuickSort is a Divide and Conquer algorithm. 
       It picks an element as a pivot and partitions the given array around the picked pivot.
       There are many different versions of quickSort that pick pivot in different ways. 
 
@@ -20,11 +17,9 @@ function QuickInfo() {
       The key process in quickSort is a partition(). 
       The target of partitions is, given an array and an element x of an array as the pivot,
       put x at its correct position in a sorted array and put all smaller elements (smaller than x) before x,
-      and put all greater elements (greater than x) after x. All this should be done in linear time.`
-  
-  
-    const Phase2 = 
-    `
+      and put all greater elements (greater than x) after x. All this should be done in linear time.`;
+
+  const Phase2 = `
      Is QuickSort stable? 
      The default implementation is not stable. 
      However any sorting algorithm can be made stable by considering indexes as comparison parameter. 
@@ -92,34 +87,26 @@ function QuickInfo() {
     and can be used to sort data in-place. 
     However, it also has some drawbacks such as worst case time complexity of O(n^2) which occurs when the pivot is chosen poorly.
     It is not a good choice for small data sets, it is not cache-efficient, and is sensitive to the choice of pivot. 
-    `
-  
-    return (
-      <>
-      <div className='quickinfo' style={{display:'grid' , justifyContent:'space-around'}}>
-            
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase1}
-                </SyntaxHighlighter>
-               
-                
-                <img  className='img1' src='https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/01/QuickSort2.png' alt='not Found'/>
-               
-               
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase2}
-                </SyntaxHighlighter>
-               
-               
-            </div>
-          
-  
-        
-  
-        
-      </>
-    )
-  }
-  
-  export default QuickInfo;
+    `;
+
+  return (
+    <>
+      <div
+        className="quickinfo"
+        style={{ display: 'grid', justifyContent: 'space-around' }}
+      >
+        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
+
+        <img
+          className="img1"
+          src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/01/QuickSort2.png"
+          alt="not Found"
+        />
+
+        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
+      </div>
+    </>
+  );
+};
+
+export default QuickInfo;

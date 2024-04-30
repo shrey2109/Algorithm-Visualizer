@@ -1,21 +1,30 @@
-import React from 'react'
-import './QueueScreen.css'
-import QueueNavbar from './QueueNavbar'
-import QueueVisuals from './QueueVisuals'
+import React from 'react';
+import QueueNavbar from './QueueNavbar';
+import QueueVisuals from './QueueVisuals';
 
+import './QueueScreen.css';
 
-function QueueScreen() {
+const QueueScreen = () => {
   return (
     <>
-      <div className='queueAppContainer'>
-        <div style={{color : 'rgb(67, 104, 255)', textAlign : 'center', fontSize : '50px', textShadow: '3px 1px 3px rgb(100, 100, 100)',fontWeight: 'bold', fontFamily:'Bahnschrift SemiBold'}}>
-                    Queue Visualizer
+      <div className="queueAppContainer">
+        <div
+          style={{
+            fontSize: '45px',
+            fontWeight: '600',
+            backgroundImage: 'radial-gradient(circle, #ee4b2b, #553c9a)',
+            color: 'transparent',
+            textAlign: 'center',
+            backgroundClip: 'text',
+          }}
+        >
+          Queue Visualizer
         </div>
-        <QueueNavbar/>
-        <QueueVisuals/>
+        <QueueNavbar />
+        <QueueVisuals />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default QueueScreen
+export default QueueScreen;

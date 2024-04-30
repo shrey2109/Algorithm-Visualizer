@@ -2,6 +2,7 @@
     font-family: 'Varela Round', sans-serif;
     background: rgb(150, 255, 157);
     background-image: linear-gradient(to bottom right,rgb(150, 255, 157), rgb(254, 210, 128));
-    height: auto;
+    padding: 5px;
+    height: 100%;
   }
 

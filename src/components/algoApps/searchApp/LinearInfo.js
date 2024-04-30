@@ -1,14 +1,11 @@
 import React from 'react';
-import './Info1.css';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-function LinearInfo() {
+import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-    // const myState = useSelector((state) => state.updateProps)
-    // const dispatch = useDispatch();
-  
-    const Phase1 = 
-    `
+import './Info1.css';
+
+const LinearInfo = () => {
+  const Phase1 = `
      Linear Search is defined as a sequential search algorithm that starts at one end and goes through each element
       of a list until the desired element is found, otherwise the search continues till the end of the data set.
  
@@ -17,11 +14,9 @@ function LinearInfo() {
       Step 1: First, read the search element (Target element) in the array.
       Step 2: Set an integer i = 0 and repeat steps 3 to 4 till i reaches the end of the array.
       Step 3: Match the key with arr[i].
-      Step 4: If the key matches, return the index. Otherwise, increment i by 1.`
-  
-  
-    const Phase2 = 
-    `
+      Step 4: If the key matches, return the index. Otherwise, increment i by 1.`;
+
+  const Phase2 = `
      Advantages of Linear Search:
       Linear search is simple to implement and easy to understand.
       Linear search can be used irrespective of whether the array is sorted or not. It can be used on arrays of any data type.
@@ -58,44 +53,26 @@ function LinearInfo() {
     Conclusion:
       To conclude, it can be said that linear search is a simple and flexible algorithm for finding whether an element is
       present within an array.
-      It sequentially examines each element of the array and is better for being used in unsorted data sets.`
-  
-    return (
-      <>
-      <div className='linearinfo' style={{display:'grid' , justifyContent:'space-around'}}>
-            
-  
-             
-              
-   
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase1}
-                </SyntaxHighlighter>
-               
-          
-                
-                <img className='img1' src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/Linear-Search.png' alt='not Found'/>
-                
-            
-                
-               
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase2}
-                </SyntaxHighlighter>
-               
-                
-         
-  
-            
-            </div>
-        
-  
-        
-  
-        
-      </>
-    )
-  }
-  
-  export default LinearInfo;
+      It sequentially examines each element of the array and is better for being used in unsorted data sets.`;
+
+  return (
+    <>
+      <div
+        className="linearinfo"
+        style={{ display: 'grid', justifyContent: 'space-around' }}
+      >
+        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
+
+        <img
+          className="img1"
+          src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Linear-Search.png"
+          alt="not Found"
+        />
+
+        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
+      </div>
+    </>
+  );
+};
+
+export default LinearInfo;

@@ -1,14 +1,11 @@
 import React from 'react';
-import './Info.css';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-function DFSInfo() {
+import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-    // const myState = useSelector((state) => state.updateProps)
-    // const dispatch = useDispatch();
-  
-    const Phase1 = 
-    `
+import './Info.css';
+
+const DFSInfo = () => {
+  const Phase1 = `
       Depth First Traversal (or Search) for a graph is similar to Depth First Traversal of a tree.
       The only catch here is, that, unlike trees, graphs may contain cycles (a node may be visited twice).
       To avoid processing a node more than once, use a boolean visited array.
@@ -17,11 +14,9 @@ function DFSInfo() {
       
       Input: n = 4, e = 6 
         0 -> 1, 0 -> 2, 1 -> 2, 2 -> 0, 2 -> 3, 3 -> 3 
-      Output: DFS from vertex 1 : 1 2 0 3 `
-  
-  
-    const Phase2 = 
-    `
+      Output: DFS from vertex 1 : 1 2 0 3 `;
+
+  const Phase2 = `
     Advantages of Depth First Search:
        Memory requirement is only linear with respect to the search graph.
        This is in contrast with breadth-first search which requires more space. 
@@ -42,33 +37,26 @@ function DFSInfo() {
         whereas if the cutoff depth is greater than d, a large price is paid in execution time, 
         and the first solution found may not be an optimal one.
        Depth-First Search is not guaranteed to find the solution.
-       And there is no guarantee to find a minimal solution, if more than one solution.`
-  
-    return (
-      <>
-      <div className='dfsinfo' style={{display:'grid' , justifyContent:'space-around'}}>
-            
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase1}
-                </SyntaxHighlighter>
-               
-                
-                <img className='img1' src='https://media.geeksforgeeks.org/wp-content/uploads/20200507074112/ezgif.com-gif-maker61.gif' alt='not Found'/>
-              
-               
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase2}
-                </SyntaxHighlighter>
-               
-               
-            </div>
-  
-        
-  
-        
-      </>
-    )
-  }
-  
-  export default DFSInfo;
+       And there is no guarantee to find a minimal solution, if more than one solution.`;
+
+  return (
+    <>
+      <div
+        className="dfsinfo"
+        style={{ display: 'grid', justifyContent: 'space-around' }}
+      >
+        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
+
+        <img
+          className="img1"
+          src="https://media.geeksforgeeks.org/wp-content/uploads/20200507074112/ezgif.com-gif-maker61.gif"
+          alt="not Found"
+        />
+
+        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
+      </div>
+    </>
+  );
+};
+
+export default DFSInfo;

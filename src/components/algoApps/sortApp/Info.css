@@ -1,25 +1,39 @@
-*{
-    margin: 0%;
-    padding: 0%;
+* {
+  margin: 0%;
+  padding: 0%;
 }
 
-.bubbleinfo,.quickinfo,.insertioninfo,.mergeinfo{
+.bubbleinfo,
+.quickinfo,
+.insertioninfo,
+.mergeinfo {
   font-family: 'Varela Round', sans-serif;
   background: rgb(149, 161, 255);
-  background-image: linear-gradient(to bottom right,rgb(149, 161, 255), rgb(250, 139, 183));
-    height: auto;
-    justify-items: center;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(149, 161, 255),
+    rgb(250, 139, 183)
+  );
+  height: auto;
+  justify-items: center;
 }
-.img1{
+.img1 {
   background: rgb(149, 161, 255);
-  background-image: linear-gradient(to bottom right,rgb(149, 161, 255), rgb(250, 139, 183));
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(149, 161, 255),
+    rgb(250, 139, 183)
+  );
   height: 500px;
   width: 500px;
 }
-.selectioninfo{
+.selectioninfo {
   font-family: 'Varela Round', sans-serif;
   background: rgb(149, 161, 255);
-  background-image: linear-gradient(to bottom right,rgb(149, 161, 255), rgb(250, 139, 183));
-    height: auto;
-
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(149, 161, 255),
+    rgb(250, 139, 183)
+  );
+  height: auto;
 }

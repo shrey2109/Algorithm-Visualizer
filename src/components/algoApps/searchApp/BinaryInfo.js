@@ -1,14 +1,11 @@
 import React from 'react';
-import './Info1.css';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-function BinaryInfo() {
+import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-    // const myState = useSelector((state) => state.updateProps)
-    // const dispatch = useDispatch();
-  
-    const Phase1 = 
-    `
+import './Info1.css';
+
+const BinaryInfo = () => {
+  const Phase1 = `
     Binary Search Approach: 
       Binary Search is a searching algorithm used in a sorted array by repeatedly dividing the search interval in half. 
       The idea of binary search is to use the information that the array is sorted and reduce the time complexity to O(Log n). 
@@ -37,11 +34,9 @@ function BinaryInfo() {
     If x matches with the middle element, we return the mid index.
     Else If x is greater than the mid element, then x can only lie in the right half subarray after the mid element.
      So we recur for the right half.
-    Else (x is smaller) recur for the left half.`
-  
-  
-    const Phase2 = 
-    `
+    Else (x is smaller) recur for the left half.`;
+
+  const Phase2 = `
     Advantages of Binary Search:
      Binary search is faster than linear search, especially for large arrays.
       As the size of the array increases, the time it takes to perform a linear search increases linearly, 
@@ -91,44 +86,26 @@ function BinaryInfo() {
      Binary search is an efficient algorithm for finding an element within a sorted array.
      The time complexity of the binary search is O(log n).
      One of the main drawbacks of binary search is that the array must be sorted.
-     Useful algorithm for building more complex algorithms in computer graphics and machine learning.`
-  
-    return (
-      <>
-      <div className='binaryinfo' style={{display:'grid' , justifyContent:'space-around'}}>
-          
-  
-         
-                
-   
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase1}
-                </SyntaxHighlighter>
-               
-          
-         
-               
-                <img className='img1' src='https://media.geeksforgeeks.org/wp-content/uploads/20220309171621/BinarySearch.png' alt='not Found'/>
-              
-               
-                
-               
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase2}
-                </SyntaxHighlighter>
-               
-               
-             
-  
-            </div>
-           
-  
-        
-  
-        
-      </>
-    )
-  }
-  
-  export default BinaryInfo;
+     Useful algorithm for building more complex algorithms in computer graphics and machine learning.`;
+
+  return (
+    <>
+      <div
+        className="binaryinfo"
+        style={{ display: 'grid', justifyContent: 'space-around' }}
+      >
+        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
+
+        <img
+          className="img1"
+          src="https://media.geeksforgeeks.org/wp-content/uploads/20220309171621/BinarySearch.png"
+          alt="not Found"
+        />
+
+        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
+      </div>
+    </>
+  );
+};
+
+export default BinaryInfo;

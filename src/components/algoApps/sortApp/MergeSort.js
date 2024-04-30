@@ -1,99 +1,106 @@
-import React, { useState,useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import MergeCode from './MergeCode';
-// import MergeComplexity from './MergeComplexity';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import './SortVisuals.css';
 
+import MergeCode from './MergeCode';
+
 const MergeSort = () => {
-    const myState = useSelector(state => state.updateProps);
-    const dispatch = useDispatch();
-    const [isPreviewShown, setPreviewShown] = useState(false);
+  const myState = useSelector((state) => state.updateProps);
+  const [isPreviewShown, setPreviewShown] = useState(false);
 
-    let arrVal = myState.arrVal.map((item) => item[0]);
-    let ids = myState.arrVal.map((item) => item[1]);
+  let arrVal = myState.arrVal.map((item) => item[0]);
+  let ids = myState.arrVal.map((item) => item[1]);
 
-    const mergeSort = (arrVal, ids, timer, l, r) => {
-        if (l >= r)
-            return;
+  const mergeSort = (arrVal, ids, timer, l, r) => {
+    if (l >= r) return;
 
-        let mid = Math.floor((l + r) / 2);
-      
-        mergeSort(arrVal, ids, timer - 1, l, mid);
-        
-        mergeSort(arrVal, ids, timer - 1, mid + 1, r);
+    let mid = Math.floor((l + r) / 2);
 
-       
-        
-        setTimeout(() => {
+    mergeSort(arrVal, ids, timer - 1, l, mid);
 
-            setTimeout(() => {
-                document.getElementById('left').style.backgroundColor = 'rgb(128, 223, 254)';
-                document.getElementById('merge').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
-            },1000)
+    mergeSort(arrVal, ids, timer - 1, mid + 1, r);
 
-            let color = [];
-           
-            for (let i = 0; i < 3; i++)
-                color.push(Math.floor(Math.random() * 200));
+    setTimeout(() => {
+      setTimeout(() => {
+        document.getElementById('left').style.backgroundColor =
+          'rgb(128, 223, 254)';
+        document.getElementById('merge').style.backgroundColor =
+          'rgb(255, 255, 255, 0.5)';
+      }, 1000);
 
-            for (let i = l; i <= r; i++)
-                document.getElementById(ids[i]).childNodes[1].style.backgroundColor = `rgb(${color[0]},${color[1]},${color[2]})`;
+      let color = [];
 
-            for (let i = l; i <= r; i++) {
-                for (let j = i + 1; j <= r; j++) {
+      for (let i = 0; i < 3; i++) color.push(Math.floor(Math.random() * 200));
 
-                    if (arrVal[i] > arrVal[j]) {
-                        [arrVal[i], arrVal[j]] = [arrVal[j], arrVal[i]];
-                        [ids[i], ids[j]] = [ids[j], ids[i]];
+      for (let i = l; i <= r; i++)
+        document.getElementById(
+          ids[i]
+        ).childNodes[1].style.backgroundColor = `rgb(${color[0]},${color[1]},${color[2]})`;
 
-                        let new_ids = [...ids];
-                        
-                        document.getElementById(new_ids[i]).style.transform = `translateX(${i * 35}px)`;
-                        document.getElementById(new_ids[j]).style.transform = `translateX(${j * 35}px)`;
+      for (let i = l; i <= r; i++) {
+        for (let j = i + 1; j <= r; j++) {
+          if (arrVal[i] > arrVal[j]) {
+            [arrVal[i], arrVal[j]] = [arrVal[j], arrVal[i]];
+            [ids[i], ids[j]] = [ids[j], ids[i]];
 
-                        document.getElementById('left').style.backgroundColor = 'rgb(255, 255, 255, 0.5)';
-                        document.getElementById('merge').style.backgroundColor = 'rgb(128, 223, 254)';
-                    }
-                }
-            }
-        }, timer * 2000);
-    }
-    
-    const solve = () => {
-        setPreviewShown(true);
-       
-        mergeSort(arrVal, ids, Math.ceil(Math.log(arrVal.length + 1)), 0, arrVal.length - 1);
+            let new_ids = [...ids];
 
-        setTimeout(() => {
-            
-        }, (((myState.arrVal.length-1)*(myState.arrVal.length))/2)*myState.sortingSpeed+50);
-    };
+            document.getElementById(new_ids[i]).style.transform = `translateX(${
+              i * 35
+            }px)`;
+            document.getElementById(new_ids[j]).style.transform = `translateX(${
+              j * 35
+            }px)`;
 
-    useEffect(() => {
-        if(myState.sortingAlgorithm==='merge'){
-           console.log(myState.sortplay);
-           if(myState.sortplay){
-              console.log("-----------PLAY IS ON------------");
-              solve();
-           }
+            document.getElementById('left').style.backgroundColor =
+              'rgb(255, 255, 255, 0.5)';
+            document.getElementById('merge').style.backgroundColor =
+              'rgb(128, 223, 254)';
+          }
         }
-     },[myState.sortplay]);
+      }
+    }, timer * 2000);
+  };
 
-    return( <>
-      <div id='codePart1'>
-        <div id='left' style={{marginLeft:'30px'}}>
-            <p> mergeSort(arr, low, mid);</p>
-            <p> mergeSort(arr, mid + 1, high); </p>
+  const solve = () => {
+    setPreviewShown(true);
+
+    mergeSort(
+      arrVal,
+      ids,
+      Math.ceil(Math.log(arrVal.length + 1)),
+      0,
+      arrVal.length - 1
+    );
+
+    setTimeout(() => {},
+    (((myState.arrVal.length - 1) * myState.arrVal.length) / 2) * myState.sortingSpeed + 50);
+  };
+
+  useEffect(() => {
+    if (myState.sortingAlgorithm === 'merge') {
+      if (myState.sortplay) {
+        solve();
+      }
+    }
+  }, [myState.sortplay]);
+
+  return (
+    <>
+      <div id="codePart1">
+        <div id="left" style={{ marginLeft: '30px' }}>
+          <p> mergeSort(arr, low, mid);</p>
+          <p> mergeSort(arr, mid + 1, high); </p>
         </div>
-        <div id='merge' style={{marginLeft:'30px'}}>
-            <p>  merge(arr, low, mid, high);  </p>
+        <div id="merge" style={{ marginLeft: '30px' }}>
+          <p> merge(arr, low, mid, high); </p>
         </div>
       </div>
-    
-    
-      {isPreviewShown && <MergeCode/>}
-    
-    </>);
-}
+
+      {isPreviewShown && <MergeCode />}
+    </>
+  );
+};
 
 export default MergeSort;

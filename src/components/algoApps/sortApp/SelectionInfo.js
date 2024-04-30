@@ -1,14 +1,11 @@
 import React from 'react';
-import './Info.css';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-function SelectionInfo() {
+import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-    // const myState = useSelector((state) => state.updateProps)
-    // const dispatch = useDispatch();
-  
-    const Phase1 = 
-    `Selection sort is a simple and efficient sorting algorithm that works by repeatedly 
+import './Info.css';
+
+const SelectionInfo = () => {
+  const Phase1 = `Selection sort is a simple and efficient sorting algorithm that works by repeatedly 
      selecting the smallest (or largest) element from the unsorted portion of the list and 
      moving it to the sorted portion of the list. The algorithm repeatedly selects the smallest (or largest)
      element from the unsorted portion of the list and swaps it with the first element of the unsorted portion.
@@ -27,11 +24,9 @@ function SelectionInfo() {
     
      After every iteration sorted subarray size increase by one and the unsorted subarray size decrease by one.
      After the N (size of the array) iteration, we will get a sorted array.
-    `
-  
-  
-    const Phase2 = 
-    `
+    `;
+
+  const Phase2 = `
      How does selection sort work?
 
      Lets consider the following array as an example: arr[] = {64, 25, 12, 22, 11}
@@ -131,31 +126,25 @@ function SelectionInfo() {
        It has a time complexity of O(n^2) in the worst and average case which makes it less efficient for large data sets.
        Selection sort is a stable sorting algorithm.
        It can be used to sort different types of data.
-       It has specific applications where it is useful such as small data sets and memory-constrained systems.`
-  
-    return (
-      <>
-      <div className='selectioninfo' style={{display:'grid' , justifyContent:'space-around'}}>
-            
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase1}
-                </SyntaxHighlighter>
-               
-            
-                <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220203094305/Selection-Sort-Flowhchart.png' alt='not Found'/>
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase2}
-                </SyntaxHighlighter>
-               
-             
-            </div>
-  
-        
-  
-        
-      </>
-    )
-  }
-  
-  export default SelectionInfo;
+       It has specific applications where it is useful such as small data sets and memory-constrained systems.`;
+
+  return (
+    <>
+      <div
+        className="selectioninfo"
+        style={{ display: 'grid', justifyContent: 'space-around' }}
+      >
+        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
+
+        <img
+          src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220203094305/Selection-Sort-Flowhchart.png"
+          alt="not Found"
+        />
+
+        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
+      </div>
+    </>
+  );
+};
+
+export default SelectionInfo;
