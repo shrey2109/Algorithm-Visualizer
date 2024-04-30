@@ -1,14 +1,14 @@
 import React from 'react';
-import './Info.css';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-function InsertionInfo() {
+import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-    // const myState = useSelector((state) => state.updateProps)
-    // const dispatch = useDispatch();
-  
-    const Phase1 = 
-    `Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands.
+import './Info.css';
+
+const InsertionInfo = () => {
+  // const myState = useSelector((state) => state.updateProps)
+  // const dispatch = useDispatch();
+
+  const Phase1 = `Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands.
      The array is virtually split into a sorted and an unsorted part. 
      Values from the unsorted part are picked and placed at the correct position in the sorted part.
 
@@ -69,11 +69,9 @@ function InsertionInfo() {
     Illustrations:
     
    
-     `
-  
-  
-    const Phase2 = 
-    `What are the Boundary Cases of the Insertion Sort algorithm?
+     `;
+
+  const Phase2 = `What are the Boundary Cases of the Insertion Sort algorithm?
      Insertion sort takes maximum time to sort if elements are sorted in reverse order.
      And it takes minimum time (Order of n) when elements are already sorted. 
     
@@ -89,34 +87,26 @@ function InsertionInfo() {
     When is the Insertion Sort algorithm used?
     Insertion sort is used when number of elements is small.
     It can also be useful when input array is almost sorted, only few elements are misplaced in complete big array.
-    `
-  
-    return (
-      <>
-      <div className='insertioninfo' style={{display:'grid' , justifyContent:'space-around'}}>
-            
-   
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase1}
-                </SyntaxHighlighter>
-               
-               
-                <img className='img1' src='https://media.geeksforgeeks.org/wp-content/uploads/insertionsort.png' alt='not Found'/>
-               
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase2}
-                </SyntaxHighlighter>
-               
-                
-            </div>
-  
-  
-        
-  
-        
-      </>
-    )
-  }
-  
-  export default InsertionInfo;
+    `;
+
+  return (
+    <>
+      <div
+        className="insertioninfo"
+        style={{ display: 'grid', justifyContent: 'space-around' }}
+      >
+        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
+
+        <img
+          className="img1"
+          src="https://media.geeksforgeeks.org/wp-content/uploads/insertionsort.png"
+          alt="not Found"
+        />
+
+        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
+      </div>
+    </>
+  );
+};
+
+export default InsertionInfo;

@@ -1,14 +1,11 @@
 import React from 'react';
-import './Info.css';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-function BubbleInfo() {
+import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-    // const myState = useSelector((state) => state.updateProps)
-    // const dispatch = useDispatch();
-  
-    const Phase1 = 
-    `Let's We have Input: arr[] = {5, 1, 4, 2, 8}
+import './Info.css';
+
+const BubbleInfo = () => {
+  const Phase1 = `Let's We have Input: arr[] = {5, 1, 4, 2, 8}
   
     First Pass: 
     Bubble sort starts with very first two elements, comparing them to check which one is greater.
@@ -30,11 +27,9 @@ function BubbleInfo() {
     ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) 
     ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) 
     ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) 
-    ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )`
-  
-  
-    const Phase2 = 
-    `
+    ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )`;
+
+  const Phase2 = `
     Worst Case Analysis for Bubble Sort:
     
     The worst-case condition for bubble sort occurs when elements of the array are arranged in decreasing order.
@@ -99,31 +94,26 @@ function BubbleInfo() {
   
     Disadvantages
     Bubble sort has a time complexity of O(n^2) which makes it very slow for large data sets.
-    It is not efficient for large data sets, because it requires multiple passes through the data.`
-  
-    return (
-      <>
-      <div className='bubbleinfo' style={{display:'grid' , justifyContent:'space-around'}}>
-          
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase1}
-                </SyntaxHighlighter>
-               
-              
-                <img className='img1' src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/02/bubble-sort1.png' alt='not Found'/>
-               
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase2}
-                </SyntaxHighlighter>
-               
-            </div>
-  
-        
-  
-        
-      </>
-    )
-  }
-  
-  export default BubbleInfo;
+    It is not efficient for large data sets, because it requires multiple passes through the data.`;
+
+  return (
+    <>
+      <div
+        className="bubbleinfo"
+        style={{ display: 'grid', justifyContent: 'space-around' }}
+      >
+        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
+
+        <img
+          className="img1"
+          src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/02/bubble-sort1.png"
+          alt="not Found"
+        />
+
+        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
+      </div>
+    </>
+  );
+};
+
+export default BubbleInfo;

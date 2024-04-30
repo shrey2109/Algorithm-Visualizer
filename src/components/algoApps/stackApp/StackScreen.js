@@ -1,22 +1,30 @@
-import React from 'react'
-import './StackScreen.css'
-import StackNavbar from './StackNavbar'
-import StackVisuals from './StackVisuals'
+import React from 'react';
+import StackNavbar from './StackNavbar';
+import StackVisuals from './StackVisuals';
 
+import './StackScreen.css';
 
-function StackScreen() {
+const StackScreen = () => {
   return (
     <>
-      <div className='stackAppScreen'>
-        <div style={{color : 'rgb(67, 104, 255)', textAlign : 'center', fontSize : '50px', textShadow: '3px 1px 3px rgb(100, 100, 100)',fontWeight: 'bold', fontFamily:'Bahnschrift SemiBold'}}>
-                    Stack Visualizer
+      <div className="stackAppScreen">
+        <div
+          style={{
+            fontSize: '45px',
+            fontWeight: '600',
+            backgroundImage: 'radial-gradient(circle, #ee4b2b, #553c9a)',
+            color: 'transparent',
+            textAlign: 'center',
+            backgroundClip: 'text',
+          }}
+        >
+          Stack Visualizer
         </div>
-        <StackNavbar/>
-        <StackVisuals/>
+        <StackNavbar />
+        <StackVisuals />
       </div>
-      
     </>
-  )
-}
+  );
+};
 
-export default StackScreen
+export default StackScreen;

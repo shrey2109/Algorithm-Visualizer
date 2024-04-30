@@ -1,14 +1,11 @@
 import React from 'react';
-import './Info.css';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-function StackInfo() {
+import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-    // const myState = useSelector((state) => state.updateProps)
-    // const dispatch = useDispatch();
-  
-    const Phase1 = 
-    `
+import './Info.css';
+
+const StackInfo = () => {
+  const Phase1 = `
     
     What is Stack?
      Stack is a linear data structure that follows a particular order in which the operations are performed. 
@@ -20,11 +17,9 @@ function StackInfo() {
    Consider an example of plates stacked over one another in the canteen. 
    The plate which is at the top is the first one to be removed,
     i.e. the plate which has been placed at the bottommost position remains in the stack for the longest period of time.
-   So, it can be simply seen to follow LIFO(Last In First Out)/FILO(First In Last Out) order.`
-  
-  
-    const Phase2 = 
-    `
+   So, it can be simply seen to follow LIFO(Last In First Out)/FILO(First In Last Out) order.`;
+
+  const Phase2 = `
     
     Basic Operations
      Stack operations may involve initializing the stack, using it and then de-initializing it.
@@ -48,31 +43,26 @@ function StackInfo() {
     
     At all times, we maintain a pointer to the last PUSHed data on the stack.
     As this pointer always represents the top of the stack, hence named top.
-    The top pointer provides top value of the stack without actually removing it.`
-  
-    return (
-      <>
-      <div className='stackinfo' style={{display:'grid' , justifyContent:'space-around'}}>
-           
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase1}
-                </SyntaxHighlighter>
-               
-                
-                <img className='img1' src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221219100314/stack.drawio2.png' alt='not Found'/>
-                
-                <SyntaxHighlighter  style={kimbieLight }>
-                    {Phase2}
-                </SyntaxHighlighter>
-               
-            </div>
-  
-        
-  
-        
-      </>
-    )
-  }
-  
-  export default StackInfo;
+    The top pointer provides top value of the stack without actually removing it.`;
+
+  return (
+    <>
+      <div
+        className="stackinfo"
+        style={{ display: 'grid', justifyContent: 'space-around' }}
+      >
+        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
+
+        <img
+          className="img1"
+          src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221219100314/stack.drawio2.png"
+          alt="not Found"
+        />
+
+        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
+      </div>
+    </>
+  );
+};
+
+export default StackInfo;
