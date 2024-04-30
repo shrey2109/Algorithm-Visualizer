@@ -23,7 +23,7 @@ import './App.css';
 const App = () => {
   return (
     <>
-      <Router basename="/algo-canvas">
+      <Router>
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/sort" element={<SortScreen />} />
@@ -49,3 +49,5 @@ const App = () => {
 };
 
 export default App;
+
+// "homepage": "https://shrey2109.github.io/algo-canvas",
