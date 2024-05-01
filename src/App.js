@@ -49,5 +49,3 @@ const App = () => {
 };
 
 export default App;
-
-// "homepage": "https://shrey2109.github.io/algo-canvas",

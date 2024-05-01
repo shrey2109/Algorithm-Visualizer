@@ -1,18 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-
-
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-
 const StackCode = () => {
+  const [codeTabWidth, setCodeTabWidth] = useState('');
 
-const CppCode = `
+  const CppCode = `
 /* C++ program to implement basic stack
 operations */
 #include <bits/stdc++.h>
@@ -102,11 +100,6 @@ int main()
 
   `;
 
-
-
-
-
-
   const JavaCode = `
   /* Java program to implement basic stack
 operations */
@@ -185,14 +178,8 @@ class Main {
 
   `;
 
-
-
-
-
-
-
-    const [value, setValue] = React.useState('1');
-	const [compvalue, setCompValue] = React.useState('1');
+  const [value, setValue] = React.useState('1');
+  const [compvalue, setCompValue] = React.useState('1');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -202,83 +189,138 @@ class Main {
     setCompValue(newValue);
   };
 
-    return(
-        <>
-            <h1> Code for Stack Data Structure </h1>
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      const width = screenWidth < 800 ? '' : '60%';
+      setCodeTabWidth(width);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
-        
+  return (
+    <>
+      <h1> Code for Stack Data Structure </h1>
 
-        <Box sx={{ width: '100%', typography: 'body1' }}>
+      <Box sx={{ width: '100%', typography: 'body1' }}>
         <TabContext value={value}>
-        {/* <TabContext> */}
-            <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
+          {/* <TabContext> */}
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-            {/* <TabList> */}
-                <Tab style={{boxShadow:'2px 0px 3px rgb(86, 86, 86)', margin:'10px', fontSize:'15px'}} label="C++" value="1" />
-                <Tab style={{boxShadow:'2px 0px 3px rgb(86, 86, 86)', margin:'10px', fontSize:'15px'}} label="JAVA" value="2" />
+              {/* <TabList> */}
+              <Tab
+                style={{
+                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
+                  margin: '10px',
+                  fontSize: '15px',
+                }}
+                label="C++"
+                value="1"
+              />
+              <Tab
+                style={{
+                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
+                  margin: '10px',
+                  fontSize: '15px',
+                }}
+                label="JAVA"
+                value="2"
+              />
             </TabList>
-            </Box>
+          </Box>
 
-            {/* <TabPanel value="1">  */}
-            <TabPanel style={{boxShadow:'7px 10px 14px -2px rgb(86, 86, 86)', width:'60%', backgroundColor:'black',borderRadius:'20px', color:'white'}} value="1"> 
-                
+          {/* <TabPanel value="1">  */}
+          <TabPanel
+            style={{
+              boxShadow: '7px 10px 14px -2px rgb(86, 86, 86)',
+              width: codeTabWidth,
+              backgroundColor: 'black',
+              borderRadius: '20px',
+              color: 'white',
+            }}
+            value="1"
+          >
             <SyntaxHighlighter language="cpp" style={atomOneDark}>
-                {CppCode}
+              {CppCode}
             </SyntaxHighlighter>
+          </TabPanel>
 
-            </TabPanel>
-
-
-            <TabPanel style={{boxShadow:'7px 10px 14px -2px rgb(86, 86, 86)', width:'60%', backgroundColor:'black',borderRadius:'20px', color:'white'}} value="2"> 
-
-                <SyntaxHighlighter language="cpp" style={atomOneDark}>
-                    {JavaCode}
-                </SyntaxHighlighter>
-            
-            </TabPanel>
-            <TabPanel value="3"></TabPanel>
+          <TabPanel
+            style={{
+              boxShadow: '7px 10px 14px -2px rgb(86, 86, 86)',
+              width: codeTabWidth,
+              backgroundColor: 'black',
+              borderRadius: '20px',
+              color: 'white',
+            }}
+            value="2"
+          >
+            <SyntaxHighlighter language="cpp" style={atomOneDark}>
+              {JavaCode}
+            </SyntaxHighlighter>
+          </TabPanel>
+          <TabPanel value="3"></TabPanel>
         </TabContext>
-        </Box>
+      </Box>
 
+      <br />
+      <br />
+      <h1> Time and Space Complexity for Stack </h1>
 
+      <Box sx={{ width: '100%', typography: 'body1' }}>
+        <TabContext value={compvalue}>
+          {/* <TabContext> */}
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <TabList
+              onChange={handleCompChange}
+              aria-label="lab API tabs example"
+            >
+              {/* <TabList> */}
+              <Tab
+                style={{
+                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
+                  margin: '10px',
+                  fontSize: '15px',
+                  width: '43%',
+                }}
+                label="Time Complexity"
+                value="1"
+              />
+              <Tab
+                style={{
+                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
+                  margin: '10px',
+                  fontSize: '15px',
+                  width: '43%',
+                }}
+                label="Auxillary Space Complexity"
+                value="2"
+              />
+            </TabList>
+          </Box>
 
-
-		<br/>
-        <br/>
-        <h1> Time and Space Complexity for Stack </h1>
-
-
-		<Box sx={{ width: '100%', typography: 'body1' }}>
-			<TabContext value={compvalue}>
-			{/* <TabContext> */}
-				<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-				<TabList onChange={handleCompChange} aria-label="lab API tabs example">
-				{/* <TabList> */}
-					<Tab style={{boxShadow:'2px 0px 3px rgb(86, 86, 86)', margin:'10px', fontSize:'15px'}} label="Time Complexity" value="1" />
-					<Tab style={{boxShadow:'2px 0px 3px rgb(86, 86, 86)', margin:'10px', fontSize:'15px'}} label="Auxillary Space Complexity" value="2" />
-				</TabList>
-				</Box>
-
-				<TabPanel value="1"> 
-					<code>
-						<div style={{marginLeft:'0px'}}> {`For Push & Pop Function : O(1)`} </div>
-					</code>
-				</TabPanel>
-				<TabPanel value="2"> 
-
-					<code>
-						<div style={{marginLeft:'0px'}}> {`Whole Stack : O(N)`} </div>
-					</code>
-				
-				</TabPanel>
-				<TabPanel value="3"></TabPanel>
-			</TabContext>
-		</Box>
-
-
-
+          <TabPanel value="1">
+            <code>
+              <div style={{ marginLeft: '0px' }}>
+                {' '}
+                {`For Push & Pop Function : O(1)`}{' '}
+              </div>
+            </code>
+          </TabPanel>
+          <TabPanel value="2">
+            <code>
+              <div style={{ marginLeft: '0px' }}> {`Whole Stack : O(N)`} </div>
+            </code>
+          </TabPanel>
+          <TabPanel value="3"></TabPanel>
+        </TabContext>
+      </Box>
     </>
-    )
-}
+  );
+};
 
 export default StackCode;

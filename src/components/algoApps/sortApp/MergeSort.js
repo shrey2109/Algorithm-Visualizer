@@ -88,7 +88,7 @@ const MergeSort = () => {
 
   return (
     <>
-      <div id="codePart1">
+      <div id="codePart">
         <div id="left" style={{ marginLeft: '30px' }}>
           <p> mergeSort(arr, low, mid);</p>
           <p> mergeSort(arr, mid + 1, high); </p>

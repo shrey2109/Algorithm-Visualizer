@@ -1,68 +1,78 @@
-.container{
-    margin: 5px 15px 25px 15px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    box-shadow: 5px 2px 5px rgb(110, 110, 110);
+.container {
+  margin: 5px 15px 25px 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 5px 2px 5px rgb(110, 110, 110);
 }
 
-.visualContainer{
-    display : flex;
-    flex-direction : row;
-    margin-bottom: 30px;
+.visualContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
 }
 
-.stackContainer{
-    min-height: 475px;
-    width: 65%;
-    align-items: center;
-    margin-right: 15px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgb(110, 110, 110);
-    
+.stackContainer {
+  min-height: 475px;
+  width: 65%;
+  align-items: center;
+  margin-right: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgb(110, 110, 110);
 }
 
-.codeVisual{
-    min-height: 475px;
-    width: 35%;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    box-shadow: 0px 0px 6px rgb(110, 110, 110);
+.codeVisual {
+  min-height: 475px;
+  width: 35%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px rgb(110, 110, 110);
 }
 
-.codeContainer{
-    background-color: #fbf9aa;
-    width: 95%;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 5px 2px 5px rgb(110, 110, 110);
-    box-sizing: content-box;
+@media screen and (max-width: 950px) {
+  .visualContainer {
+    flex-direction: column;
+  }
+  .stackContainer {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .codeVisual {
+    width: 100%;
+  }
 }
 
-.stack{
-
-    background-color: rgb(58, 127, 255);
-    color: white;
-    font-size: 35px;
-    text-align: center;
-    width: 200px;
-    border-radius: 10px;
-    border: 2px solid rgb(0, 0, 0);
-    margin: auto;
-    margin-top: 3px;
+.codeContainer {
+  background-color: #fbf9aa;
+  width: 95%;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 5px 2px 5px rgb(110, 110, 110);
+  box-sizing: content-box;
 }
 
-::selection{
-    background-color: rgba(158, 192, 255, 0.316);
+.stack {
+  background-color: rgb(58, 127, 255);
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  width: 200px;
+  border-radius: 10px;
+  border: 2px solid rgb(0, 0, 0);
+  margin: auto;
+  margin-top: 3px;
 }
 
-.stackcode{
-    width: 90%;
-    margin: 20px;
-
+::selection {
+  background-color: rgba(158, 192, 255, 0.316);
 }
 
-.popCode{
-    filter: blur(0px);
+.stackcode {
+  width: 90%;
+  margin: 20px;
+}
+
+.popCode {
+  filter: blur(0px);
 }

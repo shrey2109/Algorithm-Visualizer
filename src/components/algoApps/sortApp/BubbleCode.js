@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -8,6 +8,8 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const BubbleCode = () => {
+  const [codeTabWidth, setCodeTabWidth] = useState('');
+
   const CppCode = `
 #include <bits/stdc++.h>
 using namespace std;
@@ -94,6 +96,19 @@ public class BubbleSort {
     setCompValue(newValue);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      const width = screenWidth < 800 ? '' : '60%';
+      setCodeTabWidth(width);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <>
       <h1> Code for Bubble Sort </h1>
@@ -108,6 +123,7 @@ public class BubbleSort {
                   boxShadow: '2px 0px 3px rgb(86, 86, 86)',
                   margin: '10px',
                   fontSize: '15px',
+                  width: '43%',
                 }}
                 label="C++"
                 value="1"
@@ -117,6 +133,7 @@ public class BubbleSort {
                   boxShadow: '2px 0px 3px rgb(86, 86, 86)',
                   margin: '10px',
                   fontSize: '15px',
+                  width: '43%',
                 }}
                 label="JAVA"
                 value="2"
@@ -128,7 +145,7 @@ public class BubbleSort {
           <TabPanel
             style={{
               boxShadow: '7px 10px 14px -2px rgb(86, 86, 86)',
-              width: '60%',
+              width: codeTabWidth,
               backgroundColor: 'black',
               borderRadius: '20px',
               color: 'white',
@@ -143,7 +160,7 @@ public class BubbleSort {
           <TabPanel
             style={{
               boxShadow: '7px 10px 14px -2px rgb(86, 86, 86)',
-              width: '60%',
+              width: codeTabWidth,
               backgroundColor: 'black',
               borderRadius: '20px',
               color: 'white',
@@ -176,6 +193,7 @@ public class BubbleSort {
                   boxShadow: '2px 0px 3px rgb(86, 86, 86)',
                   margin: '10px',
                   fontSize: '15px',
+                  width: '43%',
                 }}
                 label="Time Complexity"
                 value="1"
@@ -185,6 +203,7 @@ public class BubbleSort {
                   boxShadow: '2px 0px 3px rgb(86, 86, 86)',
                   margin: '10px',
                   fontSize: '15px',
+                  width: '43%',
                 }}
                 label="Auxillary Space Complexity"
                 value="2"
