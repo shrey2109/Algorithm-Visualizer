@@ -51,6 +51,15 @@
   }
 }
 
+@media screen and (max-width: 800px) {
+  input[type='text'].numVal {
+    padding: 6px 10px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+}
+
 .stack {
   background-color: rgb(58, 127, 255);
   color: white;
