@@ -176,7 +176,7 @@ const SortNavbar = () => {
         <input
           id="textfield"
           type="text"
-          placeholder="Enter The Values of Numbers"
+          placeholder="Enter numbers (34 64 23 73 31 78 68...)"
           onChange={(e) => handleArray(e.target.value)}
           value={arr}
           className="numVal"

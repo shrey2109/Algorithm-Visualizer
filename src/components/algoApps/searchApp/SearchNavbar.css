@@ -63,7 +63,7 @@ input[type='text'].numVal {
 }
 input[type='number'].nu {
   width: 13%;
-  min-width: 167px;
+  min-width: 150px;
   height: 50px;
   padding: 12px 20px;
   margin: 8px 0;
@@ -76,10 +76,10 @@ input[type='number'].nu {
 }
 
 @media screen and (max-width: 800px) {
-  input[type='text'].numVal{
+  input[type='text'].numVal {
     padding: 6px 10px;
   }
-  input[type='number'].nu{
+  input[type='number'].nu {
     padding: 6px 10px;
   }
 }

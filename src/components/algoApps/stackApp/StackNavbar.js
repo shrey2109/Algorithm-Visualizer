@@ -94,7 +94,7 @@ const Navbar = () => {
         <input
           id="textfield"
           type="text"
-          placeholder="Enter The Numbers"
+          placeholder="Enter a number to push into stack"
           className="numVal"
         />
       </div>

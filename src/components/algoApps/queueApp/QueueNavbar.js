@@ -90,7 +90,7 @@ const QueueNavbar = () => {
         <input
           id="textfield"
           type="text"
-          placeholder="Enter The Numbers"
+          placeholder="Enter a number to push into queue"
           className="numVal"
         />
       </div>

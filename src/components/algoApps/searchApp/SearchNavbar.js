@@ -179,7 +179,7 @@ const SearchNavbar = () => {
         <input
           id="textfield"
           type="text"
-          placeholder="Enter The Values of Numbers"
+          placeholder="Enter numbers (34 64 23 73 31 78 68...)"
           onChange={(e) => handleArray(e.target.value)}
           value={arr}
           className="numVal"
@@ -192,7 +192,7 @@ const SearchNavbar = () => {
         <input
           id="tf"
           type="number"
-          placeholder="Enter The Number"
+          placeholder="Enter number"
           onChange={(e) => handleNum(e.target.value)}
           value={num}
           className="nu"
