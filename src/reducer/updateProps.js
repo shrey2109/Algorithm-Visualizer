@@ -33,6 +33,10 @@ const initialState = {
 
 const updateProps = (state = initialState, action) => {
   switch (action.type) {
+    case 'RESET_STATE': {
+      return initialState;
+    }
+
     case 'UPDATE_COLOR': {
       return { ...state, sortingColor: action.sortingColor };
     }

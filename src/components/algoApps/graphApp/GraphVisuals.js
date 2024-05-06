@@ -10,7 +10,7 @@ const GraphVisuals = () => {
   const myState = useSelector((state) => state.updateProps);
   const grid = [...myState.map];
   let editingFlag = false;
-  const hello = () => {
+  const btnEvent = () => {
     if (editingFlag) editingFlag = false;
     else editingFlag = true;
   };
@@ -26,8 +26,8 @@ const GraphVisuals = () => {
                 className="gridbtn"
                 id={has}
                 onClick={(e) => btnClick(has, block)}
-                onMouseDown={() => hello()}
-                onMouseUp={() => hello()}
+                onMouseDown={() => btnEvent()}
+                onMouseUp={() => btnEvent()}
                 onMouseMove={(e) => wallClick(has, block)}
               ></button>
             );

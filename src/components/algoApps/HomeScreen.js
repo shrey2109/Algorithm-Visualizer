@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import './HomeScreen.css';
 
@@ -7,6 +8,13 @@ import TopicCard from './TopicCard';
 
 const HomeScreen = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: 'RESET_STATE',
+    });
+  }, []);
 
   const sortApp = () => {
     navigate('/sort');
