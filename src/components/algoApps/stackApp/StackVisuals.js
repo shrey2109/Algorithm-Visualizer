@@ -57,8 +57,8 @@ const Visuals = () => {
       <div className="container">
         <div className="visualContainer">
           <div className="stackContainer">
-            {myState.arrValStack.map((item) => {
-              return <div className="stack">{item}</div>;
+            {myState.arrValStack.map((item, index) => {
+              return <div className="stack" key={index} data-testid="stackBox">{item}</div>;
             })}
           </div>
           <div className="codeVisual">

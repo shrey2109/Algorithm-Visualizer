@@ -93,6 +93,7 @@ const Navbar = () => {
       <div>
         <input
           id="textfield"
+          data-testid="stackInput"
           type="text"
           placeholder="Enter a number to push into stack"
           className="numVal"

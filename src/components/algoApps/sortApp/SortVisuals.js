@@ -30,6 +30,7 @@ const SortVisuals = () => {
               return (
                 <div
                   className="visual_item"
+                  data-testid="sortBar"
                   key={item[1]}
                   id={item[1]}
                   style={{

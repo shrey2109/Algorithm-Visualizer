@@ -48,7 +48,7 @@ const SearchNavbar = () => {
   const handleArray = (array) => {
     setArr(array);
     let newArr = [];
-    let tokenizer = arr.split(/\W+/);
+    let tokenizer = array.split(/\W+/);
     if (myState.searchingAlgorithm === 'binary') {
       tokenizer.sort();
     }
@@ -178,6 +178,7 @@ const SearchNavbar = () => {
         <h2> Enter The Values of Numbers Between 1-99 : </h2>
         <input
           id="textfield"
+          data-testid="searchInput"
           type="text"
           placeholder="Enter numbers (34 64 23 73 31 78 68...)"
           onChange={(e) => handleArray(e.target.value)}

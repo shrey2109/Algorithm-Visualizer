@@ -57,8 +57,8 @@ const QueueVisuals = () => {
       <div className="container">
         <div className="visualContainer">
           <div className="stackContainer">
-            {myState.arrValQueue.map((item) => {
-              return <div className="stack">{item}</div>;
+            {myState.arrValQueue.map((item, index) => {
+              return <div className="stack" key={index} data-testid="queueBox">{item}</div>;
             })}
           </div>
           <div className="codeVisual">

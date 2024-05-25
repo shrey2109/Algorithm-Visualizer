@@ -25,6 +25,7 @@ const SearchVisuals = () => {
             return (
               <div
                 className="visual_item"
+                data-testid="searchGoal"
                 key={item[1]}
                 id={item[1]}
                 style={{
