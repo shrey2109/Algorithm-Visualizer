@@ -70,7 +70,7 @@ const GraphWorking = () => {
     }
   });
 
-  const BFS = (start, end) => {
+  function BFS(start, end){
     let queue = [start];
     let count = 0;
     hashmap[hash(start.r, start.c)] = true;
@@ -116,7 +116,7 @@ const GraphWorking = () => {
     return null;
   };
 
-  const DFS = (start, end) => {
+  function DFS(start, end){
     let queue = [start];
     let count = 0;
     hashmap[hash(start.r, start.c)] = true;

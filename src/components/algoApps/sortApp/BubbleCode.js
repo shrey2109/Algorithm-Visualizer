@@ -16,21 +16,19 @@ using namespace std;
 
 void bubble_sort(int arr[], int n) {
     // bubble sort
-    for (int i = n - 1; i >= 0; i--) {
-        for (int j = 0; j <= i - 1; j++) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
-                int temp = arr[j + 1];
-                arr[j + 1] = arr[j];
-                arr[j] = temp;
+            swap(arr[j], arr[j + 1]);
             }
         }
     }
 
-    cout << "After Using bubble sort: " << "\n";
+    cout << "After Using bubble sort: " << endl;
     for (int i = 0; i < n; i++) {
         cout << arr[i] << " ";
     }
-    cout << "\n";
+    cout << endl;
 }
 
 int main()
@@ -38,25 +36,23 @@ int main()
     int arr[] = {13, 46, 24, 52, 20, 9};
     int n = sizeof(arr) / sizeof(arr[0]);
     cout << "Before Using Bubble Sort: " << endl;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         cout << arr[i] << " ";
     }
     cout << endl;
 
     bubble_sort(arr, n);
     return 0;
-
 }
   `;
 
   const JavaCode = `
-  import java.util.*;
+import java.util.*;
 
 public class BubbleSort {
     static void bubble_sort(int[] arr, int n) {
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = 0; j <= i - 1; j++) {
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
