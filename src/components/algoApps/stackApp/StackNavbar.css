@@ -1,57 +1,55 @@
-.navDiv{
-    margin: 5px 15px 25px 15px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    box-shadow: 5px 2px 5px rgb(110, 110, 110);
-  }
-  
-  .play {
-      background-color: #4CAF50;
-      border: none;
-      color: white;
-      padding: 12px 25px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 18px;
-      margin: 4px 2px;
-      transition-duration: 0.4s;
-      cursor: pointer;
-    }
-  
-    .play {
-      background-color: #f6efeb; 
-      color: black; 
-      margin-top: 13px;
-      margin-left: 25px;
-    }
-    
-    .play:hover { 
-      background-color: #c8f4cd;
-      box-shadow: 7px 10px 20px -7px rgb(86, 86, 86);
-    }
+.navDiv {
+  margin: 5px 15px 25px 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 5px 2px 5px rgb(110, 110, 110);
+}
 
-    
-    input[type=text].numVal {
-      width: 80%;
-      height: 50px;
-      padding: 12px 20px;
-      margin: 8px 0;
-      box-sizing: border-box;
-      border: 2px solid #ccc;
-      -webkit-transition: 0.5s;
-      transition: 0.5s;
-      outline: none;
-      font-size: 15px;
-    }
-    
-    input[type=text]:focus {
-      border: 2px solid #555;
-      background-color: rgba(230, 230, 230, 0.493);
-    }
-  
-    input[type=text]:hover {
-      box-shadow: 3px 3px 7px -1px rgb(86, 86, 86);  
-    }
-  
+.play {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.play {
+  background-color: #f6efeb;
+  color: black;
+  margin-top: 13px;
+  margin-left: 25px;
+}
+
+.play:hover {
+  background-color: #c8f4cd;
+  box-shadow: 7px 10px 20px -7px rgb(86, 86, 86);
+}
+
+input[type="text"].numVal {
+  width: 80%;
+  height: 50px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  font-size: 15px;
+}
+
+input[type="text"]:focus {
+  border: 2px solid #555;
+  background-color: rgba(230, 230, 230, 0.493);
+}
+
+input[type="text"]:hover {
+  box-shadow: 3px 3px 7px -1px rgb(86, 86, 86);
+}

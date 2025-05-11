@@ -1,7 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import './GraphVisuals.css';
-import GraphWorking from './GraphWorking';
+import React from "react";
+import { useSelector } from "react-redux";
+import "./GraphVisuals.css";
+import GraphWorking from "./GraphWorking";
 
 const GraphVisuals = () => {
   const hash = (i, j) => {
@@ -40,22 +40,22 @@ const GraphVisuals = () => {
   const btnClick = (e, block) => {
     if (myState.startPoint) {
       block.isStart = true;
-      document.getElementById(e).style.backgroundColor = '#5555ff';
-      document.getElementById(e).innerText = 'S';
+      document.getElementById(e).style.backgroundColor = "#5555ff";
+      document.getElementById(e).innerText = "S";
       myState.startPoint = false;
-      document.getElementById('start').disabled = true;
-      document.getElementById('start').style.backgroundColor = '#CCCCCC';
-      document.getElementById('start').style.cursor = 'not-allowed';
+      document.getElementById("start").disabled = true;
+      document.getElementById("start").style.backgroundColor = "#CCCCCC";
+      document.getElementById("start").style.cursor = "not-allowed";
     }
 
     if (myState.endPoint) {
       block.isEnd = true;
-      document.getElementById(e).style.backgroundColor = '#00e600';
-      document.getElementById(e).innerText = 'E';
+      document.getElementById(e).style.backgroundColor = "#00e600";
+      document.getElementById(e).innerText = "E";
       myState.endPoint = false;
-      document.getElementById('end').disabled = true;
-      document.getElementById('end').style.backgroundColor = '#CCCCCC';
-      document.getElementById('end').style.cursor = 'not-allowed';
+      document.getElementById("end").disabled = true;
+      document.getElementById("end").style.backgroundColor = "#CCCCCC";
+      document.getElementById("end").style.cursor = "not-allowed";
     }
 
     if (myState.reset) {
@@ -68,8 +68,8 @@ const GraphVisuals = () => {
     if (myState.wallPoint && editingFlag) {
       if (block.isStart === false && block.isEnd === false) {
         block.isWall = true;
-        document.getElementById(e).style.backgroundColor = 'gray';
-        document.getElementById(e).innerText = 'W';
+        document.getElementById(e).style.backgroundColor = "gray";
+        document.getElementById(e).innerText = "W";
       }
     }
   };

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-import './SortNavbar.css';
+import "./SortNavbar.css";
 
 const SortNavbar = () => {
   const myState = useSelector((state) => state.updateProps);
@@ -16,48 +16,53 @@ const SortNavbar = () => {
 
   const handleSort = (sortAlgo) => {
     dispatch({
-      type: 'UPDATE_SORTINGALGORITHM',
+      type: "UPDATE_SORTINGALGORITHM",
       sortingAlgorithm: sortAlgo,
     });
   };
 
   const handleColor = (sortColor) => {
     dispatch({
-      type: 'UPDATE_COLOR',
+      type: "UPDATE_COLOR",
       sortingColor: sortColor,
     });
   };
 
   const handleSpeed = (sortSpeed) => {
     dispatch({
-      type: 'UPDATE_SPEED',
+      type: "UPDATE_SPEED",
       sortingSpeed: sortSpeed,
     });
   };
 
-  const handleArray = (array) => {
-    setArr(array);
+  const handleArray = (e) => {
+    const value = e.target.value;
+    const filteredValue = value.replace(/[^0-9\s]/g, "");
+    setArr(filteredValue);
     let newArr = [];
-    let tokenizer = array.split(/\W+/);
+    let tokenizer = filteredValue.trim().split(/\s+/);
+
     for (let i = 0; i < tokenizer.length; i++) {
-      newArr.push([tokenizer[i], i]);
+      if (tokenizer[i]) {
+        newArr.push([tokenizer[i], i]);
+      }
     }
     dispatch({
-      type: 'UPDATE_ARRAY',
+      type: "UPDATE_ARRAY",
       arrVal: newArr,
     });
   };
 
   const handlePlayStart = () => {
-    document.getElementById('play').style.backgroundColor = '#999999';
-    document.getElementById('play').style.cursor = 'not-allowed';
-    document.getElementById('sort').style.cursor = 'not-allowed';
-    document.getElementById('color').style.cursor = 'not-allowed';
-    document.getElementById('speed').style.cursor = 'not-allowed';
-    document.getElementById('textfield').style.cursor = 'not-allowed';
+    document.getElementById("play").style.backgroundColor = "#999999";
+    document.getElementById("play").style.cursor = "not-allowed";
+    document.getElementById("sort").style.cursor = "not-allowed";
+    document.getElementById("color").style.cursor = "not-allowed";
+    document.getElementById("speed").style.cursor = "not-allowed";
+    document.getElementById("textfield").style.cursor = "not-allowed";
 
     dispatch({
-      type: 'PLAY_PAUSE',
+      type: "PLAY_PAUSE",
       sortplay: true,
     });
   };
@@ -105,35 +110,35 @@ const SortNavbar = () => {
           <MenuItem
             className="itmClass"
             value="#76afff"
-            style={{ backgroundColor: '#cefbff' }}
+            style={{ backgroundColor: "#cefbff" }}
           >
             Blue
           </MenuItem>
           <MenuItem
             className="itmClass"
             value="#51a954"
-            style={{ backgroundColor: '#deffde' }}
+            style={{ backgroundColor: "#deffde" }}
           >
             Green
           </MenuItem>
           <MenuItem
             className="itmClass"
             value="#ff7070"
-            style={{ backgroundColor: '#ffe2e7' }}
+            style={{ backgroundColor: "#ffe2e7" }}
           >
             Red
           </MenuItem>
           <MenuItem
             className="itmClass"
             value="#e4e263"
-            style={{ backgroundColor: '#ffffd1' }}
+            style={{ backgroundColor: "#ffffd1" }}
           >
             Yellow
           </MenuItem>
           <MenuItem
             className="itmClass"
             value="#6c6c6c"
-            style={{ backgroundColor: '#d4d4d4' }}
+            style={{ backgroundColor: "#d4d4d4" }}
           >
             Black
           </MenuItem>
@@ -161,14 +166,19 @@ const SortNavbar = () => {
         </Select>
       </FormControl>
 
-      <button
-        id="play"
-        className="play"
-        onClick={() => handlePlayStart()}
-        disabled={myState.sortplay}
-      >
-        PLAY
-      </button>
+      {myState.sortingAlgorithm !== "" &&
+        myState.sortingColor !== "" &&
+        myState.sortingSpeed !== "" &&
+        myState.arrVal.length > 0 && (
+          <button
+            id="play"
+            className="play"
+            onClick={() => handlePlayStart()}
+            disabled={myState.sortplay}
+          >
+            PLAY
+          </button>
+        )}
       <div>
         {/* MAX NUMBERS CAN BE ENTERED ARE 42 */}
         <h2> Enter The Values of Numbers Between 1-99 : </h2>
@@ -177,13 +187,13 @@ const SortNavbar = () => {
           data-testid="sortInput"
           type="text"
           placeholder="Enter numbers (34 64 23 73 31 78 68...)"
-          onChange={(e) => handleArray(e.target.value)}
+          onChange={(e) => handleArray(e)}
           value={arr}
           className="numVal"
           disabled={myState.sortplay}
         />
       </div>
-      {myState.sortingAlgorithm !== '' && (
+      {myState.sortingAlgorithm !== "" && (
         <button
           id="play"
           className="play"

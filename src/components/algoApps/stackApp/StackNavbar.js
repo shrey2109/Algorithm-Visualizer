@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import './StackNavbar.css';
+import "./StackNavbar.css";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -12,22 +12,22 @@ const Navbar = () => {
   const [arr, setArr] = useState([]);
 
   const handlePush = () => {
-    var num = [document.getElementById('textfield').value, ...arr];
-    document.getElementById('textfield').value = '';
+    var num = [document.getElementById("textfield").value, ...arr];
+    document.getElementById("textfield").value = "";
     setArr(num);
 
     dispatch({
-      type: 'UPDATE_ARRAY_STACK',
+      type: "UPDATE_ARRAY_STACK",
       arrValStack: num,
     });
 
     dispatch({
-      type: 'UPDATE_PUSH_STACK',
+      type: "UPDATE_PUSH_STACK",
       pushstack: true,
     });
 
     dispatch({
-      type: 'UPDATE_POP_STACK',
+      type: "UPDATE_POP_STACK",
       popstack: false,
     });
   };
@@ -36,17 +36,17 @@ const Navbar = () => {
     arr.shift();
 
     dispatch({
-      type: 'UPDATE_ARRAY_STACK',
+      type: "UPDATE_ARRAY_STACK",
       arrValStack: arr,
     });
 
     dispatch({
-      type: 'UPDATE_PUSH_STACK',
+      type: "UPDATE_PUSH_STACK",
       pushstack: false,
     });
 
     dispatch({
-      type: 'UPDATE_POP_STACK',
+      type: "UPDATE_POP_STACK",
       popstack: true,
     });
   };
@@ -55,23 +55,23 @@ const Navbar = () => {
     setArr([]);
 
     dispatch({
-      type: 'UPDATE_ARRAY_STACK',
+      type: "UPDATE_ARRAY_STACK",
       arrValStack: [],
     });
 
     dispatch({
-      type: 'UPDATE_PUSH_STACK',
+      type: "UPDATE_PUSH_STACK",
       pushstack: false,
     });
 
     dispatch({
-      type: 'UPDATE_POP_STACK',
+      type: "UPDATE_POP_STACK",
       popstack: false,
     });
   };
 
   const handleClick = () => {
-    navigate('/stack-info');
+    navigate("/stack-info");
   };
 
   return (

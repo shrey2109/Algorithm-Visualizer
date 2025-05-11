@@ -49,7 +49,7 @@
   border-right: 1px solid black;
 }
 
-input[type='text'].numVal {
+input[type="text"].numVal {
   width: 80%;
   height: 50px;
   padding: 12px 20px;
@@ -61,7 +61,7 @@ input[type='text'].numVal {
   outline: none;
   font-size: 15px;
 }
-input[type='number'].nu {
+input[type="number"].nu {
   width: 13%;
   min-width: 150px;
   height: 50px;
@@ -76,19 +76,19 @@ input[type='number'].nu {
 }
 
 @media screen and (max-width: 800px) {
-  input[type='text'].numVal {
+  input[type="text"].numVal {
     padding: 6px 10px;
   }
-  input[type='number'].nu {
+  input[type="number"].nu {
     padding: 6px 10px;
   }
 }
 
-input[type='text']:focus {
+input[type="text"]:focus {
   border: 2px solid #555;
   background-color: rgba(230, 230, 230, 0.493);
 }
 
-input[type='text']:hover {
+input[type="text"]:hover {
   box-shadow: 3px 3px 7px -1px rgb(86, 86, 86);
 }

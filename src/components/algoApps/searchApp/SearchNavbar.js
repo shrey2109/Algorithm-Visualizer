@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-import './SearchNavbar.css';
+import "./SearchNavbar.css";
 
 const SearchNavbar = () => {
   const myState = useSelector((state) => state.updateProps);
@@ -17,21 +17,21 @@ const SearchNavbar = () => {
 
   const handleSearch = (searchAlgo) => {
     dispatch({
-      type: 'UPDATE_SEARCHINGALGORITHM',
+      type: "UPDATE_SEARCHINGALGORITHM",
       searchingAlgorithm: searchAlgo,
     });
   };
 
   const handleColor = (searchColor) => {
     dispatch({
-      type: 'UPDATE_SEARCHINGCOLOR',
+      type: "UPDATE_SEARCHINGCOLOR",
       searchingColor: searchColor,
     });
   };
 
   const handleSpeed = (searchSpeed) => {
     dispatch({
-      type: 'UPDATE_SEARCHINGSPEED',
+      type: "UPDATE_SEARCHINGSPEED",
       searchingSpeed: searchSpeed,
     });
   };
@@ -40,39 +40,43 @@ const SearchNavbar = () => {
     var n = no;
     setNum(n);
     dispatch({
-      type: 'UPDATE_NUM',
+      type: "UPDATE_NUM",
       searchVal: n,
     });
   };
 
-  const handleArray = (array) => {
-    setArr(array);
+  const handleArray = (e) => {
+    const value = e.target.value;
+    const filteredValue = value.replace(/[^0-9\s]/g, "");
+    setArr(filteredValue);
     let newArr = [];
-    let tokenizer = array.split(/\W+/);
-    if (myState.searchingAlgorithm === 'binary') {
+    let tokenizer = filteredValue.trim().split(/\s+/);
+
+    if (myState.searchingAlgorithm === "binary") {
       tokenizer.sort();
     }
     for (let i = 0; i < tokenizer.length; i++) {
-      newArr.push([tokenizer[i], i]);
+      if (tokenizer[i]) {
+        newArr.push([tokenizer[i], i]);
+      }
     }
-    // myState.arrVal = newArr;
     dispatch({
-      type: 'UPDATE_SEARCH_ARRAY',
+      type: "UPDATE_SEARCH_ARRAY",
       arrValSearch: newArr,
     });
   };
 
   const handlePlayPause = () => {
-    document.getElementById('play').style.backgroundColor = '#999999';
-    document.getElementById('play').style.cursor = 'not-allowed';
-    document.getElementById('search').style.cursor = 'not-allowed';
-    document.getElementById('color').style.cursor = 'not-allowed';
-    document.getElementById('speed').style.cursor = 'not-allowed';
-    document.getElementById('textfield').style.cursor = 'not-allowed';
-    document.getElementById('tf').style.cursor = 'not-allowed';
+    document.getElementById("play").style.backgroundColor = "#999999";
+    document.getElementById("play").style.cursor = "not-allowed";
+    document.getElementById("search").style.cursor = "not-allowed";
+    document.getElementById("color").style.cursor = "not-allowed";
+    document.getElementById("speed").style.cursor = "not-allowed";
+    document.getElementById("textfield").style.cursor = "not-allowed";
+    document.getElementById("tf").style.cursor = "not-allowed";
 
     dispatch({
-      type: 'PLAY',
+      type: "PLAY",
       searchplay: true,
     });
   };
@@ -113,35 +117,35 @@ const SearchNavbar = () => {
           <MenuItem
             className="itmClass"
             value="#76afff"
-            style={{ backgroundColor: '#cefbff' }}
+            style={{ backgroundColor: "#cefbff" }}
           >
             Blue
           </MenuItem>
           <MenuItem
             className="itmClass"
             value="#51a954"
-            style={{ backgroundColor: '#deffde' }}
+            style={{ backgroundColor: "#deffde" }}
           >
             Green
           </MenuItem>
           <MenuItem
             className="itmClass"
             value="#ff7070"
-            style={{ backgroundColor: '#ffe2e7' }}
+            style={{ backgroundColor: "#ffe2e7" }}
           >
             Red
           </MenuItem>
           <MenuItem
             className="itmClass"
             value="#e4e263"
-            style={{ backgroundColor: '#ffffd1' }}
+            style={{ backgroundColor: "#ffffd1" }}
           >
             Yellow
           </MenuItem>
           <MenuItem
             className="itmClass"
             value="#6c6c6c"
-            style={{ backgroundColor: '#d4d4d4' }}
+            style={{ backgroundColor: "#d4d4d4" }}
           >
             Black
           </MenuItem>
@@ -169,9 +173,14 @@ const SearchNavbar = () => {
         </Select>
       </FormControl>
 
-      <button id="play" className="play" onClick={() => handlePlayPause()}>
-        PLAY
-      </button>
+      {myState.searchingAlgorithm !== "" &&
+        myState.searchingColor !== "" &&
+        myState.searchingSpeed !== "" &&
+        myState.arrValSearch.length > 0 && (
+          <button id="play" className="play" onClick={() => handlePlayPause()}>
+            PLAY
+          </button>
+        )}
 
       <div>
         {/* MAX NUMBERS CAN BE ENTERED ARE 42 */}
@@ -181,7 +190,7 @@ const SearchNavbar = () => {
           data-testid="searchInput"
           type="text"
           placeholder="Enter numbers (34 64 23 73 31 78 68...)"
-          onChange={(e) => handleArray(e.target.value)}
+          onChange={(e) => handleArray(e)}
           value={arr}
           className="numVal"
           disabled={myState.searchplay}
@@ -200,7 +209,7 @@ const SearchNavbar = () => {
           disabled={myState.searchplay}
         />
       </div>
-      {myState.searchingAlgorithm !== '' && (
+      {myState.searchingAlgorithm !== "" && (
         <button id="play" className="play" onClick={() => handleClick()}>
           {`LEARN MORE ABOUT ${myState.searchingAlgorithm.toUpperCase()} SEARCH`}
         </button>

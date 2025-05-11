@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-import './GraphNavbar.css';
+import "./GraphNavbar.css";
 
 const GraphNavbar = () => {
   const myState = useSelector((state) => state.updateProps);
@@ -33,7 +33,7 @@ const GraphNavbar = () => {
     }
 
     dispatch({
-      type: 'UPDATE_MAP',
+      type: "UPDATE_MAP",
       map: grid,
     });
   };
@@ -44,7 +44,7 @@ const GraphNavbar = () => {
       return;
     }
     dispatch({
-      type: 'START',
+      type: "START",
       startPoint: true,
     });
   };
@@ -55,7 +55,7 @@ const GraphNavbar = () => {
       return;
     }
     dispatch({
-      type: 'END',
+      type: "END",
       endPoint: true,
     });
   };
@@ -66,27 +66,27 @@ const GraphNavbar = () => {
       return;
     }
     dispatch({
-      type: 'WALL',
+      type: "WALL",
       wallPoint: true,
     });
   };
 
   const handlePlay = () => {
-    const btnElm = document.getElementsByClassName('btn');
+    const btnElm = document.getElementsByClassName("btn");
     [...btnElm].forEach((element) => {
-      element.style.backgroundColor = '#999999';
-      element.style.cursor = 'not-allowed';
+      element.style.backgroundColor = "#999999";
+      element.style.cursor = "not-allowed";
     });
 
     dispatch({
-      type: 'PLAY_PAUSE_GRAPH',
+      type: "PLAY_PAUSE_GRAPH",
       graphplay: true,
     });
   };
 
   const handleAlgo = (graphAlgo) => {
     dispatch({
-      type: 'UPDATE_GRAPHALGORITHM',
+      type: "UPDATE_GRAPHALGORITHM",
       graphAlgorithm: graphAlgo,
     });
   };
@@ -126,7 +126,7 @@ const GraphNavbar = () => {
         onClick={() => handleStart(true)}
         disabled={myState.graphplay}
       >
-        START
+        START NODE
       </button>
 
       <button
@@ -135,7 +135,7 @@ const GraphNavbar = () => {
         onClick={() => handleEnd(true)}
         disabled={myState.graphplay}
       >
-        END
+        END NODE
       </button>
 
       <button
@@ -144,19 +144,23 @@ const GraphNavbar = () => {
         onClick={() => handleWall(true)}
         disabled={myState.graphplay}
       >
-        WALL
+        WALL NODES
       </button>
 
-      <button
-        id="play"
-        className="btn"
-        onClick={() => handlePlay()}
-        disabled={myState.graphplay}
-      >
-        PLAY
-      </button>
+      {myState.graphAlgorithm !== "" &&
+        document.getElementById("start").disabled &&
+        document.getElementById("start").disabled && (
+          <button
+            id="play"
+            className="btn"
+            onClick={() => handlePlay()}
+            disabled={myState.graphplay}
+          >
+            PLAY
+          </button>
+        )}
 
-      {myState.graphAlgorithm !== '' && (
+      {myState.graphAlgorithm !== "" && (
         <button
           id="play"
           className="play"
