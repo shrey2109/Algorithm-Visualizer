@@ -9,13 +9,13 @@
 .play {
   background: rgb(223, 231, 255);
   color: #1e3a8a;
-  border: 1px solid rgba(199, 210, 254);
-  padding: 12px 30px;
+  border: 1px solid rgb(77, 97, 178);
+  padding: 12px 24px;
   font-size: 16px;
   font-weight: 500;
   border-radius: 12px;
   cursor: pointer;
-  margin: 12px 18px;
+  margin: 16px 15px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
@@ -25,6 +25,21 @@
   color: #111827;
   box-shadow: 0 6px 16px rgba(30, 58, 138, 0.2);
   transform: scale(1.03);
+}
+
+@media (max-width: 450px) {
+  .play {
+    text-align: center;
+    padding: 12px;
+    font-size: 15px;
+    margin: 5px 5px;
+  }
+}
+
+@media (max-width: 300px) {
+  .play {
+    width: 90%;
+  }
 }
 
 input[type="text"].numVal {

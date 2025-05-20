@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import './HomeScreen.css';
+import "./HomeScreen.css";
 
-import TopicCard from './TopicCard';
+import TopicCard from "./TopicCard";
 
 const HomeScreen = () => {
   const navigate = useNavigate();
@@ -12,30 +12,52 @@ const HomeScreen = () => {
 
   useEffect(() => {
     dispatch({
-      type: 'RESET_STATE',
+      type: "RESET_STATE",
     });
   }, []);
 
   const sortApp = () => {
-    navigate('/sort');
+    navigate("/sort");
   };
   const graphApp = () => {
-    navigate('/graph');
+    navigate("/graph");
   };
   const searchApp = () => {
-    navigate('/search');
+    navigate("/search");
   };
   const stackApp = () => {
-    navigate('/stack');
+    navigate("/stack");
   };
   const queueApp = () => {
-    navigate('/queue');
+    navigate("/queue");
   };
 
   return (
     <>
       <div className="mainContainer">
-        <h1> ALGO CANVAS </h1>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <h1
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
+              fontWeight: 700,
+              color: "#ffffff",
+              background: "rgba(255, 255, 255, 0.05)",
+              borderRadius: "16px",
+              padding: "0.6rem 3rem",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+              textAlign: "center",
+              textTransform: "uppercase",
+              textShadow: "0px 4px 12px rgba(0, 0, 0, 0.4)",
+              letterSpacing: "2px",
+              display: "inline-block",
+              marginTop: "0.5rem",
+            }}
+          >
+            ALGO CANVAS
+          </h1>
+        </div>
         <div className="cardContainer">
           <TopicCard
             onClick={sortApp}

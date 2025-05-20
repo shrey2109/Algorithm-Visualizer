@@ -12,6 +12,7 @@ const Navbar = () => {
   const [arr, setArr] = useState([]);
 
   const handlePush = () => {
+    if (!document.getElementById("textfield").value) return;
     var num = [document.getElementById("textfield").value, ...arr];
     document.getElementById("textfield").value = "";
     setArr(num);
@@ -33,6 +34,7 @@ const Navbar = () => {
   };
 
   const handlePop = () => {
+    if (arr.length === 0) return;
     arr.shift();
 
     dispatch({
@@ -52,6 +54,7 @@ const Navbar = () => {
   };
 
   const handlePopAll = () => {
+    if (arr.length === 0) return;
     setArr([]);
 
     dispatch({

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import './QueueNavbar.css';
+import "./QueueNavbar.css";
 
 const QueueNavbar = () => {
   const dispatch = useDispatch();
@@ -11,65 +11,68 @@ const QueueNavbar = () => {
   const navigate = useNavigate();
 
   const handlePush = () => {
-    var num = [...arr, document.getElementById('textfield').value];
-    document.getElementById('textfield').value = '';
+    if (!document.getElementById("textfield").value) return;
+    var num = [...arr, document.getElementById("textfield").value];
+    document.getElementById("textfield").value = "";
     setArr(num);
 
     dispatch({
-      type: 'UPDATE_ARRAY_QUEUE',
+      type: "UPDATE_ARRAY_QUEUE",
       arrValQueue: num,
     });
 
     dispatch({
-      type: 'UPDATE_PUSH_QUEUE',
+      type: "UPDATE_PUSH_QUEUE",
       pushqueue: true,
     });
 
     dispatch({
-      type: 'UPDATE_POP_QUEUE',
+      type: "UPDATE_POP_QUEUE",
       popqueue: false,
     });
   };
 
   const handlePop = () => {
+    if (arr.length === 0) return;
     arr.shift();
 
     dispatch({
-      type: 'UPDATE_ARRAY_QUEUE',
+      type: "UPDATE_ARRAY_QUEUE",
       arrValQueue: arr,
     });
 
     dispatch({
-      type: 'UPDATE_PUSH_QUEUE',
+      type: "UPDATE_PUSH_QUEUE",
       pushqueue: false,
     });
 
     dispatch({
-      type: 'UPDATE_POP_QUEUE',
+      type: "UPDATE_POP_QUEUE",
       popqueue: true,
     });
   };
 
   const handlePopAll = () => {
+    if (arr.length === 0) return;
     setArr([]);
 
     dispatch({
-      type: 'UPDATE_ARRAY_QUEUE',
+      type: "UPDATE_ARRAY_QUEUE",
       arrValQueue: [],
     });
 
     dispatch({
-      type: 'UPDATE_PUSH_QUEUE',
+      type: "UPDATE_PUSH_QUEUE",
       pushqueue: false,
     });
 
     dispatch({
-      type: 'UPDATE_POP_QUEUE',
+      type: "UPDATE_POP_QUEUE",
       popqueue: false,
     });
   };
   const handleClick = () => {
-    navigate('/queue-info');
+    navigate("/queue-info");
   };
   return (
     <div className="navDiv">
