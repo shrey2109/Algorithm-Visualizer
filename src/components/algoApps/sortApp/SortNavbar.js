@@ -74,7 +74,12 @@ const SortNavbar = () => {
   return (
     <div className="navDiv">
       <FormControl variant="filled" sx={{ m: 1, minWidth: 190 }}>
-        <InputLabel>Sorting Algorithm</InputLabel>
+        <InputLabel>
+          Sorting Algorithm
+          <span style={{ color: "red", position: "relative", top: "-0.2em" }}>
+            *
+          </span>
+        </InputLabel>
         <Select
           className="menuClass"
           id="sort"
@@ -99,7 +104,12 @@ const SortNavbar = () => {
       </FormControl>
 
       <FormControl variant="filled" sx={{ m: 1, minWidth: 140 }}>
-        <InputLabel>Color</InputLabel>
+        <InputLabel>
+          Color
+          <span style={{ color: "red", position: "relative", top: "-0.2em" }}>
+            *
+          </span>
+        </InputLabel>
         <Select
           className="menuClass"
           id="color"
@@ -181,7 +191,14 @@ const SortNavbar = () => {
         )}
       <div>
         {/* MAX NUMBERS CAN BE ENTERED ARE 42 */}
-        <h2> Enter The Values of Numbers Between 1-99 : </h2>
+        <h2>
+          {" "}
+          Enter The Values of Numbers Between 1-99
+          <span style={{ color: "red", position: "relative", top: "-0.2em" }}>
+            *
+          </span>
+          :
+        </h2>
         <input
           id="textfield"
           data-testid="sortInput"

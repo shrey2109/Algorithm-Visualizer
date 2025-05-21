@@ -101,7 +101,12 @@ const GraphNavbar = () => {
   return (
     <div className="navDiv">
       <FormControl variant="filled" sx={{ m: 1, minWidth: 190 }}>
-        <InputLabel>Graph Algorithm</InputLabel>
+        <InputLabel>
+          Graph Algorithm
+          <span style={{ color: "red", position: "relative", top: "-0.2em" }}>
+            *
+          </span>
+        </InputLabel>
         <Select
           className="menuClass"
           id="graph"
@@ -127,6 +132,9 @@ const GraphNavbar = () => {
         disabled={myState.graphplay}
       >
         START NODE
+        <span style={{ color: "red", position: "relative", top: "-0.2em" }}>
+          *
+        </span>
       </button>
 
       <button
@@ -136,6 +144,9 @@ const GraphNavbar = () => {
         disabled={myState.graphplay}
       >
         END NODE
+        <span style={{ color: "red", position: "relative", top: "-0.2em" }}>
+          *
+        </span>
       </button>
 
       <button

@@ -88,7 +88,12 @@ const SearchNavbar = () => {
   return (
     <div className="navDiv">
       <FormControl variant="filled" sx={{ m: 1, minWidth: 190 }}>
-        <InputLabel>Searching Algorithm</InputLabel>
+        <InputLabel>
+          Searching Algorithm
+          <span style={{ color: "red", position: "relative", top: "-0.2em" }}>
+            *
+          </span>
+        </InputLabel>
         <Select
           className="menuClass"
           id="search"
@@ -106,7 +111,12 @@ const SearchNavbar = () => {
       </FormControl>
 
       <FormControl variant="filled" sx={{ m: 1, minWidth: 140 }}>
-        <InputLabel>Color</InputLabel>
+        <InputLabel>
+          Color
+          <span style={{ color: "red", position: "relative", top: "-0.2em" }}>
+            *
+          </span>
+        </InputLabel>
         <Select
           className="menuClass"
           id="color"
@@ -184,7 +194,14 @@ const SearchNavbar = () => {
 
       <div>
         {/* MAX NUMBERS CAN BE ENTERED ARE 42 */}
-        <h2> Enter The Values of Numbers Between 1-99 : </h2>
+        <h2>
+          {" "}
+          Enter The Values of Numbers Between 1-99
+          <span style={{ color: "red", position: "relative", top: "-0.2em" }}>
+            *
+          </span>
+          :
+        </h2>
         <input
           id="textfield"
           data-testid="searchInput"
@@ -198,7 +215,14 @@ const SearchNavbar = () => {
       </div>
       <div>
         {/* MAX NUMBERS CAN BE ENTERED ARE 42 */}
-        <h2> Enter The Number You Want To Search : </h2>
+        <h2>
+          {" "}
+          Enter The Number You Want To Search
+          <span style={{ color: "red", position: "relative", top: "-0.2em" }}>
+            *
+          </span>
+          :
+        </h2>
         <input
           id="tf"
           type="number"
