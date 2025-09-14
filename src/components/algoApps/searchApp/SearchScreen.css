@@ -1,5 +1,5 @@
 .searchAppScreen {
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   background: rgb(141, 128, 254);
   background-image: linear-gradient(
     to bottom right,
@@ -7,5 +7,5 @@
     rgb(168, 255, 124)
   );
   padding: 5px;
-  height: 100%;
+  height: 100vh;
 }
