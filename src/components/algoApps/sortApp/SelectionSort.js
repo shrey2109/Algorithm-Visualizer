@@ -63,13 +63,14 @@ const SelectionSort = () => {
         solve();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [myState.sortplay]);
 
   return (
     <>
       <div id="codePart1">
         <div id="findSmall">
-          <p> //FINDING SMALLEST NUM FROM REMAINIG ARRAY</p>
+          <p> {'//FINDING SMALLEST NUM FROM REMAINIG ARRAY'}</p>
           <p>int mini = i; </p>
           <p>for (int j = i + 1; j &lt; n; j++)</p>
           <p style={{ marginLeft: '30px' }}>if (arr[j] &lt; arr[mini]) </p>

@@ -84,6 +84,7 @@ const MergeSort = () => {
         solve();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [myState.sortplay]);
 
   return (

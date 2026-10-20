@@ -109,6 +109,7 @@ const QuickSort = () => {
     if (myState.sortingAlgorithm === 'quick') {
       if (myState.sortplay) solve();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [myState.sortplay]);
 
   return (

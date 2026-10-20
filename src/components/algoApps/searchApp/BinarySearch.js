@@ -173,6 +173,7 @@ const BinarySearch = () => {
         solve();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [myState.searchplay]);
 
   return (

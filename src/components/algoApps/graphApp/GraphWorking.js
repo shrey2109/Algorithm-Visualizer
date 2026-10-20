@@ -23,8 +23,8 @@ const GraphWorking = () => {
       prevmap[hash(i, j)] = null;
     }
   }
-  grid.map((row) => {
-    row.map((block) => {
+  grid.forEach((row) => {
+    row.forEach((block) => {
       if (block.isStart === true) {
         start = block;
       }
