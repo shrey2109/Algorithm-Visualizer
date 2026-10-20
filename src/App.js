@@ -17,34 +17,41 @@ import LinearInfo from './components/algoApps/searchApp/LinearInfo';
 import BinaryInfo from './components/algoApps/searchApp/BinaryInfo';
 import BFSInfo from './components/algoApps/graphApp/BFSInfo';
 import DFSInfo from './components/algoApps/graphApp/DFSInfo';
+import AppNavbar from './components/layout/AppNavbar';
+import { ThemeProvider } from './context/ThemeContext';
 
 import './App.css';
 
 const App = () => {
   return (
-    <>
+    <ThemeProvider>
       <Router>
-        <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/sort" element={<SortScreen />} />
-          <Route path="/bubble-info" element={<BubbleInfo />} />
-          <Route path="/insertion-info" element={<InsertionInfo />} />
-          <Route path="/selection-info" element={<SelectionInfo />} />
-          <Route path="/merge-info" element={<MergeInfo />} />
-          <Route path="/quick-info" element={<QuickInfo />} />
-          <Route path="/graph" element={<GraphScreen />} />
-          <Route path="/bfs-info" element={<BFSInfo />} />
-          <Route path="/dfs-info" element={<DFSInfo />} />
-          <Route path="/search" element={<SearchScreen />} />
-          <Route path="/linear-info" element={<LinearInfo />} />
-          <Route path="/binary-info" element={<BinaryInfo />} />
-          <Route path="/stack" element={<StackScreen />} />
-          <Route path="/stack-info" element={<StackInfo />} />
-          <Route path="/queue" element={<QueueScreen />} />
-          <Route path="/queue-info" element={<QueueInfo />} />
-        </Routes>
+        <div className="app-root-container">
+          <AppNavbar />
+          <main className="app-route-body">
+            <Routes>
+              <Route path="/" element={<HomeScreen />} />
+              <Route path="/sort" element={<SortScreen />} />
+              <Route path="/bubble-info" element={<BubbleInfo />} />
+              <Route path="/insertion-info" element={<InsertionInfo />} />
+              <Route path="/selection-info" element={<SelectionInfo />} />
+              <Route path="/merge-info" element={<MergeInfo />} />
+              <Route path="/quick-info" element={<QuickInfo />} />
+              <Route path="/graph" element={<GraphScreen />} />
+              <Route path="/bfs-info" element={<BFSInfo />} />
+              <Route path="/dfs-info" element={<DFSInfo />} />
+              <Route path="/search" element={<SearchScreen />} />
+              <Route path="/linear-info" element={<LinearInfo />} />
+              <Route path="/binary-info" element={<BinaryInfo />} />
+              <Route path="/stack" element={<StackScreen />} />
+              <Route path="/stack-info" element={<StackInfo />} />
+              <Route path="/queue" element={<QueueScreen />} />
+              <Route path="/queue-info" element={<QueueInfo />} />
+            </Routes>
+          </main>
+        </div>
       </Router>
-    </>
+    </ThemeProvider>
   );
 };
 

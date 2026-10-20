@@ -1,61 +1,145 @@
 import React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
-import './Info.css';
+import AlgorithmDocPage from '../../common/AlgorithmDocPage';
 
 const DFSInfo = () => {
-  const Phase1 = `
-      Depth First Traversal (or Search) for a graph is similar to Depth First Traversal of a tree.
-      The only catch here is, that, unlike trees, graphs may contain cycles (a node may be visited twice).
-      To avoid processing a node more than once, use a boolean visited array.
-      A graph can have more than one DFS traversal.
-      
-      
-      Input: n = 4, e = 6 
-        0 -> 1, 0 -> 2, 1 -> 2, 2 -> 0, 2 -> 3, 3 -> 3 
-      Output: DFS from vertex 1 : 1 2 0 3 `;
+  const cppCode = `void dfs(int node, vector<int> adj[], vector<bool> &visited, vector<int> &result) {
+    visited[node] = true;
+    result.push_back(node);
 
-  const Phase2 = `
-    Advantages of Depth First Search:
-       Memory requirement is only linear with respect to the search graph.
-       This is in contrast with breadth-first search which requires more space. 
-       The reason is that the algorithm only needs to store a stack of nodes on the path from the root to the current node.
-       The time complexity of a depth-first Search to depth d is O(bd) since it generates the same set of nodes as 
-       breadth-first search, but simply in a different order.
-       Thus practically depth-first search is time-limited rather than space-limited.
-       If depth-first search finds solution without exploring much in a path then the time and space it takes will be very less.
-       DFS requires less memory since only the nodes on the current path are stored.
-       By chance DFS may find a solution without examining much of the search space at all.
-    
-    
-   Disadvantages of Depth First Search:
-       The disadvantage of Depth-First Search is that there is a possibility that it may down the left-most path forever.
-       Even a finite graph can generate an infinite tre One solution to this problem is to impose a cutoff depth on the search. 
-       Although ideal cutoff is the solution depth d and this value is rarely known in advance of actually solving the problem.
-       If the chosen cutoff depth is less than d, the algorithm will fail to find a solution,
-        whereas if the cutoff depth is greater than d, a large price is paid in execution time, 
-        and the first solution found may not be an optimal one.
-       Depth-First Search is not guaranteed to find the solution.
-       And there is no guarantee to find a minimal solution, if more than one solution.`;
+    for (int neighbor : adj[node]) {
+        if (!visited[neighbor]) {
+            dfs(neighbor, adj, visited, result);
+        }
+    }
+}
+
+vector<int> dfsOfGraph(int V, vector<int> adj[], int startNode = 0) {
+    vector<bool> visited(V, false);
+    vector<int> result;
+    dfs(startNode, adj, visited, result);
+    return result;
+}`;
+
+  const javaCode = `private void dfs(int node, boolean vis[], ArrayList<ArrayList<Integer>> adj, ArrayList<Integer> result) {
+    vis[node] = true;
+    result.add(node);
+
+    for (Integer neighbor : adj.get(node)) {
+        if (!vis[neighbor]) {
+            dfs(neighbor, vis, adj, result);
+        }
+    }
+}
+
+public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
+    boolean vis[] = new boolean[V];
+    ArrayList<Integer> result = new ArrayList<>();
+    dfs(0, vis, adj, result);
+    return result;
+}`;
+
+  const pythonCode = `def dfs_of_graph(V, adj, start_node=0):
+    visited = [False] * V
+    result = []
+
+    def dfs(node):
+        visited[node] = True
+        result.append(node)
+        for neighbor in adj[node]:
+            if not visited[neighbor]:
+                dfs(neighbor)
+
+    dfs(start_node)
+    return result`;
 
   return (
-    <>
-      <div
-        className="dfsinfo"
-        style={{ display: 'grid', justifyContent: 'space-around' }}
-      >
-        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
-
-        <img
-          className="img1"
-          src="https://media.geeksforgeeks.org/wp-content/uploads/20200507074112/ezgif.com-gif-maker61.gif"
-          alt="not Found"
-        />
-
-        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
-      </div>
-    </>
+    <AlgorithmDocPage
+      customClass="dfsinfo"
+      category="Graph Traversal"
+      title="Depth-First Search"
+      subtitle="An exploratory graph traversal algorithm that plunges as deep as possible along each branch before backtracking, utilizing recursion or an explicit stack."
+      backLink="/graph"
+      backLabel="Back to Graph Visualizer"
+      complexity={{
+        bestTime: 'O(V + E)',
+        bestNote: 'Traverses each vertex once and each edge twice (in undirected graph)',
+        avgTime: 'O(V + E)',
+        avgNote: 'Proportional to sum of vertices and edges',
+        worstTime: 'O(V + E)',
+        worstNote: 'Explores all nodes and edges in the connected component',
+        space: 'O(V)',
+        spaceNote: 'Recursion stack depth reaches up to O(V) in degenerate graphs (e.g. linked line)',
+      }}
+      properties={[
+        { label: 'Data Structure', value: 'Recursion Call Stack / LIFO Stack' },
+        { label: 'Technique', value: 'Backtracking' },
+        { label: 'Traversal Style', value: 'Deepest Branch First' },
+        { label: 'Cycle Detection', value: 'Back-edge detection in directed/undirected graphs' },
+      ]}
+      steps={[
+        {
+          num: 1,
+          title: 'Mark and Visit Starting Node',
+          desc: 'Mark the initial node as visited and record it in the traversal path.',
+        },
+        {
+          num: 2,
+          title: 'Explore First Unvisited Neighbor',
+          desc: 'Inspect the current node’s adjacency list. Upon identifying an unvisited neighbor, immediately descend into it recursively without inspecting other neighbors.',
+        },
+        {
+          num: 3,
+          title: 'Hit Dead End & Backtrack',
+          desc: 'When a node has no remaining unvisited neighbors (a leaf or dead-end), backtrack up the call stack to the previous node and continue exploring remaining branches.',
+        },
+        {
+          num: 4,
+          title: 'Exhaust Call Stack',
+          desc: 'Continue the recursive descent and backtracking until the entire reachable connected component has been fully explored.',
+        },
+      ]}
+      walkthrough={{
+        title: 'Walkthrough: Graph with Edges 0-2, 2-4, 0-1, 0-3 (Start at Node 0)',
+        passes: [
+          {
+            pass: 'Step 1 (Visit 0)',
+            detail: 'Start at node 0. Mark visited. Result: [0]. First neighbor is 2.',
+          },
+          {
+            pass: 'Step 2 (Visit 2)',
+            detail: 'Descend to node 2. Mark visited. Result: [0, 2]. Neighbor of 2 is 4.',
+          },
+          {
+            pass: 'Step 3 (Visit 4 & Backtrack)',
+            detail: 'Descend to node 4. Mark visited. Result: [0, 2, 4]. Node 4 has no unvisited neighbors. Backtrack to 2, then backtrack to 0.',
+          },
+          {
+            pass: 'Step 4 (Explore 1 and 3)',
+            detail: 'From node 0, next neighbor is 1. Visit 1: [0, 2, 4, 1]. Backtrack to 0. Visit 3: [0, 2, 4, 1, 3]. Complete!',
+          },
+        ],
+      }}
+      code={{
+        cpp: cppCode,
+        java: javaCode,
+        python: pythonCode,
+      }}
+      advantages={[
+        'Low Memory: requires significantly less memory than BFS when the tree is broad (O(h) vs O(b^d), where h is height).',
+        'Natural for Backtracking: ideal for games, puzzle solving (Sudoku, N-Queens), and maze navigation.',
+        'Foundation for advanced topological sorting and Strongly Connected Components (Tarjan / Kosaraju).',
+      ]}
+      disadvantages={[
+        'Not guaranteed to find the shortest path in unweighted graphs.',
+        'Can get trapped in deep or infinite paths without depth bounding (IDDFS).',
+        'Deep recursion can trigger Call Stack Overflow on very large linear graphs.',
+      ]}
+      applications={[
+        'Topological sorting in build systems and task scheduling (e.g., Make, Webpack module dependency graph).',
+        'Detecting cycles in directed graphs (e.g., deadlock detection in operating systems).',
+        'Solving mazes and finding paths through combinatorial constraint puzzles.',
+      ]}
+    />
   );
 };
 

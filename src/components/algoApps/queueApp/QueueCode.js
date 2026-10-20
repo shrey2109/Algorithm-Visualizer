@@ -1,406 +1,128 @@
-import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import React from 'react';
+import AlgorithmDetails from '../../common/AlgorithmDetails';
 
 const QueueCode = () => {
-  const [codeTabWidth, setCodeTabWidth] = useState('');
-
-  const CppCode = `
-// C++ program to implement a queue using an array
-#include <bits/stdc++.h>
+  const CppCode = `#include <iostream>
 using namespace std;
 
-struct Queue {
-	int front, rear, capacity;
-	int* queue;
-	Queue(int c)
-	{
-		front = rear = 0;
-		capacity = c;
-		queue = new int;
-	}
-
-	~Queue() { delete[] queue; }
-
-	// function to insert an element
-	// at the rear of the queue
-	void queueEnqueue(int data)
-	{
-		// check queue is full or not
-		if (capacity == rear) {
-			printf("Queue is full");
-			return;
-		}
-
-		// insert element at the rear
-		else {
-			queue[rear] = data;
-			rear++;
-		}
-		return;
-	}
-
-	// function to delete an element
-	// from the front of the queue
-	void queueDequeue()
-	{
-		// if queue is empty
-		if (front == rear) {
-			printf("Queue is empty");
-			return;
-		}
-
-		// shift all the elements from index 2 till rear
-		// to the left by one
-		else {
-			for (int i = 0; i < rear - 1; i++) {
-				queue[i] = queue[i + 1];
-			}
-
-			// decrement rear
-			rear--;
-		}
-		return;
-	}
-
-	// print queue elements
-	void queueDisplay()
-	{
-		int i;
-		if (front == rear) {
-			printf("Queue is Empty");
-			return;
-		}
-
-		// traverse front to rear and print elements
-		for (i = front; i < rear; i++) {
-			printf(" %d ", queue[i]);
-		}
-		return;
-	}
-
-	// print front of queue
-	void queueFront()
-	{
-		if (front == rear) {
-			printf("Queue is Empty");
-			return;
-		}
-		printf("Front Element is: %d", queue[front]);
-		return;
-	}
-};
-
-// Driver code
-int main(void)
-{
-	// Create a queue of capacity 4
-	Queue q(4);
-
-	// print Queue elements
-	q.queueDisplay();
-
-	// inserting elements in the queue
-	q.queueEnqueue(20);
-	q.queueEnqueue(30);
-	q.queueEnqueue(40);
-	q.queueEnqueue(50);
-
-	// print Queue elements
-	q.queueDisplay();
-
-	// insert element in the queue
-	q.queueEnqueue(60);
-
-	// print Queue elements
-	q.queueDisplay();
-
-	q.queueDequeue();
-	q.queueDequeue();
-
-	printf("after two node deletion");
-
-	// print Queue elements
-	q.queueDisplay();
-
-	// print front of the queue
-	q.queueFront();
-
-	return 0;
-}
-  `;
-
-  const JavaCode = `
-  // Java program to implement a queue using an array
 class Queue {
-	static private int front, rear, capacity;
-	static private int queue[];
+    int front, rear, capacity;
+    int* queue;
+public:
+    Queue(int c) {
+        front = rear = 0;
+        capacity = c;
+        queue = new int[c];
+    }
+    ~Queue() { delete[] queue; }
 
-	Queue(int c)
-	{
-		front = rear = 0;
-		capacity = c;
-		queue = new int[capacity];
-	}
+    bool enqueue(int data) {
+        if (capacity == rear) {
+            cout << "Queue is full\\n";
+            return false;
+        }
+        queue[rear++] = data;
+        return true;
+    }
 
-	// function to insert an element
-	// at the rear of the queue
-	static void queueEnqueue(int data)
-	{
-		// check queue is full or not
-		if (capacity == rear) {
-			System.out.printf("Queue is full");
-			return;
-		}
+    int dequeue() {
+        if (front == rear) {
+            cout << "Queue is empty\\n";
+            return -1;
+        }
+        int data = queue[front];
+        for (int i = 0; i < rear - 1; i++) {
+            queue[i] = queue[i + 1];
+        }
+        rear--;
+        return data;
+    }
 
-		// insert element at the rear
-		else {
-			queue[rear] = data;
-			rear++;
-		}
-		return;
-	}
+    int getFront() {
+        if (front == rear) return -1;
+        return queue[front];
+    }
+};`;
 
-	// function to delete an element
-	// from the front of the queue
-	static void queueDequeue()
-	{
-		// if queue is empty
-		if (front == rear) {
-			System.out.printf("Queue is empty");
-			return;
-		}
+  const JavaCode = `class Queue {
+    private int front, rear, capacity;
+    private int[] queue;
 
-		// shift all the elements from index 2 till rear
-		// to the right by one
-		else {
-			for (int i = 0; i < rear - 1; i++) {
-				queue[i] = queue[i + 1];
-			}
+    Queue(int c) {
+        front = rear = 0;
+        capacity = c;
+        queue = new int[c];
+    }
 
-			// store 0 at rear indicating there's no element
-			if (rear < capacity)
-				queue[rear] = 0;
+    boolean enqueue(int data) {
+        if (capacity == rear) {
+            System.out.println("Queue is full");
+            return false;
+        }
+        queue[rear++] = data;
+        return true;
+    }
 
-			// decrement rear
-			rear--;
-		}
-		return;
-	}
+    int dequeue() {
+        if (front == rear) {
+            System.out.println("Queue is empty");
+            return -1;
+        }
+        int data = queue[front];
+        for (int i = 0; i < rear - 1; i++) {
+            queue[i] = queue[i + 1];
+        }
+        rear--;
+        return data;
+    }
 
-	// print queue elements
-	static void queueDisplay()
-	{
-		int i;
-		if (front == rear) {
-			System.out.printf("Queue is Empty");
-			return;
-		}
+    int getFront() {
+        if (front == rear) return -1;
+        return queue[front];
+    }
+}`;
 
-		// traverse front to rear and print elements
-		for (i = front; i < rear; i++) {
-			System.out.printf(" %d ", queue[i]);
-		}
-		return;
-	}
+  const PythonCode = `from collections import deque
 
-	// print front of queue
-	static void queueFront()
-	{
-		if (front == rear) {
-			System.out.printf("Queue is Empty");
-			return;
-		}
-		System.out.printf("Front Element is: %d",queue[front]);
-		return;
-	}
-}
+class Queue:
+    def __init__(self):
+        self.items = deque()
 
-public class StaticQueueinjava {
+    def enqueue(self, item):
+        self.items.append(item)
 
-	// Driver code
-	public static void main(String[] args)
-	{
-		// Create a queue of capacity 4
-		Queue q = new Queue(4);
+    def dequeue(self):
+        if self.is_empty():
+            raise IndexError("dequeue from empty queue")
+        return self.items.popleft()
 
-		// print Queue elements
-		q.queueDisplay();
+    def front(self):
+        if self.is_empty():
+            raise IndexError("queue is empty")
+        return self.items[0]
 
-		// inserting elements in the queue
-		q.queueEnqueue(20);
-		q.queueEnqueue(30);
-		q.queueEnqueue(40);
-		q.queueEnqueue(50);
+    def is_empty(self):
+        return len(self.items) == 0
 
-		// print Queue elements
-		q.queueDisplay();
-
-		// insert element in the queue
-		q.queueEnqueue(60);
-
-		// print Queue elements
-		q.queueDisplay();
-
-		q.queueDequeue();
-		q.queueDequeue();
-		System.out.printf("after two node deletion");
-
-		// print Queue elements
-		q.queueDisplay();
-
-		// print front of the queue
-		q.queueFront();
-	}
-}
-  `;
-
-  const [value, setValue] = React.useState('1');
-  const [compvalue, setCompValue] = React.useState('1');
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const handleCompChange = (event, newValue) => {
-    setCompValue(newValue);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      const screenWidth = window.innerWidth;
-      const width = screenWidth < 800 ? '' : '60%';
-      setCodeTabWidth(width);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+    def size(self):
+        return len(self.items)`;
 
   return (
-    <>
-      <h1> Code for Queue Data Structure </h1>
-
-      <Box sx={{ width: '100%', typography: 'body1' }}>
-        <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
-              {/* <TabList> */}
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-                }}
-                label="C++"
-                value="1"
-              />
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-                }}
-                label="JAVA"
-                value="2"
-              />
-            </TabList>
-          </Box>
-
-          {/* <TabPanel value="1">  */}
-          <TabPanel
-            style={{
-              boxShadow: '7px 10px 14px -2px rgb(86, 86, 86)',
-              width: codeTabWidth,
-              backgroundColor: 'black',
-              borderRadius: '20px',
-              color: 'white',
-            }}
-            value="1"
-          >
-            <SyntaxHighlighter language="cpp" style={atomOneDark}>
-              {CppCode}
-            </SyntaxHighlighter>
-          </TabPanel>
-
-          <TabPanel
-            style={{
-              boxShadow: '7px 10px 14px -2px rgb(86, 86, 86)',
-              width: codeTabWidth,
-              backgroundColor: 'black',
-              borderRadius: '20px',
-              color: 'white',
-            }}
-            value="2"
-          >
-            <SyntaxHighlighter language="cpp" style={atomOneDark}>
-              {JavaCode}
-            </SyntaxHighlighter>
-          </TabPanel>
-          <TabPanel value="3"></TabPanel>
-        </TabContext>
-      </Box>
-
-      <br />
-      <br />
-      <h1> Time and Space Complexity for Queue </h1>
-
-      <Box sx={{ width: '100%', typography: 'body1' }}>
-        <TabContext value={compvalue}>
-          {/* <TabContext> */}
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <TabList
-              onChange={handleCompChange}
-              aria-label="lab API tabs example"
-            >
-              {/* <TabList> */}
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-				  width: '43%',
-                }}
-                label="Time Complexity"
-                value="1"
-              />
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-				  width: '43%',
-                }}
-                label="Auxillary Space Complexity"
-                value="2"
-              />
-            </TabList>
-          </Box>
-
-          <TabPanel value="1">
-            <code>
-              <div style={{ marginLeft: '0px' }}>
-                {' '}
-                {`For Push & Pop Function : O(1)`}{' '}
-              </div>
-            </code>
-          </TabPanel>
-          <TabPanel value="2">
-            <code>
-              <div style={{ marginLeft: '0px' }}> {`Whole Queue : O(N)`} </div>
-            </code>
-          </TabPanel>
-          <TabPanel value="3"></TabPanel>
-        </TabContext>
-      </Box>
-    </>
+    <AlgorithmDetails
+      title="Queue Data Structure"
+      bestTime="O(1)"
+      avgTime="O(1)"
+      worstTime="O(1)"
+      space="O(N)"
+      properties={[
+        { name: "Order", value: "FIFO (First-In, First-Out)" },
+        { name: "Enqueue / Dequeue", value: "O(1) Constant Time" },
+        { name: "Access", value: "Front Element Only" }
+      ]}
+      cppCode={CppCode}
+      javaCode={JavaCode}
+      pythonCode={PythonCode}
+    />
   );
 };
 

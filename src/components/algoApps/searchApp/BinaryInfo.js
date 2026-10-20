@@ -1,110 +1,128 @@
 import React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
-import './Info1.css';
+import AlgorithmDocPage from '../../common/AlgorithmDocPage';
 
 const BinaryInfo = () => {
-  const Phase1 = `
-    Binary Search Approach: 
-      Binary Search is a searching algorithm used in a sorted array by repeatedly dividing the search interval in half. 
-      The idea of binary search is to use the information that the array is sorted and reduce the time complexity to O(Log n). 
-    
-    
-    Binary Search Algorithm: The basic steps to perform Binary Search are:
-    
-     Sort the array in ascending order.
-     Set the low index to the first element of the array and the high index to the last element.
-     Set the middle index to the average of the low and high indices.
-     If the element at the middle index is the target element, return the middle index.
-     If the target element is less than the element at the middle index, set the high index to the middle index – 1.
-     If the target element is greater than the element at the middle index, set the low index to the middle index + 1.
-     Repeat steps 3-6 until the element is found or it is clear that the element is not present in the array.
-   
-     
-    Binary Search Algorithm can be implemented in the following two ways
-     Iterative Method
-     Recursive Method
-     
-     
-    Step-by-step Binary Search Algorithm: We basically ignore half of the elements just after one comparison.
+  const cppCode = `int binarySearch(int arr[], int n, int target) {
+    int low = 0, high = n - 1;
+    while (low <= high) {
+        int mid = low + (high - low) / 2; // Avoids integer overflow
+        if (arr[mid] == target) {
+            return mid; // Target found
+        } else if (arr[mid] < target) {
+            low = mid + 1; // Discard left half
+        } else {
+            high = mid - 1; // Discard right half
+        }
+    }
+    return -1; // Target not found
+}`;
 
+  const javaCode = `static int binarySearch(int[] arr, int target) {
+    int low = 0, high = arr.length - 1;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}`;
 
-    Compare x with the middle element.
-    If x matches with the middle element, we return the mid index.
-    Else If x is greater than the mid element, then x can only lie in the right half subarray after the mid element.
-     So we recur for the right half.
-    Else (x is smaller) recur for the left half.`;
-
-  const Phase2 = `
-    Advantages of Binary Search:
-     Binary search is faster than linear search, especially for large arrays.
-      As the size of the array increases, the time it takes to perform a linear search increases linearly, 
-      while the time it takes to perform a binary search increases logarithmically.
-     Binary search is more efficient than other searching algorithms that have a similar time complexity,
-      such as interpolation search or exponential search.
-     Binary search is relatively simple to implement and easy to understand, making it a good choice for many applications.
-     Binary search can be used on both sorted arrays and sorted linked lists, making it a flexible algorithm.
-     Binary search is well-suited for searching large datasets that are stored in external memory,
-      such as on a hard drive or in the cloud.
-     Binary search can be used as a building block for more complex algorithms, 
-      such as those used in computer graphics and machine learning.
-    
-    
-    Drawbacks of Binary Search:
-     We require the array to be sorted. If the array is not sorted, we must first sort it before performing the search.
-      This adds an additional O(n log n) time complexity for the sorting step, 
-      which can make binary search less efficient for very small arrays.
-     Binary search requires that the array being searched be stored in contiguous memory locations. 
-      This can be a problem if the array is too large to fit in memory, 
-      or if the array is stored on external memory such as a hard drive or in the cloud.
-     Binary search requires that the elements of the array be comparable, meaning that they must be able to be ordered.
-      This can be a problem if the elements of the array are not naturally ordered, or if the ordering is not well-defined.
-     Binary search can be less efficient than other algorithms, such as hash tables,
-      for searching very large datasets that do not fit in memory.
-    
-    
-    Applications of Binary search:
-     Searching in machine learning: Binary search can be used as a building block for more complex algorithms used in
-      machine learning, such as algorithms for training neural networks or finding the optimal hyperparameters for a model.
-     Commonly used in Competitive Programming.
-     Can be used for searching in computer graphics.
-     Binary search can be used as a building block for more complex algorithms used in computer graphics, 
-      such as algorithms for ray tracing or texture mapping.
-     Can be used for searching a database.
-     Binary search can be used to efficiently search a database of records, such as a customer database or a product catalog.
-    
-     
-    When to use Binary Search:
-     When searching a large dataset as it has a time complexity of O(log n), which means that it is much faster than linear search.
-     When the dataset is sorted.
-     When data is stored in contiguous memory.
-     Data does not have a complex structure or relationships.
-    
-    
-    Summary:
-     Binary search is an efficient algorithm for finding an element within a sorted array.
-     The time complexity of the binary search is O(log n).
-     One of the main drawbacks of binary search is that the array must be sorted.
-     Useful algorithm for building more complex algorithms in computer graphics and machine learning.`;
+  const pythonCode = `def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1`;
 
   return (
-    <>
-      <div
-        className="binaryinfo"
-        style={{ display: 'grid', justifyContent: 'space-around' }}
-      >
-        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
-
-        <img
-          className="img1"
-          src="https://media.geeksforgeeks.org/wp-content/uploads/20220309171621/BinarySearch.png"
-          alt="not Found"
-        />
-
-        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
-      </div>
-    </>
+    <AlgorithmDocPage
+      customClass="binaryinfo"
+      category="Searching Algorithm"
+      title="Binary Search"
+      subtitle="An exceptionally fast search algorithm that operates on sorted arrays by repeatedly halving the search interval, achieving logarithmic O(log N) lookup time."
+      backLink="/search"
+      backLabel="Back to Search Visualizer"
+      complexity={{
+        bestTime: 'O(1)',
+        bestNote: 'Target element is located at the initial middle index',
+        avgTime: 'O(log N)',
+        avgNote: 'Halves the candidate search domain in every iteration',
+        worstTime: 'O(log N)',
+        worstNote: 'Exhausts intervals down to 1 element (e.g., 30 steps for 1 billion items!)',
+        space: 'O(1)',
+        spaceNote: 'Iterative implementation consumes O(1) auxiliary variables',
+      }}
+      properties={[
+        { label: 'Paradigm', value: 'Divide and Conquer (Decrease and Conquer)' },
+        { label: 'Requirement', value: 'Sorted Array (Monotonic Order)' },
+        { label: 'Direct Access', value: 'Requires O(1) random-access indexing' },
+        { label: 'Comparisons', value: 'At most ⌊log₂ N⌋ + 1' },
+      ]}
+      steps={[
+        {
+          num: 1,
+          title: 'Establish Search Boundaries',
+          desc: 'Initialize low pointer to index 0 and high pointer to n - 1.',
+        },
+        {
+          num: 2,
+          title: 'Compute Midpoint',
+          desc: 'Calculate mid = low + (high - low) / 2 to prevent numeric integer overflow.',
+        },
+        {
+          num: 3,
+          title: 'Evaluate Midpoint Element',
+          desc: 'If arr[mid] == target, return mid. If arr[mid] < target, the target must reside in the right half: set low = mid + 1. If arr[mid] > target, set high = mid - 1.',
+        },
+        {
+          num: 4,
+          title: 'Repeat or Conclude',
+          desc: 'Continue while low <= high. If pointers cross without finding the target, return -1.',
+        },
+      ]}
+      walkthrough={{
+        title: 'Walkthrough: Search for 14 in [2, 3, 7, 10, 13, 14, 17]',
+        passes: [
+          {
+            pass: 'Step 1 (Range: [0, 6])',
+            detail: 'mid = (0 + 6) / 2 = 3 → arr[3] = 10. Since 14 > 10, discard left half: low = 4.',
+          },
+          {
+            pass: 'Step 2 (Range: [4, 6])',
+            detail: 'mid = (4 + 6) / 2 = 5 → arr[5] = 14. 14 == 14! Match found at index 5 in only 2 iterations!',
+          },
+        ],
+      }}
+      code={{
+        cpp: cppCode,
+        java: javaCode,
+        python: pythonCode,
+      }}
+      advantages={[
+        'Incredibly fast: searches 1,000,000 items in ≤ 20 comparisons and 1,000,000,000 items in ≤ 30 comparisons.',
+        'O(1) auxiliary memory consumption when written iteratively.',
+        'Well-defined mathematical foundation for lower/upper bound and monotonic predicate queries.',
+      ]}
+      disadvantages={[
+        'Strict requirement: array must be sorted in advance, adding an O(N log N) sorting prerequisite if unsorted.',
+        'Requires O(1) random memory access, making it inefficient on standard linked lists.',
+      ]}
+      applications={[
+        'Database indexing (B-Tree internal nodes use binary search on page keys).',
+        'C++ STL (std::lower_bound, std::upper_bound, std::binary_search).',
+        'Finding numerical roots, monotone optimization cutoffs, and git bisect.',
+      ]}
+    />
   );
 };
 

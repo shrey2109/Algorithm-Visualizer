@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import "./HomeScreen.css";
-
 import TopicCard from "./TopicCard";
 
 const HomeScreen = () => {
@@ -14,84 +13,146 @@ const HomeScreen = () => {
     dispatch({
       type: "RESET_STATE",
     });
-  }, []);
+  }, [dispatch]);
 
-  const sortApp = () => {
-    navigate("/sort");
-  };
-  const graphApp = () => {
-    navigate("/graph");
-  };
-  const searchApp = () => {
-    navigate("/search");
-  };
-  const stackApp = () => {
-    navigate("/stack");
-  };
-  const queueApp = () => {
-    navigate("/queue");
-  };
+  const sortApp = () => navigate("/sort");
+  const graphApp = () => navigate("/graph");
+  const searchApp = () => navigate("/search");
+  const stackApp = () => navigate("/stack");
+  const queueApp = () => navigate("/queue");
 
   return (
-    <>
-      <div className="mainContainer">
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <h1
-            style={{
-              fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-              fontWeight: 700,
-              color: "#ffffff",
-              background: "rgba(255, 255, 255, 0.05)",
-              borderRadius: "16px",
-              padding: "0.6rem 3rem",
-              backdropFilter: "blur(10px)",
-              WebkitBackdropFilter: "blur(10px)",
-              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
-              textAlign: "center",
-              textTransform: "uppercase",
-              textShadow: "0px 4px 12px rgba(0, 0, 0, 0.4)",
-              letterSpacing: "2px",
-              display: "inline-block",
-              marginTop: "0.5rem",
-            }}
-          >
-            ALGO CANVAS
-          </h1>
-        </div>
-        <div className="cardContainer">
+    <div className="home-container animate-fade-in">
+      <section className="hero-section">
+        <h1 className="hero-title">ALGO CANVAS</h1>
+        <p className="hero-subtitle">
+          Interactive visualization of data structures and algorithms with step-by-step execution and code tracing.
+        </p>
+      </section>
+
+      <section className="topics-section">
+        <div className="topics-grid">
+          {/* Sorting Visualizer Card */}
           <TopicCard
             onClick={sortApp}
-            img="https://i.postimg.cc/MpQXXjFY/sorting.png"
             title="Sorting Visualizer"
-            data="Lets you explore different sorting algorithms and how they work on different types of data. You can also compare the performance and efficiency of different algorithms on various inputs."
+            tag="Algorithms"
+            complexity="O(N log N)"
+            data="Explore Bubble, Insertion, Selection, Merge, and Quick Sort. Watch array element comparisons and swaps in real time with synchronized code tracing."
+            previewGraphic={
+              <div className="card-custom-preview preview-sorting">
+                <div className="preview-bar-chart">
+                  <div className="p-bar b1" style={{ height: '35%' }}></div>
+                  <div className="p-bar b2 active-compare" style={{ height: '65%' }}></div>
+                  <div className="p-bar b3 active-compare" style={{ height: '48%' }}></div>
+                  <div className="p-bar b4" style={{ height: '82%' }}></div>
+                  <div className="p-bar b5 sorted-p" style={{ height: '95%' }}></div>
+                </div>
+                <div className="preview-axis"></div>
+              </div>
+            }
           />
+
+          {/* Graph Visualizer Card */}
           <TopicCard
             onClick={graphApp}
-            img="https://i.postimg.cc/BQDGKcJt/graph.png"
             title="Graph Visualizer"
-            data="The app that helps you visualize BFS and DFS algorithms. With Graph Visualizer, choose between BFS and DFS, and watch how the algorithms traverse the nodes step by step."
+            tag="Pathfinding"
+            complexity="O(V + E)"
+            data="Simulate Breadth-First Search (BFS) and Depth-First Search (DFS) traversing a 2D node grid. Place custom start and end points and draw obstacles."
+            previewGraphic={
+              <div className="card-custom-preview preview-graph">
+                <div className="mini-grid">
+                  <div className="mg-cell mg-start">S</div>
+                  <div className="mg-cell mg-visited"></div>
+                  <div className="mg-cell mg-path"></div>
+                  <div className="mg-cell mg-end">E</div>
+                  <div className="mg-cell"></div>
+                  <div className="mg-cell mg-wall">#</div>
+                  <div className="mg-cell mg-path"></div>
+                  <div className="mg-cell"></div>
+                  <div className="mg-cell"></div>
+                  <div className="mg-cell mg-wall">#</div>
+                  <div className="mg-cell mg-visited"></div>
+                  <div className="mg-cell"></div>
+                </div>
+              </div>
+            }
           />
+
+          {/* Search Visualizer Card */}
           <TopicCard
             onClick={searchApp}
-            img="https://i.postimg.cc/dtSThFtJ/searching.jpg"
             title="Search Visualizer"
-            data="The app that helps you visualize linear and binary search. You can generate your own arrays, choose between linear and binary search, and watch how the algorithms find the target element step by step."
+            tag="Search"
+            complexity="O(log N)"
+            data="Compare Linear Search and Binary Search on custom integer arrays. Track index pointers as they inspect elements and locate search targets."
+            previewGraphic={
+              <div className="card-custom-preview preview-search">
+                <div className="mini-search-row">
+                  <div className="ms-box">12</div>
+                  <div className="ms-box">28</div>
+                  <div className="ms-box ms-target">42</div>
+                  <div className="ms-box">65</div>
+                  <div className="ms-box">89</div>
+                </div>
+                <div className="search-pointer-indicator">
+                  <span className="search-arrow-up">▲</span>
+                  <span className="search-target-label">Target: 42</span>
+                </div>
+              </div>
+            }
           />
+
+          {/* Stack Visualizer Card */}
           <TopicCard
             onClick={stackApp}
-            img="https://i.postimg.cc/VkgsJBFn/stack.png"
             title="Stack Visualizer"
-            data="The app that helps you visualize stack operations. With Stack Visualizer, you can create your own stack, push and pop elements, and watch how the stack changes step by step."
+            tag="LIFO Structure"
+            complexity="O(1) Ops"
+            data="Inspect Last-In-First-Out (LIFO) stack operations. Push and pop items with side-by-side memory tracking and live code glow highlight."
+            previewGraphic={
+              <div className="card-custom-preview preview-stack">
+                <div className="mini-stack-bucket">
+                  <div className="ms-layer top-layer">
+                    <span>Val: 92</span>
+                    <span className="ms-top-tag">TOP</span>
+                  </div>
+                  <div className="ms-layer">
+                    <span>Val: 56</span>
+                  </div>
+                  <div className="ms-layer">
+                    <span>Val: 24</span>
+                  </div>
+                </div>
+              </div>
+            }
           />
+
+          {/* Queue Visualizer Card */}
           <TopicCard
             onClick={queueApp}
-            img="https://i.postimg.cc/VvgnGb8t/queue.png"
             title="Queue Visualizer"
-            data="The app that helps you visualize queue operations. With Queue Visualizer, you can create your own queue, push and pop elements, and watch how the queue changes step by step."
+            tag="FIFO Structure"
+            complexity="O(1) Ops"
+            data="Examine First-In-First-Out (FIFO) queue mechanisms. Enqueue to the rear and dequeue from the front with real-time pointer indicators."
+            previewGraphic={
+              <div className="card-custom-preview preview-queue">
+                <div className="mini-queue-track">
+                  <span className="q-dir-tag">FRONT ⇦</span>
+                  <div className="q-item-belt">
+                    <div className="mq-item mq-head">31</div>
+                    <div className="mq-item">58</div>
+                    <div className="mq-item mq-tail">87</div>
+                  </div>
+                  <span className="q-dir-tag">⇦ REAR</span>
+                </div>
+              </div>
+            }
           />
         </div>
-      </div>
-    </>
+      </section>
+    </div>
   );
 };
 

@@ -1,85 +1,139 @@
-.container {
-  margin: 5px 15px 25px 15px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  box-shadow: 5px 2px 5px rgb(110, 110, 110);
-}
-
-.visualContainer {
+.queue-stage-wrapper {
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  margin-bottom: 30px;
+  justify-content: center;
+  padding: 1rem 0;
+  overflow-x: auto;
 }
 
-.stackContainer {
-  min-height: 475px;
-  width: 65%;
+.queue-channel {
+  width: 100%;
+  border-top: 3px solid var(--border-subtle);
+  border-bottom: 3px solid var(--border-subtle);
+  padding: 1.25rem 0.75rem;
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.channel-guide {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.front-guide {
+  text-align: left;
+  color: var(--accent-color);
+}
+
+.rear-guide {
+  text-align: right;
+  color: #10b981;
+}
+
+.queue-items-row {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 0.65rem !important;
+  overflow-x: auto;
+  padding: 0.5rem 0.25rem;
+  min-height: 100px;
   align-items: center;
-  margin-right: 15px;
-  background: rgba(255, 255, 255, 0.3);
+}
+
+.queue-cell {
+  min-width: 65px;
+  height: 75px;
+  padding: 0.4rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
   border-radius: 10px;
-  box-shadow: 0px 0px 5px rgb(110, 110, 110);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  animation: fadeIn 0.25s ease forwards;
+  position: relative;
 }
 
-.codeVisual {
-  min-height: 475px;
-  width: 35%;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  box-shadow: 0px 0px 6px rgb(110, 110, 110);
+.queue-cell.front-cell {
+  border-color: var(--accent-color);
+  background-color: var(--accent-soft);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
 }
 
-.codeContainer {
-  background-color: #fbf9aa;
-  width: 95%;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 5px 2px 5px rgb(110, 110, 110);
-  box-sizing: content-box;
+.queue-cell.rear-cell {
+  border-color: #10b981;
 }
 
-@media screen and (max-width: 950px) {
-  .visualContainer {
-    flex-direction: column;
-  }
-  .stackContainer {
-    width: 100%;
-  }
-  .codeVisual {
-    width: 100%;
-  }
+.queue-item-val {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
 }
 
-@media screen and (max-width: 800px) {
-  input[type='text'].numVal {
-    padding: 6px 10px;
-  }
-  h2 {
-    font-size: 18px;
-  }
+.queue-cell-index {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 600;
 }
 
-.stack {
-  background-color: rgb(58, 127, 255);
-  color: white;
-  font-size: 35px;
+.cell-role-badge {
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.front-badge {
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.rear-badge {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.queue-pointers-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pointer-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+}
+
+.front-pill {
+  background-color: var(--accent-soft);
+  color: var(--accent-color);
+  border: 1px solid var(--border-subtle);
+}
+
+.rear-pill {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.empty-queue-msg {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  width: 200px;
-  border-radius: 10px;
-  border: 2px solid rgb(0, 0, 0);
-  margin: auto;
-  margin-top: 3px;
-}
-
-::selection {
-  background-color: rgba(158, 192, 255, 0.316);
-}
-
-.queuecode {
-  width: 90%;
-  margin: 20px;
-}
-.popCode {
-  filter: blur(0px);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  padding: 1.5rem 1rem;
 }

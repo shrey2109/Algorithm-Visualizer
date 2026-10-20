@@ -1,11 +1,6 @@
 .searchAppScreen {
-  font-family: "Varela Round", sans-serif;
-  background: rgb(141, 128, 254);
-  background-image: linear-gradient(
-    to bottom right,
-    rgba(100, 238, 251, 0.638),
-    rgb(168, 255, 124)
-  );
-  padding: 5px;
-  height: 100vh;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem 1.5rem;
+  min-height: calc(100vh - 70px);
 }

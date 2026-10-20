@@ -1,41 +1,22 @@
 import React from "react";
-
-import "./SearchScreen.css";
-
 import SearchNavbar from "./SearchNavbar";
 import SearchVisuals from "./SearchVisuals";
+import "./SearchScreen.css";
 
 const SearchScreen = () => {
   return (
-    <>
-      <div className="searchAppScreen">
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <h1
-            style={{
-              fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-              fontWeight: 700,
-              color: "#ffffff",
-              background: "rgba(255, 255, 255, 0.05)",
-              borderRadius: "16px",
-              padding: "0.6rem 1.5rem",
-              backdropFilter: "blur(10px)",
-              WebkitBackdropFilter: "blur(10px)",
-              boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)",
-              textAlign: "center",
-              textTransform: "uppercase",
-              letterSpacing: "2px",
-              display: "inline-block",
-              marginBottom: "1rem",
-              marginTop: "1rem",
-            }}
-          >
-            Search Visualizer
-          </h1>
-        </div>
-        <SearchNavbar />
-        <SearchVisuals />
+    <div className="searchAppScreen animate-fade-in">
+      <div className="screen-header">
+        <span className="screen-eyebrow">ALGORITHM DEMO</span>
+        <h1 className="screen-title">Search Visualizer</h1>
+        <p className="screen-subtitle">
+          Observe how Linear Search checks items one by one, and Binary Search divides sorted arrays in half at each step.
+        </p>
       </div>
-    </>
+
+      <SearchNavbar />
+      <SearchVisuals />
+    </div>
   );
 };
 

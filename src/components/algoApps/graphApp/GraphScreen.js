@@ -1,41 +1,22 @@
 import React from "react";
-
 import "./GraphScreen.css";
-
 import GraphNavbar from "./GraphNavbar";
 import GraphVisuals from "./GraphVisuals";
 
 const GraphScreen = () => {
   return (
-    <>
-      <div className="graphAppContainer">
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <h1
-            style={{
-              fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-              fontWeight: 700,
-              color: "#ffffff",
-              background: "rgba(255, 255, 255, 0.05)",
-              borderRadius: "16px",
-              padding: "0.6rem 1.5rem",
-              backdropFilter: "blur(10px)",
-              WebkitBackdropFilter: "blur(10px)",
-              boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)",
-              textAlign: "center",
-              textTransform: "uppercase",
-              letterSpacing: "2px",
-              display: "inline-block",
-              marginBottom: "1rem",
-              marginTop: "1rem",
-            }}
-          >
-            Graph Visualizer
-          </h1>
-        </div>
-        <GraphNavbar />
-        <GraphVisuals />
+    <div className="graphAppContainer animate-fade-in">
+      <div className="screen-header">
+        <span className="screen-eyebrow">GRAPH ALGORITHMS</span>
+        <h1 className="screen-title">Graph Pathfinding Visualizer</h1>
+        <p className="screen-subtitle">
+          Place a Start node (S) and End node (E), optionally draw Wall obstacles, and watch BFS or DFS navigate the grid to locate the shortest path.
+        </p>
       </div>
-    </>
+
+      <GraphNavbar />
+      <GraphVisuals />
+    </div>
   );
 };
 

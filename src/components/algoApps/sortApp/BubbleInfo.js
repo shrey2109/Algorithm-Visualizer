@@ -1,118 +1,136 @@
 import React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
-import './Info.css';
+import AlgorithmDocPage from '../../common/AlgorithmDocPage';
 
 const BubbleInfo = () => {
-  const Phase1 = `Let's We have Input: arr[] = {5, 1, 4, 2, 8}
-  
-    First Pass: 
-    Bubble sort starts with very first two elements, comparing them to check which one is greater.
-    ( 5 1 4 2 8 ) –> ( 1 5 4 2 8 ), Here, algorithm compares the first two elements, and swaps since 5 > 1. 
-    ( 1 5 4 2 8 ) –>  ( 1 4 5 2 8 ), Swap since 5 > 4 
-    ( 1 4 5 2 8 ) –>  ( 1 4 2 5 8 ), Swap since 5 > 2 
-    ( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ), Now, since these elements are already in order (8 > 5), algorithm does not swap them.
-  
-    Second Pass:
-    Now, during second iteration it should look like this:
-    ( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ) 
-    ( 1 4 2 5 8 ) –> ( 1 2 4 5 8 ), Swap since 4 > 2 
-    ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) 
-    ( 1 2 4 5 8 ) –>  ( 1 2 4 5 8 ) 
-   
-    Third Pass:  
-    Now, the array is already sorted, but our algorithm does not know if it is completed.
-    The algorithm needs one whole pass without any swap to know it is sorted.
-    ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) 
-    ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) 
-    ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) 
-    ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )`;
+  const cppCode = `void bubbleSort(int arr[], int n) {
+    bool swapped;
+    for (int i = 0; i < n - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+        // Optimization: if no two elements were swapped, array is sorted
+        if (!swapped) break;
+    }
+}`;
 
-  const Phase2 = `
-    Worst Case Analysis for Bubble Sort:
-    
-    The worst-case condition for bubble sort occurs when elements of the array are arranged in decreasing order.
-    In the worst case, the total number of iterations or passes required to sort a given array is (n-1). 
-    where ‘n’ is a number of elements present in the array.
-    
-    At pass 1 :  Number of comparisons = (n-1)
-    Number of swaps = (n-1)
-  
-    At pass 2 :  Number of comparisons = (n-2)
-    Number of swaps = (n-2)
-  
-    At pass 3 :  Number of comparisons = (n-3)
-    Number of swaps = (n-3)
-             .
-             .
-             .
-  At pass n-1 :  Number of comparisons = 1
-       Number of swaps = 1
-  
-  Now , calculating total number of comparison required to sort the array
-  = (n-1) + (n-2) +  (n-3) + . . . 2 + 1
-  = (n-1)*(n-1+1)/2  { by using sum of N natural Number formula }
-  = n (n-1)/2    
-  
-  For the Worst case:
-  Total number of swaps = Total number of comparison
-  Total number of comparison (Worst case) = n(n-1)/2
-  Total number of swaps (Worst case) = n(n-1)/2
-  
-  Worst and Average Case Time Complexity: O(N2). The worst case occurs when an array is reverse sorted.
-  Best Case Time Complexity: O(N). The best case occurs when an array is already sorted.
-  Auxiliary Space: O(1) 
-  
-  
-  What is the Boundary Case for Bubble sort? 
-  Bubble sort takes minimum time (Order of n) when elements are already sorted.
-  Hence it is best to check if the array is already sorted or not beforehand, to avoid O(N2) time complexity.
-    
-    Does sorting happen in place in Bubble sort?
-    Yes, Bubble sort performs the swapping of adjacent pairs without the use of any major data structure.
-    Hence Bubble sort algorithm is an in-place algorithm.
-    
-    Is the Bubble sort algorithm stable?
-    Yes, the bubble sort algorithm is stable.
-    
-    Where is the Bubble sort algorithm used?
-    Due to its simplicity, bubble sort is often used to introduce the concept of a sorting algorithm. 
-    In computer graphics, it is popular for its capability to detect a tiny error (like a swap of just two elements)
-    in almost-sorted arrays and fix it with just linear complexity (2n). 
-    
-    Example: It is used in a polygon filling algorithm, where bounding lines are sorted by their x coordinate at a specific
-             scan line (a line parallel to the x-axis), and with incrementing y their order changes (two elements are swapped) 
-             only at intersections of two lines 
-    
-    Advantages:
-    Bubble sort is easy to understand and implement.
-    It does not require any additional memory space.
-    It’s adaptability to different types of data.
-    It is a stable sorting algorithm, meaning that elements with the same key value maintain their relative order in the sorted output.
-  
-  
-    Disadvantages
-    Bubble sort has a time complexity of O(n^2) which makes it very slow for large data sets.
-    It is not efficient for large data sets, because it requires multiple passes through the data.`;
+  const javaCode = `static void bubbleSort(int[] arr) {
+    int n = arr.length;
+    boolean swapped;
+    for (int i = 0; i < n - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = true;
+            }
+        }
+        if (!swapped) break;
+    }
+}`;
+
+  const pythonCode = `def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        swapped = False
+        for j in range(n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+        if not swapped:
+            break
+    return arr`;
 
   return (
-    <>
-      <div
-        className="bubbleinfo"
-        style={{ display: 'grid', justifyContent: 'space-around' }}
-      >
-        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
-
-        <img
-          className="img1"
-          src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/02/bubble-sort1.png"
-          alt="not Found"
-        />
-
-        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
-      </div>
-    </>
+    <AlgorithmDocPage
+      customClass="bubbleinfo"
+      category="Sorting Algorithm"
+      title="Bubble Sort"
+      subtitle="A foundational comparison-based sorting algorithm that repeatedly steps through the list, compares adjacent items, and swaps them if they are in the wrong order."
+      backLink="/sort"
+      backLabel="Back to Sort Visualizer"
+      complexity={{
+        bestTime: 'O(N)',
+        bestNote: 'When array is already sorted (with swapped flag)',
+        avgTime: 'O(N²)',
+        avgNote: 'Average random element pairs',
+        worstTime: 'O(N²)',
+        worstNote: 'Array sorted in reverse order',
+        space: 'O(1)',
+        spaceNote: 'In-place sorting with zero extra memory',
+      }}
+      properties={[
+        { label: 'Paradigm', value: 'Comparison Sort' },
+        { label: 'In-Place', value: 'Yes' },
+        { label: 'Stable', value: 'Yes' },
+        { label: 'Adaptive', value: 'Yes (with early break)' },
+      ]}
+      steps={[
+        {
+          num: 1,
+          title: 'Start at the Beginning',
+          desc: 'Initialize pointers at the first pair of elements in the array (indices 0 and 1).',
+        },
+        {
+          num: 2,
+          title: 'Compare Adjacent Elements',
+          desc: 'Compare arr[j] with arr[j+1]. If arr[j] > arr[j+1], swap them so the larger value moves forward.',
+        },
+        {
+          num: 3,
+          title: 'Bubble the Maximum to the End',
+          desc: 'Continue the sweep up to index (n - i - 1). At the end of iteration i, the i-th largest element is guaranteed to be in its permanent position.',
+        },
+        {
+          num: 4,
+          title: 'Early Termination Check',
+          desc: 'If an entire pass completes without a single swap, the array is already sorted; stop immediately.',
+        },
+      ]}
+      walkthrough={{
+        title: 'Walkthrough with Sample Array [5, 1, 4, 2, 8]',
+        passes: [
+          {
+            pass: 'Pass 1',
+            detail: '(5 1 4 2 8) → Swap (1 5 4 2 8) → Swap (1 4 5 2 8) → Swap (1 4 2 5 8) → 5 < 8 (no swap). 8 locked in position.',
+          },
+          {
+            pass: 'Pass 2',
+            detail: '(1 4 2 5 8) → 1 < 4 (ok) → Swap (1 2 4 5 8) → 4 < 5 (ok). 5 locked in position.',
+          },
+          {
+            pass: 'Pass 3',
+            detail: '(1 2 4 5 8) → Full pass with zero swaps made. Early exit triggered! Sorted.',
+          },
+        ],
+      }}
+      code={{
+        cpp: cppCode,
+        java: javaCode,
+        python: pythonCode,
+      }}
+      advantages={[
+        'Simplicity: One of the simplest algorithms to understand and implement.',
+        'In-place: Requires O(1) auxiliary memory overhead.',
+        'Stable: Preserves the relative order of identical elements.',
+        'Fast Best-Case: Can detect sorted input in O(N) linear time.',
+      ]}
+      disadvantages={[
+        'Poor Scaling: O(N²) quadratic time complexity makes it unsuited for large datasets.',
+        'Excessive Swaps: Writes to memory far more often than Selection or Insertion Sort.',
+        'Low practical utility compared to QuickSort or TimSort.',
+      ]}
+      applications={[
+        'Computer science educational pedagogy for teaching algorithmic invariants.',
+        'Detecting minute inversions in almost-sorted data streams with minimal overhead.',
+        'Embedded microcontrollers where code memory is limited and array sizes are tiny.',
+      ]}
+    />
   );
 };
 

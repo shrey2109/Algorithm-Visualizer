@@ -1,109 +1,158 @@
 import React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
-import './Info.css';
+import AlgorithmDocPage from '../../common/AlgorithmDocPage';
 
 const BFSInfo = () => {
-  const Phase1 = `
-    The breadth-first search (BFS) algorithm is used to search a tree or graph data structure for a node that meets 
-     a set of criteria. 
-    It starts at the tree’s root or graph and searches/visits all nodes at the current depth level before moving on to
-     the nodes at the next depth level.
-    Breadth-first search can be used to solve many problems in graph theory.
+  const cppCode = `vector<int> bfsOfGraph(int V, vector<int> adj[], int startNode = 0) {
+    vector<int> bfsOrder;
+    vector<bool> visited(V, false);
+    queue<int> q;
 
-    Breadth-First Traversal (or Search) for a graph is similar to the Breadth-First Traversal of a tree
-    
-    The only catch here is, that, unlike trees, graphs may contain cycles, so we may come to the same node again.
-    
-    To avoid processing a node more than once, we divide the vertices into two categories:
-    1)Visited and
-    2)Not visited.
-    
-    A boolean visited array is used to mark the visited vertices.
-    For simplicity, it is assumed that all vertices are reachable from the starting vertex. 
-    BFS uses a queue data structure for traversal.`;
+    visited[startNode] = true;
+    q.push(startNode);
 
-  const Phase2 = `
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        bfsOrder.push_back(node);
 
-    When we come to vertex 0, we look for all adjacent vertices of it. 
+        for (int neighbor : adj[node]) {
+            if (!visited[neighbor]) {
+                visited[neighbor] = true;
+                q.push(neighbor);
+            }
+        }
+    }
+    return bfsOrder;
+}`;
 
-        2 is also an adjacent vertex of 0. 
-        If we don’t mark visited vertices, then 2 will be processed again and it will become a non-terminating proces s.
-    There can be multiple BFS traversals for a graph. Different BFS traversals for the above graph :
-        2, 3, 0, 1
-        2, 0, 3, 1
-    
-    Applications of BFS:
-     Shortest Path and Minimum Spanning Tree for unweighted graph: 
-        In an unweighted graph, the shortest path is the path with the least number of edges. 
-        With Breadth First, we always reach a vertex from a given source using the minimum number of edges. 
-        Also, in the case of unweighted graphs, any spanning tree is Minimum Spanning Tree and we can use 
-        either Depth or Breadth first traversal for finding a spanning tree. 
-     Peer-to-Peer Networks: 
-        In Peer-to-Peer Networks like BitTorrent, Breadth First Search is used to find all neighbor nodes. 
-     Crawlers in Search Engines:
-        Crawlers build an index using Breadth First. 
-        The idea is to start from the source page and follow all links from the source and keep doing the same.
-        Depth First Traversal can also be used for crawlers, but the advantage of Breadth First Traversal is,
-        the depth or levels of the built tree can be limited. 
-     Social Networking Websites: 
-        In social networks, we can find people within a given distance ‘k’ from a person
-        using Breadth First Search till ‘k’ levels. 
-     GPS Navigation systems:
-        Breadth First Search is used to find all neighboring locations. 
-     Broadcasting in Network:
-        In networks, a broadcasted packet follows Breadth First Search to reach all nodes. 
-     In Garbage Collection:
-        Breadth First Search is used in copying garbage collection using Cheney’s algorithm. Refer this and for details.
-        Breadth First Search is preferred over Depth First Search because of the better locality of reference: 
-     Cycle detection in the undirected graph:
-        In undirected graphs, either Breadth First Search or Depth First Search can be used to detect cycle.
-        We can use BFS to detect cycle in a directed graph also,
-     Ford–Fulkerson algorithm: 
-        In the Ford-Fulkerson algorithm, we can either use Breadth First or Depth First Traversal to find the maximum flow. 
-        Breadth First Traversal is preferred as it reduces worst-case time complexity to O(VE2). 
-     To test if a graph is Bipartite:
-        We can either use Breadth First or Depth First Traversal. 
-     Path Finding:
-        We can either use Breadth First or Depth First Traversal to find if there is a path between two vertices. 
-     Finding all nodes within one connected component:
-        We can either use Breadth First or Depth First Traversal to find all nodes reachable from a given node. 
-    
-    
-    Advantages of Breadth First Search:
-      BFS will never get trapped exploring the useful path forever.
-      If there is a solution, BFS definitely find it out.
-      If there is more than one solution then BFS can find the minimal one that requires less number of steps. 
-      If there is a solution then BFS is guaranteed to find it.
-      Low storage requirement: linear with depth.
-      Easily programmed.
-     
-     
-    Disadvantages of Breadth First Search:
-      The main drawback of BFS is its memory requirement.
-      Since each level of the tree must be saved in order to generate the next level and the amount
-        of memory is proportional to the number of nodes stored the space complexity of BFS is O(bd ).
-      As a result, BFS is severely space-bound in practice so will exhaust the memory available on typical
-        computers in a matter of minutes.`;
+  const javaCode = `public ArrayList<Integer> bfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
+    ArrayList<Integer> bfsOrder = new ArrayList<>();
+    boolean vis[] = new boolean[V];
+    Queue<Integer> q = new LinkedList<>();
+
+    q.add(0);
+    vis[0] = true;
+
+    while (!q.isEmpty()) {
+        Integer node = q.poll();
+        bfsOrder.add(node);
+
+        for (Integer neighbor : adj.get(node)) {
+            if (!vis[neighbor]) {
+                vis[neighbor] = true;
+                q.add(neighbor);
+            }
+        }
+    }
+    return bfsOrder;
+}`;
+
+  const pythonCode = `from collections import deque
+
+def bfs_of_graph(V, adj, start_node=0):
+    visited = [False] * V
+    bfs_order = []
+    queue = deque([start_node])
+    visited[start_node] = True
+
+    while queue:
+        node = queue.popleft()
+        bfs_order.append(node)
+
+        for neighbor in adj[node]:
+            if not visited[neighbor]:
+                visited[neighbor] = True
+                queue.append(neighbor)
+    return bfs_order`;
 
   return (
-    <>
-      <div
-        className="bfsinfo"
-        style={{ display: 'grid', justifyContent: 'space-around' }}
-      >
-        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
-
-        <img
-          className="img1"
-          src="https://media.geeksforgeeks.org/wp-content/uploads/bfs-5.png"
-          alt="not Found"
-        />
-
-        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
-      </div>
-    </>
+    <AlgorithmDocPage
+      customClass="bfsinfo"
+      category="Graph Traversal"
+      title="Breadth-First Search"
+      subtitle="A fundamental graph and tree traversal algorithm that explores all neighbor nodes at the present depth level before moving on to the nodes at the next depth level."
+      backLink="/graph"
+      backLabel="Back to Graph Visualizer"
+      complexity={{
+        bestTime: 'O(V + E)',
+        bestNote: 'Visits every reachable vertex once and examines every incident edge',
+        avgTime: 'O(V + E)',
+        avgNote: 'Linear proportional to vertices V and edges E',
+        worstTime: 'O(V + E)',
+        worstNote: 'Explores all nodes and edges in the connected component',
+        space: 'O(V)',
+        spaceNote: 'Queue stores nodes at current frontier (up to O(V) in worst case)',
+      }}
+      properties={[
+        { label: 'Data Structure', value: 'Queue (FIFO)' },
+        { label: 'Shortest Path', value: 'Guaranteed (in unweighted graphs)' },
+        { label: 'Traversal Style', value: 'Level-by-Level (Radial Wavefront)' },
+        { label: 'Graph Types', value: 'Directed, Undirected, Cyclic, Acyclic' },
+      ]}
+      steps={[
+        {
+          num: 1,
+          title: 'Initialize Queue and Visited Array',
+          desc: 'Create a FIFO queue and a visited boolean array of size V. Enqueue the starting node and mark it as visited.',
+        },
+        {
+          num: 2,
+          title: 'Dequeue Frontier Node',
+          desc: 'While the queue is not empty, remove the front node and record it in the traversal order.',
+        },
+        {
+          num: 3,
+          title: 'Enqueue Unvisited Neighbors',
+          desc: 'Iterate over all adjacent neighbors of the current node. If a neighbor has not yet been visited, mark it visited immediately and push it to the queue.',
+        },
+        {
+          num: 4,
+          title: 'Repeat Until Queue is Empty',
+          desc: 'Repeat steps 2 and 3 until the queue is completely drained, concluding the exploration of the component.',
+        },
+      ]}
+      walkthrough={{
+        title: 'Walkthrough: Graph with Edges 0-1, 0-2, 0-3, 2-4 (Start at Node 0)',
+        passes: [
+          {
+            pass: 'Queue: [0]',
+            detail: 'Start node 0 marked visited. Dequeue 0 → Add 0 to output. Enqueue neighbors [1, 2, 3].',
+          },
+          {
+            pass: 'Queue: [1, 2, 3]',
+            detail: 'Dequeue 1 → Output: [0, 1]. No unvisited neighbors.',
+          },
+          {
+            pass: 'Queue: [2, 3]',
+            detail: 'Dequeue 2 → Output: [0, 1, 2]. Unvisited neighbor 4 discovered! Mark 4 visited, enqueue 4.',
+          },
+          {
+            pass: 'Queue: [3, 4]',
+            detail: 'Dequeue 3 → Output: [0, 1, 2, 3]. Dequeue 4 → Output: [0, 1, 2, 3, 4]. Queue empty. Done!',
+          },
+        ],
+      }}
+      code={{
+        cpp: cppCode,
+        java: javaCode,
+        python: pythonCode,
+      }}
+      advantages={[
+        'Guarantees shortest path in unweighted graphs: the first time a target node is visited, it is reached via minimum edges.',
+        'Never gets trapped in infinite depth loops on infinite or cyclical branches.',
+        'Explores solutions closest to the root first.',
+      ]}
+      disadvantages={[
+        'High memory consumption: must store an entire frontier level in the queue simultaneously (O(b^d) where b is branching factor and d is depth).',
+        'Not ideal for deep search trees where target is located far down a specific branch.',
+      ]}
+      applications={[
+        'Shortest Path in GPS / map routing over unweighted road networks.',
+        'Social network friend recommendations (Degrees of separation / 1st and 2nd degree connections).',
+        'Web crawlers discovering web pages level by level.',
+        'Peer-to-peer network broadcasting and BitTorrent chunk discovery.',
+      ]}
+    />
   );
 };
 

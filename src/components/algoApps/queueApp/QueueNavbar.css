@@ -1,65 +1,142 @@
-.navDiv {
-  margin: 5px 15px 25px 15px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  box-shadow: 5px 2px 5px rgb(110, 110, 110);
-}
-
-.play {
-  background: rgb(223, 231, 255);
-  color: #1e3a8a;
-  border: 1px solid rgb(77, 97, 178);
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 500;
+.queueNavDiv {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.queue-controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+
+.actions-button-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+/* Tactile PUSH button */
+.btn-push {
+  padding: 0.65rem 1.65rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 8px;
+  border: 1px solid #047857 !important;
+  background: linear-gradient(180deg, #10b981 0%, #059669 100%) !important;
+  color: #ffffff !important;
   cursor: pointer;
-  margin: 16px 15px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 2px 6px rgba(16, 185, 129, 0.35);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.play:hover {
-  background: rgba(201, 213, 255, 0.9);
-  color: #111827;
-  box-shadow: 0 6px 16px rgba(30, 58, 138, 0.2);
-  transform: scale(1.03);
+.btn-push:hover {
+  background: linear-gradient(180deg, #34d399 0%, #059669 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), 0 6px 18px rgba(16, 185, 129, 0.45);
+  transform: translateY(-2px);
 }
 
-@media (max-width: 450px) {
-  .play {
-    text-align: center;
-    padding: 12px;
-    font-size: 15px;
-    margin: 5px 5px;
-  }
+.btn-push:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
 }
 
-@media (max-width: 300px) {
-  .play {
-    width: 90%;
-  }
+/* Tactile POP button */
+.btn-pop {
+  padding: 0.65rem 1.35rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 8px;
+  border: 1px solid #b45309 !important;
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%) !important;
+  color: #ffffff !important;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 2px 6px rgba(245, 158, 11, 0.35);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-input[type="text"].numVal {
-  width: 80%;
-  height: 50px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  outline: none;
-  font-size: 15px;
+.btn-pop:hover {
+  background: linear-gradient(180deg, #fbbf24 0%, #d97706 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), 0 6px 18px rgba(245, 158, 11, 0.45);
+  transform: translateY(-2px);
 }
 
-input[type="text"]:focus {
-  border: 2px solid #555;
-  background-color: rgba(230, 230, 230, 0.493);
+.btn-pop:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
 }
 
-input[type="text"]:hover {
-  box-shadow: 3px 3px 7px -1px rgb(86, 86, 86);
+/* Tactile POP ALL button */
+.btn-pop-all {
+  padding: 0.65rem 1.35rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 8px;
+  border: 1px solid #b91c1c !important;
+  background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%) !important;
+  color: #ffffff !important;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 2px 6px rgba(239, 68, 68, 0.35);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-pop-all:hover {
+  background: linear-gradient(180deg, #f87171 0%, #dc2626 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), 0 6px 18px rgba(239, 68, 68, 0.45);
+  transform: translateY(-2px);
+}
+
+.btn-pop-all:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* LEARN MORE Button */
+.info-learn-btn {
+  padding: 0.65rem 1.35rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.info-learn-btn:hover {
+  background-color: var(--hover-surface);
+  border-color: var(--border-focus);
+  color: var(--accent-primary);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+  transform: translateY(-2px);
+}
+
+.info-learn-btn:active {
+  transform: translateY(1px);
 }

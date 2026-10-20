@@ -1,6 +1,6 @@
-.queueAppContainer{
-  background: #ecff8f;
-  background-image: linear-gradient(to bottom right,#ecff8f, #ff6483);
-  padding: 5px;
-  height: 100%;
+.queueAppContainer {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem 1.5rem;
+  min-height: calc(100vh - 70px);
 }

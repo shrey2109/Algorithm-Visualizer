@@ -1,111 +1,168 @@
 import React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
-import './Info.css';
+import AlgorithmDocPage from '../../common/AlgorithmDocPage';
 
 const QuickInfo = () => {
-  const Phase1 = ` QuickSort is a Divide and Conquer algorithm. 
-      It picks an element as a pivot and partitions the given array around the picked pivot.
-      There are many different versions of quickSort that pick pivot in different ways. 
+  const cppCode = `int partition(vector<int> &arr, int low, int high) {
+    int pivot = arr[low];
+    int i = low;
+    int j = high;
 
-      Always pick the first element as a pivot.
-      Always pick the last element as a pivot (implemented below)
-      Pick a random element as a pivot.
-      Pick median as the pivot.
-    
-      The key process in quickSort is a partition(). 
-      The target of partitions is, given an array and an element x of an array as the pivot,
-      put x at its correct position in a sorted array and put all smaller elements (smaller than x) before x,
-      and put all greater elements (greater than x) after x. All this should be done in linear time.`;
+    while (i < j) {
+        while (arr[i] <= pivot && i <= high - 1) i++;
+        while (arr[j] > pivot && j >= low + 1) j--;
+        if (i < j) swap(arr[i], arr[j]);
+    }
+    swap(arr[low], arr[j]);
+    return j;
+}
 
-  const Phase2 = `
-     Is QuickSort stable? 
-     The default implementation is not stable. 
-     However any sorting algorithm can be made stable by considering indexes as comparison parameter. 
-    
-     Is QuickSort In-place? 
-     As per the broad definition of in-place algorithm it qualifies as an in-place sorting algorithm
-     as it uses extra space only for storing recursive function calls but not for manipulating the input. 
-    
-     What is 3-Way QuickSort? 
-     In simple QuickSort algorithm, we select an element as pivot,
-     partition the array around pivot and recur for subarrays on left and right of pivot. 
-     Consider an array which has many redundant elements.
-     For example, {1, 4, 2, 4, 2, 4, 1, 2, 4, 1, 2, 2, 2, 2, 4, 1, 4, 4, 4}. 
-     If 4 is picked as pivot in Simple QuickSort, we fix only one 4 and recursively process remaining occurrences.
-     In 3 Way QuickSort, an array arr[l..r] is divided in 3 parts: 
-    
-     arr[l..i] elements less than pivot. 
-     arr[i+1..j-1] elements equal to pivot. 
-     arr[j..r] elements greater than pivot. 
-    
-    
+void quickSort(vector<int> &arr, int low, int high) {
+    if (low < high) {
+        int pIndex = partition(arr, low, high);
+        quickSort(arr, low, pIndex - 1);
+        quickSort(arr, pIndex + 1, high);
+    }
+}`;
 
-     How to implement QuickSort for Linked Lists? 
-     QuickSort on Singly Linked List 
-     QuickSort on Doubly Linked List
-    
+  const javaCode = `static int partition(int[] arr, int low, int high) {
+    int pivot = arr[low];
+    int i = low;
+    int j = high;
 
-    Can we implement QuickSort Iteratively? 
-    Yes, please refer Iterative Quick Sort.
-    
-    Why Quick Sort is preferred over MergeSort for sorting Arrays ?
-    Quick Sort in its general form is an in-place sort (i.e. it doesn’t require any extra storage) 
-    whereas merge sort requires O(N) extra storage, N denoting the array size which may be quite expensive. 
-    Allocating and de-allocating the extra space used for merge sort increases the running time of the algorithm.
-    Comparing average complexity we find that both type of sorts have O(NlogN) average complexity but the constants differ.
-    For arrays, merge sort loses due to the use of extra O(N) storage space.
-    Most practical implementations of Quick Sort use randomized version.
-    The randomized version has expected time complexity of O(nLogn). 
-    The worst case is possible in randomized version also, 
-    but worst case doesn’t occur for a particular pattern (like sorted array) and randomized Quick Sort works well in practice.
-    Quick Sort is also a cache friendly sorting algorithm as it has good locality of reference when used for arrays.
-    Quick Sort is also tail recursive, therefore tail call optimizations is done.
+    while (i < j) {
+        while (arr[i] <= pivot && i <= high - 1) i++;
+        while (arr[j] > pivot && j >= low + 1) j--;
+        if (i < j) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    int temp = arr[low];
+    arr[low] = arr[j];
+    arr[j] = temp;
+    return j;
+}
 
+static void quickSort(int[] arr, int low, int high) {
+    if (low < high) {
+        int pIndex = partition(arr, low, high);
+        quickSort(arr, low, pIndex - 1);
+        quickSort(arr, pIndex + 1, high);
+    }
+}`;
 
-    Advantages of Quick Sort:
-    It is a divide-and-conquer algorithm that makes it easier to solve problems.
-    It is efficient on large data sets.
-    It has a low overhead, as it only requires a small amount of memory to function.
+  const pythonCode = `def partition(arr, low, high):
+    pivot = arr[low]
+    i = low + 1
+    j = high
 
+    while True:
+        while i <= j and arr[i] <= pivot:
+            i += 1
+        while i <= j and arr[j] >= pivot:
+            j -= 1
+        if i <= j:
+            arr[i], arr[j] = arr[j], arr[i]
+        else:
+            break
+    arr[low], arr[j] = arr[j], arr[low]
+    return j
 
-    Disadvantages of Quick Sort:
-    It has a worst-case time complexity of O(n^2), which occurs when the pivot is chosen poorly.
-    It is not a good choice for small data sets.
-    It can be sensitive to the choice of pivot.
-    It is not cache-efficient.
-    It is not stable sort, meaning that if two elements have the same key, 
-    their relative order will not be preserved in the sorted output in case of quick sort,
-    because here we swapping of elements according to pivot’s position (without considering their original positions).
-
-
-    Summary:
-    Quick sort is a fast and efficient sorting algorithm with an average time complexity of O(n log n).
-    It is a divide-and-conquer algorithm that breaks down the original problem into smaller subproblems that are easier to solve.
-    It can be easily implemented in both iterative and recursive forms and it is efficient on large data sets,
-    and can be used to sort data in-place. 
-    However, it also has some drawbacks such as worst case time complexity of O(n^2) which occurs when the pivot is chosen poorly.
-    It is not a good choice for small data sets, it is not cache-efficient, and is sensitive to the choice of pivot. 
-    `;
+def quick_sort(arr, low, high):
+    if low < high:
+        p_index = partition(arr, low, high)
+        quick_sort(arr, low, p_index - 1)
+        quick_sort(arr, p_index + 1, high)`;
 
   return (
-    <>
-      <div
-        className="quickinfo"
-        style={{ display: 'grid', justifyContent: 'space-around' }}
-      >
-        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
-
-        <img
-          className="img1"
-          src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/01/QuickSort2.png"
-          alt="not Found"
-        />
-
-        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
-      </div>
-    </>
+    <AlgorithmDocPage
+      customClass="quickinfo"
+      category="Sorting Algorithm"
+      title="Quick Sort"
+      subtitle="A highly efficient, cache-friendly divide-and-conquer algorithm that selects a pivot element and partitions array elements into smaller and larger partitions around the pivot."
+      backLink="/sort"
+      backLabel="Back to Sort Visualizer"
+      complexity={{
+        bestTime: 'O(N log N)',
+        bestNote: 'When pivot splits array into two equal halves',
+        avgTime: 'O(N log N)',
+        avgNote: 'Average case over all permutations with small constant factor',
+        worstTime: 'O(N²)',
+        worstNote: 'When pivot is always the smallest or largest element',
+        space: 'O(log N)',
+        spaceNote: 'Auxiliary recursion call stack space',
+      }}
+      properties={[
+        { label: 'Paradigm', value: 'Divide and Conquer' },
+        { label: 'In-Place', value: 'Yes (in-place partitioning)' },
+        { label: 'Stable', value: 'No' },
+        { label: 'Cache Locality', value: 'Exceptional (sequential scan)' },
+      ]}
+      steps={[
+        {
+          num: 1,
+          title: 'Pick a Pivot Element',
+          desc: 'Select an element from the array segment (e.g., first, last, median-of-three, or random).',
+        },
+        {
+          num: 2,
+          title: 'Partition the Array',
+          desc: 'Reorder the array so all elements smaller than the pivot come before it, and all elements greater come after. The pivot is now at its final sorted position.',
+        },
+        {
+          num: 3,
+          title: 'Recurse on Left Partition',
+          desc: 'Recursively invoke quickSort on the subarray of elements to the left of the pivot index.',
+        },
+        {
+          num: 4,
+          title: 'Recurse on Right Partition',
+          desc: 'Recursively invoke quickSort on the subarray of elements to the right of the pivot index.',
+        },
+      ]}
+      walkthrough={{
+        title: 'Walkthrough with Sample Array [10, 80, 30, 90, 40, 50, 70]',
+        passes: [
+          {
+            pass: 'Partition 1',
+            detail: 'Choose pivot 70 (or 10). Partition yields elements <= 70 to left, > 70 to right. Pivot 70 placed at index 4.',
+          },
+          {
+            pass: 'Left Subarray',
+            detail: 'Recurse on [10, 30, 40, 50]. Pivot 10 placed at start. Partition recurses on [30, 40, 50]. Subarray sorted.',
+          },
+          {
+            pass: 'Right Subarray',
+            detail: 'Recurse on [90, 80]. Partition places 80 before 90. Both singletons reached.',
+          },
+          {
+            pass: 'Recombined',
+            detail: 'Full array is assembled in-place: [10, 30, 40, 50, 70, 80, 90]. Optimal in-memory performance!',
+          },
+        ],
+      }}
+      code={{
+        cpp: cppCode,
+        java: javaCode,
+        python: pythonCode,
+      }}
+      advantages={[
+        'Fastest practical comparison sort in practice due to tight inner loops and superior CPU cache locality.',
+        'Sorts in-place with only O(log N) auxiliary recursion stack space.',
+        'Easily parallelizable across multiple CPU cores.',
+      ]}
+      disadvantages={[
+        'Worst-case performance degrades to O(N²) when unbalanced pivots are picked repeatedly.',
+        'Not a stable sort by default.',
+        'Recursive implementation risks call stack overflow on adversarial inputs without tail-call optimization or median-of-three.',
+      ]}
+      applications={[
+        'C++ Standard Library (std::sort uses Introsort: QuickSort falling back to HeapSort/InsertionSort).',
+        'Large in-memory datasets where cache locality and low memory overhead are critical.',
+        'Numeric and scientific computing libraries (e.g. NumPy, BLAS).',
+      ]}
+    />
   );
 };
 

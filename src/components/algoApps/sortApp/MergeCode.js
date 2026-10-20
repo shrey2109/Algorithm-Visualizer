@@ -1,293 +1,86 @@
-import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import React from 'react';
+import AlgorithmDetails from '../../common/AlgorithmDetails';
 
 const MergeCode = () => {
-  const [codeTabWidth, setCodeTabWidth] = useState('');
+  const CppCode = `void merge(int arr[], int l, int m, int r) {
+    int n1 = m - l + 1, n2 = r - m;
+    vector<int> L(n1), R(n2);
+    for (int i = 0; i < n1; i++) L[i] = arr[l + i];
+    for (int j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
 
-  const CppCode = `
-#include <bits/stdc++.h>
-using namespace std;
-
-void merge(vector<int> &arr, int low, int mid, int high) {
-    vector<int> temp; // temporary array
-    int left = low;      // starting index of left half of arr
-    int right = mid + 1;   // starting index of right half of arr
-
-    //storing elements in the temporary array in a sorted manner//
-
-    while (left <= mid && right <= high) {
-        if (arr[left] <= arr[right]) {
-            temp.push_back(arr[left]);
-            left++;
-        }
-        else {
-            temp.push_back(arr[right]);
-            right++;
-        }
+    int i = 0, j = 0, k = l;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) arr[k++] = L[i++];
+        else arr[k++] = R[j++];
     }
-
-    // if elements on the left half are still left //
-
-    while (left <= mid) {
-        temp.push_back(arr[left]);
-        left++;
-    }
-
-    //  if elements on the right half are still left //
-    while (right <= high) {
-        temp.push_back(arr[right]);
-        right++;
-    }
-
-    // transfering all elements from temporary to arr //
-    for (int i = low; i <= high; i++) {
-        arr[i] = temp[i - low];
-    }
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
 }
 
-void mergeSort(vector<int> &arr, int low, int high) {
-    if (low >= high) return;
-    int mid = (low + high) / 2 ;
-    mergeSort(arr, low, mid);  // left half
-    mergeSort(arr, mid + 1, high); // right half
-    merge(arr, low, mid, high);  // merging sorted halves
-}
-
-int main() {
-
-    vector<int> arr = {9, 4, 7, 6, 3, 1, 5}  ;
-    int n = 7;
-
-    cout << "Before Sorting Array: " << endl;
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " "  ;
+void merge_sort(int arr[], int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        merge_sort(arr, l, m);
+        merge_sort(arr, m + 1, r);
+        merge(arr, l, m, r);
     }
-    cout << endl;
-    mergeSort(arr, 0, n - 1);
-    cout << "After Sorting Array: " << endl;
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " "  ;
+}`;
+
+  const JavaCode = `public static void mergeSort(int[] arr, int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
     }
-    cout << endl;
-    return 0 ;
-}
-  `;
+}`;
 
-  const JavaCode = `
-  import java.util.*;
+  const PythonCode = `def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        L = arr[:mid]
+        R = arr[mid:]
 
-class Solution {
-    private static void merge(int[] arr, int low, int mid, int high) {
-        ArrayList<Integer> temp = new ArrayList<>(); // temporary array
-        int left = low;      // starting index of left half of arr
-        int right = mid + 1;   // starting index of right half of arr
+        merge_sort(L)
+        merge_sort(R)
 
-        //storing elements in the temporary array in a sorted manner//
+        i = j = k = 0
+        while i < len(L) and j < len(R):
+            if L[i] <= R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
 
-        while (left <= mid && right <= high) {
-            if (arr[left] <= arr[right]) {
-                temp.add(arr[left]);
-                left++;
-            } else {
-                temp.add(arr[right]);
-                right++;
-            }
-        }
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
 
-        // if elements on the left half are still left //
-
-        while (left <= mid) {
-            temp.add(arr[left]);
-            left++;
-        }
-
-        //  if elements on the right half are still left //
-        while (right <= high) {
-            temp.add(arr[right]);
-            right++;
-        }
-
-        // transfering all elements from temporary to arr //
-        for (int i = low; i <= high; i++) {
-            arr[i] = temp.get(i - low);
-        }
-    }
-
-    public static void mergeSort(int[] arr, int low, int high) {
-        if (low >= high) return;
-        int mid = (low + high) / 2 ;
-        mergeSort(arr, low, mid);  // left half
-        mergeSort(arr, mid + 1, high); // right half
-        merge(arr, low, mid, high);  // merging sorted halves
-    }
-}
-public class MergeSort {
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        int n = 7;
-        int arr[] = { 9, 4, 7, 6, 3, 1, 5 };
-        System.out.println("Before sorting array: ");
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
-        Solution.mergeSort(arr, 0, n - 1);
-        System.out.println("After sorting array: ");
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
-    }
-
-}
-  `;
-
-  const [value, setValue] = React.useState('1');
-  const [compvalue, setCompValue] = React.useState('1');
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const handleCompChange = (event, newValue) => {
-    setCompValue(newValue);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      const screenWidth = window.innerWidth;
-      const width = screenWidth < 800 ? '' : '60%';
-      setCodeTabWidth(width);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+    return arr`;
 
   return (
-    <>
-      <h1> Code for Merge Sort </h1>
-
-      <Box sx={{ width: '100%', typography: 'body1' }}>
-        <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
-              {/* <TabList> */}
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-                  width: '43%',
-                }}
-                label="C++"
-                value="1"
-              />
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-                  width: '43%',
-                }}
-                label="JAVA"
-                value="2"
-              />
-            </TabList>
-          </Box>
-
-          {/* <TabPanel value="1">  */}
-          <TabPanel
-            style={{
-              boxShadow: '7px 10px 14px -2px rgb(86, 86, 86)',
-              width: codeTabWidth,
-              backgroundColor: 'black',
-              borderRadius: '20px',
-              color: 'white',
-            }}
-            value="1"
-          >
-            <SyntaxHighlighter language="cpp" style={atomOneDark}>
-              {CppCode}
-            </SyntaxHighlighter>
-          </TabPanel>
-
-          <TabPanel
-            style={{
-              boxShadow: '7px 10px 14px -2px rgb(86, 86, 86)',
-              width: codeTabWidth,
-              backgroundColor: 'black',
-              borderRadius: '20px',
-              color: 'white',
-            }}
-            value="2"
-          >
-            <SyntaxHighlighter language="cpp" style={atomOneDark}>
-              {JavaCode}
-            </SyntaxHighlighter>
-          </TabPanel>
-          <TabPanel value="3"></TabPanel>
-        </TabContext>
-      </Box>
-
-      <br />
-      <br />
-      <h1> Time And Space Complexity for Merge Sort </h1>
-
-      <Box sx={{ width: '100%', typography: 'body1' }}>
-        <TabContext value={compvalue}>
-          {/* <TabContext> */}
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <TabList
-              onChange={handleCompChange}
-              aria-label="lab API tabs example"
-            >
-              {/* <TabList> */}
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-                  width: '43%',
-                }}
-                label="Time Complexity"
-                value="1"
-              />
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-                  width: '43%',
-                }}
-                label="Auxillary Space Complexity"
-                value="2"
-              />
-            </TabList>
-          </Box>
-
-          <TabPanel value="1">
-            <code>
-              <div style={{ marginLeft: '0px' }}> {`O(N*log(N))`} </div>
-            </code>
-          </TabPanel>
-          <TabPanel value="2">
-            <code>
-              <div style={{ marginLeft: '0px' }}> {`O(N)`} </div>
-            </code>
-          </TabPanel>
-          <TabPanel value="3"></TabPanel>
-        </TabContext>
-      </Box>
-    </>
+    <AlgorithmDetails
+      title="Merge Sort"
+      bestTime="O(N log N)"
+      avgTime="O(N log N)"
+      worstTime="O(N log N)"
+      space="O(N)"
+      properties={[
+        { name: "In-Place", value: "No" },
+        { name: "Stable", value: "Yes" },
+        { name: "Paradigm", value: "Divide and Conquer" }
+      ]}
+      cppCode={CppCode}
+      javaCode={JavaCode}
+      pythonCode={PythonCode}
+    />
   );
 };
 

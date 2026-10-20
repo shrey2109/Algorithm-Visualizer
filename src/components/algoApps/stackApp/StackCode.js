@@ -1,325 +1,125 @@
-import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import React from 'react';
+import AlgorithmDetails from '../../common/AlgorithmDetails';
 
 const StackCode = () => {
-  const [codeTabWidth, setCodeTabWidth] = useState('');
-
-  const CppCode = `
-/* C++ program to implement basic stack
-operations */
-#include <bits/stdc++.h>
-
+  const CppCode = `#include <iostream>
 using namespace std;
 
 #define MAX 1000
 
 class Stack {
-	int top;
+    int top;
+    int a[MAX];
 
 public:
-	int a[MAX]; // Maximum size of Stack
+    Stack() { top = -1; }
 
-	Stack() { top = -1; }
-	bool push(int x);
-	int pop();
-	int peek();
-	bool isEmpty();
-};
+    bool push(int x) {
+        if (top >= (MAX - 1)) {
+            cout << "Stack Overflow\\n";
+            return false;
+        }
+        a[++top] = x;
+        return true;
+    }
 
-bool Stack::push(int x)
-{
-	if (top >= (MAX - 1)) {
-		cout << "Stack Overflow";
-		return false;
-	}
-	else {
-		a[++top] = x;
-		cout << x << " pushed into stack";
-		return true;
-	}
-}
+    int pop() {
+        if (top < 0) {
+            cout << "Stack Underflow\\n";
+            return -1;
+        }
+        return a[top--];
+    }
 
-int Stack::pop()
-{
-	if (top < 0) {
-		cout << "Stack Underflow";
-		return 0;
-	}
-	else {
-		int x = a[top--];
-		return x;
-	}
-}
-int Stack::peek()
-{
-	if (top < 0) {
-		cout << "Stack is Empty";
-		return 0;
-	}
-	else {
-		int x = a[top];
-		return x;
-	}
-}
+    int peek() {
+        if (top < 0) {
+            cout << "Stack is Empty\\n";
+            return -1;
+        }
+        return a[top];
+    }
 
-bool Stack::isEmpty()
-{
-	return (top < 0);
-}
+    bool isEmpty() {
+        return (top < 0);
+    }
+};`;
 
-// Driver program to test above functions
-int main()
-{
-	class Stack s;
-	s.push(10);
-	s.push(20);
-	s.push(30);
-	cout << s.pop() << " Popped from stack";
-	
-	//print top element of stack after popping
-	cout << "Top element is : " << s.peek() << endl;
-	
-	//print all elements in stack :
-	cout <<"Elements present in stack : ";
-	while(!s.isEmpty())
-	{
-		// print top element in stack
-		cout << s.peek() <<" ";
-		// remove top element in stack
-		s.pop();
-	}
+  const JavaCode = `class Stack {
+    static final int MAX = 1000;
+    int top;
+    int a[] = new int[MAX];
 
-	return 0;
-}
+    Stack() { top = -1; }
 
-  `;
+    boolean isEmpty() {
+        return (top < 0);
+    }
 
-  const JavaCode = `
-  /* Java program to implement basic stack
-operations */
-class Stack {
-	static final int MAX = 1000;
-	int top;
-	int a[] = new int[MAX]; // Maximum size of Stack
+    boolean push(int x) {
+        if (top >= (MAX - 1)) {
+            System.out.println("Stack Overflow");
+            return false;
+        }
+        a[++top] = x;
+        return true;
+    }
 
-	boolean isEmpty()
-	{
-		return (top < 0);
-	}
-	Stack()
-	{
-		top = -1;
-	}
+    int pop() {
+        if (top < 0) {
+            System.out.println("Stack Underflow");
+            return -1;
+        }
+        return a[top--];
+    }
 
-	boolean push(int x)
-	{
-		if (top >= (MAX - 1)) {
-			System.out.println("Stack Overflow");
-			return false;
-		}
-		else {
-			a[++top] = x;
-			System.out.println(x + " pushed into stack");
-			return true;
-		}
-	}
+    int peek() {
+        if (top < 0) {
+            System.out.println("Stack is Empty");
+            return -1;
+        }
+        return a[top];
+    }
+}`;
 
-	int pop()
-	{
-		if (top < 0) {
-			System.out.println("Stack Underflow");
-			return 0;
-		}
-		else {
-			int x = a[top--];
-			return x;
-		}
-	}
+  const PythonCode = `class Stack:
+    def __init__(self):
+        self.items = []
 
-	int peek()
-	{
-		if (top < 0) {
-			System.out.println("Stack Underflow");
-			return 0;
-		}
-		else {
-			int x = a[top];
-			return x;
-		}
-	}
-	
-	void print(){
-	for(int i = top;i>-1;i--){
-	System.out.print(" "+ a[i]);
-	}
-}
-}
+    def is_empty(self):
+        return len(self.items) == 0
 
-// Driver code
-class Main {
-	public static void main(String args[])
-	{
-		Stack s = new Stack();
-		s.push(10);
-		s.push(20);
-		s.push(30);
-		System.out.println(s.pop() + " Popped from stack");
-		System.out.println("Top element is :" + s.peek());
-		System.out.print("Elements present in stack :");
-		s.print();
-	}
-}
+    def push(self, item):
+        self.items.append(item)
 
-  `;
+    def pop(self):
+        if self.is_empty():
+            raise IndexError("pop from empty stack")
+        return self.items.pop()
 
-  const [value, setValue] = React.useState('1');
-  const [compvalue, setCompValue] = React.useState('1');
+    def peek(self):
+        if self.is_empty():
+            raise IndexError("peek from empty stack")
+        return self.items[-1]
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const handleCompChange = (event, newValue) => {
-    setCompValue(newValue);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      const screenWidth = window.innerWidth;
-      const width = screenWidth < 800 ? '' : '60%';
-      setCodeTabWidth(width);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+    def size(self):
+        return len(self.items)`;
 
   return (
-    <>
-      <h1> Code for Stack Data Structure </h1>
-
-      <Box sx={{ width: '100%', typography: 'body1' }}>
-        <TabContext value={value}>
-          {/* <TabContext> */}
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
-              {/* <TabList> */}
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-                }}
-                label="C++"
-                value="1"
-              />
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-                }}
-                label="JAVA"
-                value="2"
-              />
-            </TabList>
-          </Box>
-
-          {/* <TabPanel value="1">  */}
-          <TabPanel
-            style={{
-              boxShadow: '7px 10px 14px -2px rgb(86, 86, 86)',
-              width: codeTabWidth,
-              backgroundColor: 'black',
-              borderRadius: '20px',
-              color: 'white',
-            }}
-            value="1"
-          >
-            <SyntaxHighlighter language="cpp" style={atomOneDark}>
-              {CppCode}
-            </SyntaxHighlighter>
-          </TabPanel>
-
-          <TabPanel
-            style={{
-              boxShadow: '7px 10px 14px -2px rgb(86, 86, 86)',
-              width: codeTabWidth,
-              backgroundColor: 'black',
-              borderRadius: '20px',
-              color: 'white',
-            }}
-            value="2"
-          >
-            <SyntaxHighlighter language="cpp" style={atomOneDark}>
-              {JavaCode}
-            </SyntaxHighlighter>
-          </TabPanel>
-          <TabPanel value="3"></TabPanel>
-        </TabContext>
-      </Box>
-
-      <br />
-      <br />
-      <h1> Time and Space Complexity for Stack </h1>
-
-      <Box sx={{ width: '100%', typography: 'body1' }}>
-        <TabContext value={compvalue}>
-          {/* <TabContext> */}
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <TabList
-              onChange={handleCompChange}
-              aria-label="lab API tabs example"
-            >
-              {/* <TabList> */}
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-                  width: '43%',
-                }}
-                label="Time Complexity"
-                value="1"
-              />
-              <Tab
-                style={{
-                  boxShadow: '2px 0px 3px rgb(86, 86, 86)',
-                  margin: '10px',
-                  fontSize: '15px',
-                  width: '43%',
-                }}
-                label="Auxillary Space Complexity"
-                value="2"
-              />
-            </TabList>
-          </Box>
-
-          <TabPanel value="1">
-            <code>
-              <div style={{ marginLeft: '0px' }}>
-                {' '}
-                {`For Push & Pop Function : O(1)`}{' '}
-              </div>
-            </code>
-          </TabPanel>
-          <TabPanel value="2">
-            <code>
-              <div style={{ marginLeft: '0px' }}> {`Whole Stack : O(N)`} </div>
-            </code>
-          </TabPanel>
-          <TabPanel value="3"></TabPanel>
-        </TabContext>
-      </Box>
-    </>
+    <AlgorithmDetails
+      title="Stack Data Structure"
+      bestTime="O(1)"
+      avgTime="O(1)"
+      worstTime="O(1)"
+      space="O(N)"
+      properties={[
+        { name: "Order", value: "LIFO (Last-In, First-Out)" },
+        { name: "Push / Pop", value: "O(1) Constant Time" },
+        { name: "Access", value: "Top Element Only" }
+      ]}
+      cppCode={CppCode}
+      javaCode={JavaCode}
+      pythonCode={PythonCode}
+    />
   );
 };
 

@@ -1,7 +1,7 @@
 const initialState = {
   stackOperation: '',
-  sortingColor: '',
-  sortingAlgorithm: '',
+  sortingColor: '#76afff',
+  sortingAlgorithm: 'bubble',
   sortingSpeed: 1000,
   sortplay: false,
   graphplay: false,
@@ -11,7 +11,7 @@ const initialState = {
   arrValStack: [],
   arrValQueue: [],
 
-  graphAlgorithm: '',
+  graphAlgorithm: 'bfs',
   startPoint: false,
   endPoint: false,
   wallPoint: false,
@@ -21,12 +21,12 @@ const initialState = {
   map: [],
   path: [],
 
-  searchingAlgorithm: '',
-  searchingColor: '',
+  searchingAlgorithm: 'linear',
+  searchingColor: '#76afff',
   searchingSpeed: 1000,
   arrValSearch: [],
   searchplay: false,
-  searchVal: 0,
+  searchVal: '',
   isfound: false,
   isnotfound: false,
 };

@@ -1,11 +1,144 @@
-body {
-  margin: 0;
-  font-family: 'Varela Round', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Varela+Round&display=swap');
+
+:root,
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --hover-surface: #e2e8f0;
+  --border-subtle: #e2e8f0;
+  --border-focus: #3b82f6;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --accent-primary: #2563eb;
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-soft: rgba(37, 99, 235, 0.08);
+  --accent-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+
+  --navbar-bg: rgba(255, 255, 255, 0.88);
+  --card-bg: #ffffff;
+  --code-bg: #f8fafc;
+  --code-border: #e2e8f0;
+  --highlight-bg: #bae6fd;
+  --active-node: #38bdf8;
+  --path-node: #22c55e;
+  --wall-node: #334155;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --hover-surface: #334155;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: #38bdf8;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+
+  --accent-primary: #38bdf8;
+  --accent-color: #38bdf8;
+  --accent-hover: #60a5fa;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --accent-gradient: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+
+  --navbar-bg: rgba(15, 23, 42, 0.9);
+  --card-bg: #1e293b;
+  --code-bg: #0b1120;
+  --code-border: rgba(255, 255, 255, 0.08);
+  --highlight-bg: rgba(56, 189, 248, 0.28);
+  --active-node: #0284c7;
+  --path-node: #4ade80;
+  --wall-node: #475569;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 30px -4px rgba(0, 0, 0, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', 'Varela Round', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  min-height: 100vh;
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', Menlo, Monaco, Consolas, monospace;
+}
+
+/* MUI Dark/Light Mode Theme Integration */
+.MuiInputBase-root {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-radius: 8px !important;
+}
+
+.MuiInputLabel-root {
+  color: var(--text-secondary) !important;
+}
+
+.MuiSelect-icon {
+  color: var(--text-secondary) !important;
+}
+
+.MuiPaper-root.MuiMenu-paper {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.MuiMenuItem-root {
+  color: var(--text-primary) !important;
+  font-family: inherit !important;
+}
+
+.MuiMenuItem-root:hover {
+  background-color: var(--hover-surface) !important;
+}
+
+.MuiFilledInput-root {
+  background-color: var(--bg-secondary) !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.MuiFilledInput-root:hover {
+  background-color: var(--hover-surface) !important;
+}
+
+.MuiFilledInput-underline:before {
+  border-bottom-color: var(--border-subtle) !important;
+}
+
+.MuiFilledInput-underline:after {
+  border-bottom-color: var(--accent-color) !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

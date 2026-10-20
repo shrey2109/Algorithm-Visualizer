@@ -1,77 +1,119 @@
 import React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { kimbieLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
-import './Info1.css';
+import AlgorithmDocPage from '../../common/AlgorithmDocPage';
 
 const LinearInfo = () => {
-  const Phase1 = `
-     Linear Search is defined as a sequential search algorithm that starts at one end and goes through each element
-      of a list until the desired element is found, otherwise the search continues till the end of the data set.
- 
-    
-     How Linear Search Works?
-      Step 1: First, read the search element (Target element) in the array.
-      Step 2: Set an integer i = 0 and repeat steps 3 to 4 till i reaches the end of the array.
-      Step 3: Match the key with arr[i].
-      Step 4: If the key matches, return the index. Otherwise, increment i by 1.`;
+  const cppCode = `int linearSearch(int arr[], int n, int target) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == target) {
+            return i; // Target element found at index i
+        }
+    }
+    return -1; // Target not present in array
+}`;
 
-  const Phase2 = `
-     Advantages of Linear Search:
-      Linear search is simple to implement and easy to understand.
-      Linear search can be used irrespective of whether the array is sorted or not. It can be used on arrays of any data type.
-      Does not require any additional memory.
-      It is a well suited algorithm for small datasets.
-    
-    
-    Drawbacks of Linear Search:
-      Linear search has a time complexity of O(n), which in turn makes it slow for large datasets.
-      Not suitable for large arrays.
-      Linear search can be less efficient than other algorithms, such as hash tables.
-    
-    
-    Improving Linear Search:
-      As seen above, the time taken to search an element using linear search is linear.
-      This is a drawback for using linear search for large data sets.
-      It is observed that when searching for a key element, then there is a possibility for searching the same key element again and again.
-      We can improve the performance of linear search using this observation.
-     
-     The goal is that if the same element is searched again then the operation must take lesser time.
-     Therefore, in such a case, Linear Search can be improved by using the following two methods:
-     
-     1)Transposition
-     2)Move to Front
-   
+  const javaCode = `static int linearSearch(int[] arr, int target) {
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}`;
 
-    When to use Linear Search?
-      When we are dealing with a small dataset.
-      When you need to find an exact value.
-      When you are searching a dataset stored in contiguous memory.
-      When you want to implement a simple algorithm.
-    
-    
-    Conclusion:
-      To conclude, it can be said that linear search is a simple and flexible algorithm for finding whether an element is
-      present within an array.
-      It sequentially examines each element of the array and is better for being used in unsorted data sets.`;
+  const pythonCode = `def linear_search(arr, target):
+    for i, val in enumerate(arr):
+        if val == target:
+            return i
+    return -1`;
 
   return (
-    <>
-      <div
-        className="linearinfo"
-        style={{ display: 'grid', justifyContent: 'space-around' }}
-      >
-        <SyntaxHighlighter style={kimbieLight}>{Phase1}</SyntaxHighlighter>
-
-        <img
-          className="img1"
-          src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Linear-Search.png"
-          alt="not Found"
-        />
-
-        <SyntaxHighlighter style={kimbieLight}>{Phase2}</SyntaxHighlighter>
-      </div>
-    </>
+    <AlgorithmDocPage
+      customClass="linearinfo"
+      category="Searching Algorithm"
+      title="Linear Search"
+      subtitle="A straightforward sequential search algorithm that starts at one end of a list and inspects every element until the desired target is found or the collection is exhausted."
+      backLink="/search"
+      backLabel="Back to Search Visualizer"
+      complexity={{
+        bestTime: 'O(1)',
+        bestNote: 'When target element is located at the very first index',
+        avgTime: 'O(N)',
+        avgNote: 'On average, inspects N/2 elements before finding target',
+        worstTime: 'O(N)',
+        worstNote: 'Target is at the last index or not present in the array',
+        space: 'O(1)',
+        spaceNote: 'Requires zero additional auxiliary storage',
+      }}
+      properties={[
+        { label: 'Paradigm', value: 'Brute Force / Sequential Scan' },
+        { label: 'Data Precondition', value: 'None (works on unsorted data)' },
+        { label: 'Data Structure', value: 'Arrays, Linked Lists, Streams' },
+        { label: 'Space Overhead', value: 'O(1) Constant' },
+      ]}
+      steps={[
+        {
+          num: 1,
+          title: 'Receive Target Value',
+          desc: 'Specify the target search key to locate within the dataset.',
+        },
+        {
+          num: 2,
+          title: 'Iterate from Index 0',
+          desc: 'Initialize index pointer i = 0. Compare the element arr[i] with the target key.',
+        },
+        {
+          num: 3,
+          title: 'Match Evaluation',
+          desc: 'If arr[i] == target, immediately terminate the search and return the current index i.',
+        },
+        {
+          num: 4,
+          title: 'Advance Pointer or Conclude',
+          desc: 'If not matched, increment pointer i. If i reaches array length n without finding the target, conclude target does not exist and return -1.',
+        },
+      ]}
+      walkthrough={{
+        title: 'Walkthrough: Search for 7 in [1, 3, 5, 7, 8]',
+        passes: [
+          {
+            pass: 'Index 0',
+            detail: 'arr[0] = 1 ≠ 7 → Mismatch. Advance pointer to index 1.',
+          },
+          {
+            pass: 'Index 1',
+            detail: 'arr[1] = 3 ≠ 7 → Mismatch. Advance pointer to index 2.',
+          },
+          {
+            pass: 'Index 2',
+            detail: 'arr[2] = 5 ≠ 7 → Mismatch. Advance pointer to index 3.',
+          },
+          {
+            pass: 'Index 3',
+            detail: 'arr[3] = 7 == 7 → Target match found! Return index 3 immediately in 4 operations.',
+          },
+        ],
+      }}
+      code={{
+        cpp: cppCode,
+        java: javaCode,
+        python: pythonCode,
+      }}
+      advantages={[
+        'Universally applicable: works on completely unsorted data without preprocessing.',
+        'Supports non-contiguous data structures like singly and doubly linked lists.',
+        'Zero algorithmic memory overhead: O(1) auxiliary space.',
+        'Implementation takes only 3-5 lines of code.',
+      ]}
+      disadvantages={[
+        'Inefficient on large datasets due to strict O(N) linear scan time.',
+        'Cannot take advantage of sorted ordering (unlike Binary Search O(log N)).',
+      ]}
+      applications={[
+        'Searching short arrays or linked lists where sorting overhead is unviable.',
+        'Looking up elements in unsorted hash bucket collision chains.',
+        'Finding the first occurrence of an item in unindexed data files.',
+      ]}
+    />
   );
 };
 
